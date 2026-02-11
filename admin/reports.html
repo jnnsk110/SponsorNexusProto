@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Nexus - Admin Reports</title>
+    <!-- External CSS -->
+    <link href="../style.css" rel="stylesheet">
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="mode-admin">
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-link"></i>
+            Sponsor Nexus
+        </div>
+
+        <div id="menu-admin" class="nav-menu">
+            <a href="index.html" class="nav-link">
+                <i class="fa-solid fa-table-cells-large"></i> ダッシュボード
+            </a>
+            <a href="sponsors.html" class="nav-link">
+                <i class="fa-solid fa-user-friends"></i> スポンサー一覧
+            </a>
+            <a href="owners.html" class="nav-link">
+                <i class="fa-solid fa-building-user"></i> オーナー一覧 (団体)
+            </a>
+            <a href="projects.html" class="nav-link">
+                <i class="fa-solid fa-list-check"></i> プロジェクト一覧
+            </a>
+            <a href="reports.html" class="nav-link active">
+                <i class="fa-regular fa-chart-bar"></i> レポート管理
+            </a>
+            <a href="payments.html" class="nav-link">
+                <i class="fa-solid fa-money-bill-transfer"></i> 入出金管理
+            </a>
+            <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-cog"></i> 運営設定
+            </a>
+        </div>
+
+        <div class="user-bottom">
+            <div class="role-menu" id="role-menu">
+                <a href="index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
+                    (Active)
+                </a>
+                <a href="../sponsor/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                </a>
+                <a href="../owner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="../index.html" class="role-option"
+                    style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-sign-out-alt"></i></div>ログアウト
+                </a>
+            </div>
+
+            <div class="user-card" onclick="toggleRoleMenu()">
+                <div class="user-avatar" id="user-avatar">
+                    <img src="https://ui-avatars.com/api/?name=Takuya+Sato&background=C5A059&color=fff" alt="User">
+                </div>
+                <div style="flex:1;">
+                    <div class="user-info" id="user-name">佐藤 卓也</div>
+                    <div class="user-role" id="user-role-label">Platform Admin</div>
+                </div>
+                <i class="fa-solid fa-chevron-up" style="font-size:0.7rem; color:#A0AEC0;"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">レポート管理</h1>
+        </div>
+
+        <!-- Section 1: Drafts (Approval Queue) -->
+        <div class="list-section">
+            <div class="section-title">
+                <i class="fa-solid fa-pen-nib" style="color:#E53E3E; margin-right:8px;"></i>
+                承認待ちドラフト <span class="badge bg-red"
+                    style="margin-left:5px; font-size:0.7rem; vertical-align:middle;">2件</span>
+            </div>
+            <p style="font-size:0.85rem; color:#718096; margin-bottom:1rem;">
+                プロジェクトオーナーから提出され、AIが下書きを作成したレポートです。内容を確認し、スポンサーへ送信してください。
+            </p>
+
+            <table class="match-table">
+                <thead>
+                    <tr>
+                        <th>ステータス</th>
+                        <th>対象月</th>
+                        <th>プロジェクト名</th>
+                        <th>送信先スポンサー</th>
+                        <th style="text-align:right;">アクション</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="match-row" style="border-left: 4px solid #E53E3E;">
+                        <td><span class="badge bg-red">承認待ち</span></td>
+                        <td>2026年1月度</td>
+                        <td style="font-weight:bold;">横浜アートフェスティバル</td>
+                        <td>トヨタ自動車 株式会社</td>
+                        <td>
+                            <button class="btn-details" style="font-size:0.8rem; padding:0.4rem 1rem;"
+                                onclick="openModal('modal-report-review')">レビューする</button>
+                        </td>
+                    </tr>
+                    <tr class="match-row" style="border-left: 4px solid #F6AD55;">
+                        <td><span class="badge bg-gray" style="background:#F6AD55;">AI生成中</span></td>
+                        <td>2026年1月度</td>
+                        <td style="font-weight:bold;">STEM教育キャンプ</td>
+                        <td>ソニーグループ</td>
+                        <td>
+                            <button class="btn-details"
+                                style="font-size:0.8rem; padding:0.4rem 1rem; background:#CBD5E0; box-shadow:none; cursor:not-allowed;">準備中</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Section 2: History (Sent) -->
+        <div class="list-section" style="margin-top:3rem;">
+            <div class="section-title">
+                <i class="fa-solid fa-paper-plane" style="color:#38A169; margin-right:8px;"></i>
+                送信済みレポート履歴
+            </div>
+            <table class="match-table">
+                <thead>
+                    <tr>
+                        <th>送信日</th>
+                        <th>対象月</th>
+                        <th>プロジェクト名</th>
+                        <th>送信先スポンサー</th>
+                        <th style="text-align:right;">証憑</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="match-row">
+                        <td style="color:#718096;">2026/01/10</td>
+                        <td>2025年12月度</td>
+                        <td>横浜アートフェスティバル</td>
+                        <td>トヨタ自動車 株式会社</td>
+                        <td><a href="#" style="color:#3182CE; text-decoration:none;"><i
+                                    class="fa-solid fa-file-pdf"></i> PDF</a></td>
+                    </tr>
+                    <tr class="match-row">
+                        <td style="color:#718096;">2026/01/08</td>
+                        <td>2025年12月度</td>
+                        <td>伝統文化保存デジタルアーカイブ</td>
+                        <td>日立製作所</td>
+                        <td><a href="#" style="color:#3182CE; text-decoration:none;"><i
+                                    class="fa-solid fa-file-pdf"></i> PDF</a></td>
+                    </tr>
+                    <tr class="match-row">
+                        <td style="color:#718096;">2025/12/10</td>
+                        <td>2025年11月度</td>
+                        <td>横浜アートフェスティバル</td>
+                        <td>トヨタ自動車 株式会社</td>
+                        <td><a href="#" style="color:#3182CE; text-decoration:none;"><i
+                                    class="fa-solid fa-file-pdf"></i> PDF</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Report Review Modal -->
+    <div id="modal-report-review" class="popup-overlay">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2 class="popup-title"><i class="fa-solid fa-file-signature"></i> レポート承認・送信</h2>
+                <button class="close-btn" onclick="closeModal('modal-report-review')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <!-- Meta Info -->
+                <div
+                    style="background:#F7FAFC; padding:1rem; border-radius:8px; margin-bottom:1.5rem; display:flex; justify-content:space-between; font-size:0.9rem;">
+                    <div>
+                        <div style="color:#718096;">プロジェクト</div>
+                        <div style="font-weight:bold;">横浜アートフェスティバル2026</div>
+                    </div>
+                    <div>
+                        <div style="color:#718096;">送信先</div>
+                        <div style="font-weight:bold;">トヨタ自動車 株式会社 (ご担当: 佐々木様)</div>
+                    </div>
+                </div>
+
+                <!-- Preview Area -->
+                <h3 style="font-size:1rem; margin-bottom:0.5rem; color:#2D3748;">AI生成ドラフト (概要)</h3>
+                <div
+                    style="border:1px solid #E2E8F0; padding:1.5rem; border-radius:8px; margin-bottom:1.5rem; color:#4A5568; line-height:1.8; max-height:300px; overflow-y:auto;">
+                    <h4 style="color:#1A202C; margin-bottom:0.5rem;">1. 今月のハイライト</h4>
+                    <p>
+                        今月は、メイン会場となる横浜赤レンガ倉庫でのプレイベントを実施し、延べ1,200名の来場者を記録しました。
+                        特に、貴社にご提供いただいた「モビリティ体験ブース」は、親子連れを中心に常時満席の状態が続き、アンケート満足度も4.8（5段階）と極めて高い評価を得ました。
+                    </p>
+                    <br>
+                    <h4 style="color:#1A202C; margin-bottom:0.5rem;">2. KPI進捗</h4>
+                    <ul>
+                        <li>累計来場者数: 15,000人 (目標進捗率: 30%)</li>
+                        <li>SNS言及数: 2,400件 (前月比 +150%)</li>
+                        <li>メディア掲載: 地元ケーブルテレビ 1件、Webメディア 3件</li>
+                    </ul>
+                    <br>
+                    <h4 style="color:#1A202C; margin-bottom:0.5rem;">3. 収支報告概要</h4>
+                    <p>
+                        助成金の入金に伴い、会場設営費の前払いを完了いたしました。詳細は添付の収支計算書をご確認ください。
+                    </p>
+                </div>
+
+                <!-- Actions -->
+                <div
+                    style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #eee; padding-top:1.5rem;">
+                    <button class="btn-secondary" style="border:none; color:#718096; padding-left:0;"><i
+                            class="fa-solid fa-file-pdf"></i> PDFプレビュー (Download)</button>
+
+                    <div>
+                        <button class="btn-secondary" style="margin-right:10px;">修正を依頼 (AI Rewrite)</button>
+                        <button class="btn-primary"
+                            onclick="alert('送信しました！'); closeModal('modal-report-review');">承認して送信する</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        function toggleRoleMenu() {
+            const menu = document.getElementById('role-menu');
+            if (menu.style.display === 'block') { menu.style.display = 'none'; } else { menu.style.display = 'block'; }
+        }
+    </script>
+</body>
+
+</html>

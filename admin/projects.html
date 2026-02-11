@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Nexus - Admin Projects</title>
+    <!-- External CSS -->
+    <link href="../style.css" rel="stylesheet">
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="mode-admin">
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-link"></i>
+            Sponsor Nexus
+        </div>
+
+        <div id="menu-admin" class="nav-menu">
+            <a href="index.html" class="nav-link">
+                <i class="fa-solid fa-table-cells-large"></i> ダッシュボード
+            </a>
+            <a href="sponsors.html" class="nav-link">
+                <i class="fa-solid fa-user-friends"></i> スポンサー一覧
+            </a>
+            <a href="owners.html" class="nav-link">
+                <i class="fa-solid fa-building-user"></i> オーナー一覧 (団体)
+            </a>
+            <a href="projects.html" class="nav-link active">
+                <i class="fa-solid fa-list-check"></i> プロジェクト一覧
+            </a>
+            <a href="reports.html" class="nav-link">
+                <i class="fa-regular fa-chart-bar"></i> レポート管理
+            </a>
+            <a href="payments.html" class="nav-link">
+                <i class="fa-solid fa-money-bill-transfer"></i> 入出金管理
+            </a>
+            <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-cog"></i> 運営設定
+            </a>
+        </div>
+
+        <div class="user-bottom">
+            <div class="role-menu" id="role-menu">
+                <a href="index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
+                    (Active)
+                </a>
+                <a href="../sponsor/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                </a>
+                <a href="../owner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="../index.html" class="role-option"
+                    style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-sign-out-alt"></i></div>ログアウト
+                </a>
+            </div>
+
+            <div class="user-card" onclick="toggleRoleMenu()">
+                <div class="user-avatar" id="user-avatar">
+                    <img src="https://ui-avatars.com/api/?name=Takuya+Sato&background=C5A059&color=fff" alt="User">
+                </div>
+                <div style="flex:1;">
+                    <div class="user-info" id="user-name">佐藤 卓也</div>
+                    <div class="user-role" id="user-role-label">Platform Admin</div>
+                </div>
+                <i class="fa-solid fa-chevron-up" style="font-size:0.7rem; color:#A0AEC0;"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">管理: プロジェクト一覧</h1> <button class="btn-details" style="border-radius:6px;">+
+                代理登録</button>
+        </div>
+
+        <div class="sponsor-filter-bar" style="margin-bottom:2rem;">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="プロジェクト名、タグで検索...">
+            </div>
+            <button class="filter-btn"><i class="fa-solid fa-filter"></i> ステータス</button>
+            <button class="filter-btn"><i class="fa-solid fa-layer-group"></i> カテゴリ</button>
+        </div>
+
+        <div class="sponsor-grid">
+
+            <!-- Project 1 -->
+            <div class="project-rich-card">
+                <div class="project-thumb-area">
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop"
+                        class="project-thumb-img" alt="Festival">
+                    <span class="status-badge-overlay status-recruiting">募集中</span>
+                </div>
+                <div class="project-card-body">
+                    <div class="project-cat-tag" style="color:#B794F4;">Region / Art</div>
+                    <a href="#" class="project-title-link">横浜アートフェスティバル2026</a>
+                    <p class="project-excerpt">地域の若手芸術家を支援する大規模フェス。来場者数5万人を目標に活動中。</p>
+
+                    <div class="progress-area">
+                        <div class="progress-header">
+                            <span>達成率: 75%</span>
+                            <span>350 / 500万円</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" style="width:75%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="support-footer">
+                        <span><i class="fa-solid fa-handshake"></i> 支援数: 5社</span>
+                        <span class="ai-score-badge"><i class="fa-solid fa-robot"></i> Quality: A</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-rich-card">
+                <div class="project-thumb-area">
+                    <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1000&auto=format&fit=crop"
+                        class="project-thumb-img" alt="Kyoto">
+                    <span class="status-badge-overlay status-recruiting">募集中</span>
+                </div>
+                <div class="project-card-body">
+                    <div class="project-cat-tag" style="color:#F687B3;">Culture / Tech</div>
+                    <a href="#" class="project-title-link">京都・伝統工芸DXプロジェクト</a>
+                    <p class="project-excerpt">職人の技をデジタルアーカイブ化し、後継者育成に役立てる取り組み。</p>
+
+                    <div class="progress-area">
+                        <div class="progress-header">
+                            <span>達成率: 40%</span>
+                            <span>200 / 500万円</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill"
+                                style="width:40%; background: linear-gradient(90deg, #F687B3 0%, #D53F8C 100%);"></div>
+                        </div>
+                    </div>
+
+                    <div class="support-footer">
+                        <span><i class="fa-solid fa-handshake"></i> 支援数: 2社</span>
+                        <span class="ai-score-badge"><i class="fa-solid fa-robot"></i> Quality: S</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-rich-card">
+                <div class="project-thumb-area">
+                    <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?q=80&w=1000&auto=format&fit=crop"
+                        class="project-thumb-img" alt="Ocean">
+                    <span class="status-badge-overlay status-active">活動中</span>
+                </div>
+                <div class="project-card-body">
+                    <div class="project-cat-tag" style="color:#4FD1C5;">Environment</div>
+                    <a href="#" class="project-title-link">瀬戸内海クリーンアップ作戦</a>
+                    <p class="project-excerpt">海洋プラスチックゴミの回収とリサイクル商品の開発。</p>
+
+                    <div class="progress-area">
+                        <div class="progress-header">
+                            <span>達成率: 100%</span>
+                            <span>Full Funded</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill"
+                                style="width:100%; background: linear-gradient(90deg, #4FD1C5 0%, #38B2AC 100%);"></div>
+                        </div>
+                    </div>
+
+                    <div class="support-footer">
+                        <span><i class="fa-solid fa-handshake"></i> 支援数: 12社</span>
+                        <span class="ai-score-badge"><i class="fa-solid fa-robot"></i> Quality: B+</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Project Detail Modal -->
+    <div id="modal-project-detail" class="popup-overlay">
+        <div class="popup-content">
+            <div style="width:100%; height:200px; overflow:hidden;">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop"
+                    style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div class="popup-header" style="position:relative; border-top:none;">
+                <span class="status-badge-overlay status-recruiting"
+                    style="position:static; display:inline-block; margin-right:10px;">募集中</span>
+                <div style="flex:1;">
+                    <div style="font-size:0.8rem; color:#B794F4; font-weight:bold;">Region / Art</div>
+                    <h2 class="popup-title">横浜アートフェスティバル2026</h2>
+                </div>
+                <button class="close-btn" onclick="closeModal('modal-project-detail')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <p style="color:#555; line-height:1.6; margin-bottom:2rem;">
+                    横浜の若手芸術家を支援し、街全体をギャラリー化する大規模イベント。
+                    過去5回の開催実績があり、今年は「AIとアート」をテーマにトヨタ自動車等の技術協力とのコラボレーションを目指しています。
+                    <br><br>
+                    <b>ターゲット:</b> 20-40代のファミリー層・アートファン<br>
+                    <b>来場目標:</b> 50,000人
+                </p>
+
+                <div class="modal-grid">
+                    <div>
+                        <div class="modal-label">目標金額 / 現在地</div>
+                        <div class="modal-value">¥5,000,000 <span style="font-size:0.8rem; font-weight:normal;">(75%
+                                達成済み)</span></div>
+                        <div class="progress-track" style="height:8px; margin-top:-10px; margin-bottom:1rem;">
+                            <div class="progress-fill" style="width:75%;"></div>
+                        </div>
+
+                        <div class="modal-label">主催団体 (Owner)</div>
+                        <div class="modal-value"
+                            style="display:flex; align-items:center; cursor:pointer; color:#3182CE;"
+                            onclick="openModal('modal-owner-detail')">
+                            <i class="fa-solid fa-user-circle" style="margin-right:5px;"></i> 横浜地域アート振興会
+                        </div>
+                    </div>
+                    <div>
+                        <div class="modal-label">AI Analysis</div>
+                        <div class="ai-score-badge" style="display:inline-flex; margin-bottom:1rem;"><i
+                                class="fa-solid fa-robot"></i> Quality: A</div>
+                        <p style="font-size:0.8rem; color:#777;">
+                            地域貢献度が高く、スポンサー企業からの評価も安定しています。特に「イベント×デジタル」の文脈でIT企業との親和性が高いです。
+                        </p>
+                    </div>
+                </div>
+
+                <div style="margin-top:2rem; text-align:right;">
+                    <button class="btn-secondary" onclick="closeModal('modal-project-detail')">閉じる</button>
+                    <button class="btn-primary" style="margin-left:10px;">承認・編集</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Owner Detail Modal (Nested/Separate) -->
+    <div id="modal-owner-detail" class="popup-overlay" style="z-index:1100;">
+        <div class="popup-content" style="max-width:500px;">
+            <div class="popup-header">
+                <h2 class="popup-title"><i class="fa-solid fa-id-card"></i> 団体詳細</h2>
+                <button class="close-btn" onclick="closeModal('modal-owner-detail')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div style="text-align:center; margin-bottom:2rem;">
+                    <div
+                        style="width:100px; height:100px; background:#2C7A7B; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2rem; margin:0 auto 1rem;">
+                        横</div>
+                    <h3>横浜地域アート振興会</h3>
+                    <p style="color:#777; font-size:0.9rem;">NPO法人 / 設立: 2015年</p>
+                </div>
+                <div class="modal-label">代表者</div>
+                <div class="modal-value">横井 太郎</div>
+                <div class="modal-label">所在地</div>
+                <div class="modal-value">神奈川県横浜市西区...</div>
+                <div class="modal-label">認証ステータス</div>
+                <div class="modal-value"><span class="badge bg-green">本人確認済み</span> <span
+                        class="badge bg-blue">反社チェック済</span></div>
+
+                <div style="margin-top:2rem; text-align:center;">
+                    <button class="btn-secondary" onclick="closeModal('modal-owner-detail')">閉じる</button>
+                    <button class="btn-details" style="box-shadow:none;">連絡を取る</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        function toggleRoleMenu() {
+            const menu = document.getElementById('role-menu');
+            if (menu.style.display === 'block') { menu.style.display = 'none'; } else { menu.style.display = 'block'; }
+        }
+
+        // Add click triggers to existing cards
+        document.querySelectorAll('.project-rich-card').forEach(card => {
+            card.style.cursor = 'pointer';
+            card.onclick = function () { openModal('modal-project-detail'); };
+        });
+    </script>
+</body>
+
+</html>

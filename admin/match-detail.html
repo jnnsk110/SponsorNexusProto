@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Nexus - Match Detail</title>
+    <!-- External CSS -->
+    <link href="../style.css" rel="stylesheet">
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="mode-admin">
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-link"></i>
+            Sponsor Nexus
+        </div>
+
+        <div id="menu-admin" class="nav-menu">
+            <a href="index.html" class="nav-link active">
+                <i class="fa-solid fa-table-cells-large"></i> ダッシュボード
+            </a>
+            <a href="sponsors.html" class="nav-link">
+                <i class="fa-solid fa-user-friends"></i> スポンサー一覧
+            </a>
+            <a href="owners.html" class="nav-link">
+                <i class="fa-solid fa-building-user"></i> オーナー一覧 (団体)
+            </a>
+            <a href="projects.html" class="nav-link">
+                <i class="fa-solid fa-list-check"></i> プロジェクト一覧
+            </a>
+            <a href="reports.html" class="nav-link">
+                <i class="fa-regular fa-chart-bar"></i> レポート管理
+            </a>
+        </div>
+
+        <div class="user-bottom">
+            <div class="role-menu" id="role-menu">
+                <a href="index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
+                    (Active)
+                </a>
+                <a href="../sponsor/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                </a>
+                <a href="../owner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="../index.html" class="role-option"
+                    style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-sign-out-alt"></i></div>ログアウト
+                </a>
+            </div>
+
+            <div class="user-card" onclick="toggleRoleMenu()">
+                <div class="user-avatar" id="user-avatar">
+                    <img src="https://ui-avatars.com/api/?name=Takuya+Sato&background=C5A059&color=fff" alt="User">
+                </div>
+                <div style="flex:1;">
+                    <div class="user-info" id="user-name">佐藤 卓也</div>
+                    <div class="user-role" id="user-role-label">Platform Admin</div>
+                </div>
+                <i class="fa-solid fa-chevron-up" style="font-size:0.7rem; color:#A0AEC0;"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="breadcrumb" style="margin-bottom:1rem;">
+            <a href="index.html" style="color:#718096; text-decoration:none;">ホーム</a> >
+            <span style="color:#1A365D; font-weight:bold;">AIマッチング結果</span>
+        </div>
+
+        <div class="detail-container">
+            <div style="text-align:center; margin-bottom:2rem;">
+                <h2 class="page-title" style="color:#0A192F;">AIマッチング結果</h2>
+                <p style="color:#718096; margin-top:0.5rem;">AI Analysis Result</p>
+            </div>
+
+            <div class="match-visual">
+                <!-- Left: Company -->
+                <div class="entity-card">
+                    <div class="entity-header header-sponsor">企業スポンサー</div>
+                    <div class="entity-body">
+                        <!-- Placeholder Logo -->
+                        <div
+                            style="width:80px; height:80px; background:white; border-radius:10px; margin:0 auto 1.5rem; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                            <span style="font-size:3rem; color:#1A365D; font-weight:bold;">T</span>
+                        </div>
+                        <h2 class="entity-name">株式会社テックソリューションズ</h2>
+                        <p class="entity-sub">業界: IT・ソフトウェア</p>
+                        <div class="info-list">
+                            <p>• <b>所在地:</b> 東京都渋谷区</p>
+                            <p>• <b>従業員数:</b> 500名</p>
+                            <br>
+                            <p>• <b>企業の強み:</b> 先端技術開発、デジタル変革支援</p>
+                            <p>• <b>スポンサー希望:</b> 地域社会への貢献、技術教育支援</p>
+                        </div>
+                        <button class="btn-large btn-primary"
+                            style="width:100%; margin-top:2rem; font-size:0.9rem; border-radius:8px;">詳細を見る</button>
+                    </div>
+                </div>
+
+                <!-- Center: Score -->
+                <div class="match-score-area">
+                    <div class="score-circle-large">
+                        <div class="score-label">マッチ度</div>
+                        <div class="score-number">95<span class="score-unit">%</span></div>
+                        <div class="match-verdict">非常に高い</div>
+                    </div>
+                </div>
+
+                <!-- Right: Project -->
+                <div class="entity-card">
+                    <div class="entity-header header-project">地域文化プロジェクト</div>
+                    <div class="entity-body">
+                        <div
+                            style="width:100%; height:160px; background:#ddd; border-radius:8px; margin-bottom:1.5rem; overflow:hidden;">
+                            <img src="https://images.unsplash.com/photo-1528696892704-5e1122852276?q=80&w=1000&auto=format&fit=crop"
+                                style="width:100%; height:100%; object-fit:cover;" alt="Japan Culture">
+                        </div>
+                        <h2 class="entity-name">横浜地域アート振興会</h2>
+                        <p class="entity-sub">カテゴリ: 伝統文化・芸術</p>
+                        <div class="info-list">
+                            <p>• <b>活動地域:</b> 神奈川県横浜市</p>
+                            <p>• <b>概要:</b> 若手アーティストの育成と伝統芸能の継承</p>
+                            <br>
+                            <p>• <b>必要な支援:</b> 資金、技術提供、広報協力</p>
+                            <p>• <b>期間:</b> 2026年4月〜2027年3月</p>
+                        </div>
+                        <button class="btn-large btn-details"
+                            style="width:100%; margin-top:2rem; font-size:0.9rem; border-radius:8px; box-shadow:none;">詳細を見る</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis Box -->
+            <div class="analysis-box">
+                <div class="analysis-icon"><i class="fa-solid fa-brain"></i></div>
+                <div class="analysis-content">
+                    <h3>AI分析</h3>
+                    <p class="analysis-text">
+                        企業理念と地域貢献性の適合度が高いです。特に、テックソリューションズ社の技術教育支援への関心と、横浜地域アート振興会の若手育成プログラムとの親和性が強く評価されました。双方向の価値創出が期待できるパートナーシップです。
+                    </p>
+                    <div class="action-buttons">
+                        <button class="btn-large btn-primary">マッチングを紹介する (承認)</button>
+                        <button class="btn-large btn-secondary">他の候補を見る</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../script.js"></script>
+    <script>
+        function toggleRoleMenu() {
+            const menu = document.getElementById('role-menu');
+            if (menu.style.display === 'block') { menu.style.display = 'none'; } else { menu.style.display = 'block'; }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Nexus - Admin Dashboard</title>
+    <!-- External CSS -->
+    <link href="../style.css" rel="stylesheet">
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="mode-admin">
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-link"></i>
+            Sponsor Nexus
+        </div>
+
+        <!-- ADMIN MENU -->
+        <div id="menu-admin" class="nav-menu">
+            <a href="index.html" class="nav-link active">
+                <i class="fa-solid fa-table-cells-large"></i> ダッシュボード
+            </a>
+            <a href="sponsors.html" class="nav-link">
+                <i class="fa-solid fa-user-friends"></i> スポンサー一覧
+            </a>
+            <a href="owners.html" class="nav-link">
+                <i class="fa-solid fa-building-user"></i> オーナー一覧 (団体)
+            </a>
+            <a href="projects.html" class="nav-link">
+                <i class="fa-solid fa-list-check"></i> プロジェクト一覧
+            </a>
+            <a href="reports.html" class="nav-link">
+                <i class="fa-regular fa-chart-bar"></i> レポート管理
+            </a>
+            <a href="payments.html" class="nav-link">
+                <i class="fa-solid fa-money-bill-transfer"></i> 入出金管理
+            </a>
+            <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-cog"></i> 運営設定
+            </a>
+        </div>
+
+        <!-- User Switcher -->
+        <div class="user-bottom">
+            <div class="role-menu" id="role-menu">
+                <a href="index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
+                    (Active)
+                </a>
+                <a href="../sponsor/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                </a>
+                <a href="../owner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="../index.html" class="role-option"
+                    style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-sign-out-alt"></i></div>ログアウト
+                    (Top)
+                </a>
+            </div>
+
+            <div class="user-card" onclick="toggleRoleMenu()">
+                <div class="user-avatar" id="user-avatar">
+                    <img src="https://ui-avatars.com/api/?name=Takuya+Sato&background=C5A059&color=fff" alt="User">
+                </div>
+                <div style="flex:1;">
+                    <div class="user-info" id="user-name">佐藤 卓也</div>
+                    <div class="user-role" id="user-role-label">Platform Admin</div>
+                </div>
+                <i class="fa-solid fa-chevron-up" style="font-size:0.7rem; color:#A0AEC0;"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">ダッシュボード概要</h1>
+        </div>
+
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-header">マッチング成約数 <i class="fa-solid fa-handshake kpi-icon"></i></div>
+                <div class="kpi-value">128<span class="kpi-unit">件</span></div>
+                <div class="kpi-trend trend-up">前月比 +12% ↗</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-header">成約率 <i class="fa-solid fa-chart-pie kpi-icon"></i></div>
+                <div class="kpi-value">45.8<span class="kpi-unit">%</span></div>
+                <div class="kpi-trend trend-up">前月比 +3.5% ↗</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-header">登録プロジェクト数 <i class="fa-regular fa-building kpi-icon"></i></div>
+                <div class="kpi-value">350<span class="kpi-unit">件</span></div>
+                <div class="kpi-trend trend-up">前月比 +24% ↗</div>
+            </div>
+        </div>
+
+        <div class="list-section">
+            <div class="section-title">おすすめのマッチング</div>
+            <table class="match-table">
+                <thead>
+                    <tr>
+                        <th>プロジェクト名</th>
+                        <th>企業名</th>
+                        <th style="text-align:center;">マッチングスコア</th>
+                        <th style="text-align:center;">ステータス</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="match-row">
+                        <td>未来都市開発プロジェクト</td>
+                        <td>株式会社トヨタ自動車</td>
+                        <td align="center">
+                            <div class="score-circle">98<span style="font-size:0.6rem;">点</span></div>
+                        </td>
+                        <td align="center"><span class="badge bg-blue">検討中</span></td>
+                        <td><a href="match-detail.html" class="btn-details">詳細を見る</a></td>
+                    </tr>
+                    <tr class="match-row">
+                        <td>AI導入促進プラットフォーム</td>
+                        <td>ソニーグループ株式会社</td>
+                        <td align="center">
+                            <div class="score-circle">95<span style="font-size:0.6rem;">点</span></div>
+                        </td>
+                        <td align="center"><span class="badge bg-green">提案済み</span></td>
+                        <td><a href="match-detail.html" class="btn-details">詳細を見る</a></td>
+                    </tr>
+                    <tr class="match-row">
+                        <td>サステナビリティ推進フォーラム</td>
+                        <td>株式会社日立製作所</td>
+                        <td align="center">
+                            <div class="score-circle">92<span style="font-size:0.6rem;">点</span></div>
+                        </td>
+                        <td align="center"><span class="badge bg-blue">検討中</span></td>
+                        <td><a href="match-detail.html" class="btn-details">詳細を見る</a></td>
+                    </tr>
+                    <tr class="match-row">
+                        <td>次世代通信インフラ整備</td>
+                        <td>日本電信電話株式会社 (NTT)</td>
+                        <td align="center">
+                            <div class="score-circle">90<span style="font-size:0.6rem;">点</span></div>
+                        </td>
+                        <td align="center"><span class="badge bg-red">未対応</span></td>
+                        <td><a href="match-detail.html" class="btn-details">詳細を見る</a></td>
+                    </tr>
+                    <tr class="match-row">
+                        <td>グローバル物流最適化システム</td>
+                        <td>三菱商事株式会社</td>
+                        <td align="center">
+                            <div class="score-circle">88<span style="font-size:0.6rem;">点</span></div>
+                        </td>
+                        <td align="center"><span class="badge bg-green">提案済み</span></td>
+                        <td><a href="match-detail.html" class="btn-details">詳細を見る</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="margin-top:1.5rem;">
+                <button class="btn-dark" style="float:right;">すべてのマッチングを見る ></button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Script -->
+    <script src="../script.js"></script>
+    <script>
+        // Simple role menu toggle for this page
+        function toggleRoleMenu() {
+            const menu = document.getElementById('role-menu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Nexus - History</title>
+    <link href="../style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="mode-sponsor">
+
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-link"></i>
+            Sponsor Nexus
+        </div>
+        <div id="menu-sponsor" class="nav-menu">
+            <a href="index.html" class="nav-link">
+                <i class="fa-solid fa-chart-pie"></i> 企業ダッシュボード
+            </a>
+            <a href="search.html" class="nav-link">
+                <i class="fa-solid fa-magnifying-glass"></i> プロジェクトを探す
+            </a>
+            <a href="history.html" class="nav-link active">
+                <i class="fa-solid fa-history"></i> 支援履歴
+            </a>
+            <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-cog"></i> 企業設定
+            </a>
+        </div>
+        <div class="user-bottom">
+            <div class="role-menu" id="role-menu">
+                <a href="../admin/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
+                </a>
+                <a href="index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                    (Active)
+                </a>
+                <a href="../owner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="../index.html" class="role-option"
+                    style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-sign-out-alt"></i></div>ログアウト
+                </a>
+            </div>
+            <div class="user-card" onclick="toggleRoleMenu()">
+                <div class="user-avatar" id="user-avatar" style="background:#0A192F; color:white;">T</div>
+                <div style="flex:1;">
+                    <div class="user-info" id="user-name">トヨタ自動車 (担当者)</div>
+                    <div class="user-role" id="user-role-label">Corporate Sponsor</div>
+                </div>
+                <i class="fa-solid fa-chevron-up" style="font-size:0.7rem; color:#A0AEC0;"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">支援履歴</h1>
+            <button class="btn-details" style="background:#fff; color:#333; border:1px solid #ddd;">PDF一括出力</button>
+        </div>
+
+        <div class="list-section">
+            <table class="match-table">
+                <thead>
+                    <tr>
+                        <th>日付</th>
+                        <th>支援プロジェクト名</th>
+                        <th>金額</th>
+                        <th>ステータス</th>
+                        <th>証憑</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="match-row">
+                        <td>2026/01/15</td>
+                        <td>横浜アートフェス2026</td>
+                        <td>¥3,000,000</td>
+                        <td><span class="badge bg-green">決済完了</span></td>
+                        <td><a href="#" style="color:#3182CE; text-decoration:none;"><i
+                                    class="fa-solid fa-file-invoice"></i> 領収書</a></td>
+                    </tr>
+                    <tr class="match-row">
+                        <td>2025/11/20</td>
+                        <td>未来のエンジニア育成キャンプ</td>
+                        <td>¥1,500,000</td>
+                        <td><span class="badge bg-green">決済完了</span></td>
+                        <td><a href="#" style="color:#3182CE; text-decoration:none;"><i
+                                    class="fa-solid fa-file-invoice"></i> 領収書</a></td>
+                    </tr>
+                    <tr class="match-row">
+                        <td>2025/08/10</td>
+                        <td>横浜スタジアム・エコ・プロジェクト</td>
+                        <td>¥500,000</td>
+                        <td><span class="badge bg-green">決済完了</span></td>
+                        <td><a href="#" style="color:#3182CE; text-decoration:none;"><i
+                                    class="fa-solid fa-file-invoice"></i> 領収書</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="../script.js"></script>
+    <script>
+        function toggleRoleMenu() {
+            const menu = document.getElementById('role-menu');
+            if (menu.style.display === 'block') { menu.style.display = 'none'; } else { menu.style.display = 'block'; }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Nexus - Admin Sponsors</title>
+    <!-- External CSS -->
+    <link href="../style.css" rel="stylesheet">
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="mode-admin">
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-link"></i>
+            Sponsor Nexus
+        </div>
+
+        <div id="menu-admin" class="nav-menu">
+            <a href="index.html" class="nav-link">
+                <i class="fa-solid fa-table-cells-large"></i> ダッシュボード
+            </a>
+            <a href="sponsors.html" class="nav-link active">
+                <i class="fa-solid fa-user-friends"></i> スポンサー一覧
+            </a>
+            <a href="owners.html" class="nav-link">
+                <i class="fa-solid fa-building-user"></i> オーナー一覧 (団体)
+            </a>
+            <a href="projects.html" class="nav-link">
+                <i class="fa-solid fa-list-check"></i> プロジェクト一覧
+            </a>
+            <a href="reports.html" class="nav-link">
+                <i class="fa-regular fa-chart-bar"></i> レポート管理
+            </a>
+            <a href="payments.html" class="nav-link">
+                <i class="fa-solid fa-money-bill-transfer"></i> 入出金管理
+            </a>
+            <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-cog"></i> 運営設定
+            </a>
+        </div>
+
+        <div class="user-bottom">
+            <div class="role-menu" id="role-menu">
+                <a href="index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
+                    (Active)
+                </a>
+                <a href="../sponsor/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                </a>
+                <a href="../owner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="../index.html" class="role-option"
+                    style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-sign-out-alt"></i></div>ログアウト
+                </a>
+            </div>
+
+            <div class="user-card" onclick="toggleRoleMenu()">
+                <div class="user-avatar" id="user-avatar">
+                    <img src="https://ui-avatars.com/api/?name=Takuya+Sato&background=C5A059&color=fff" alt="User">
+                </div>
+                <div style="flex:1;">
+                    <div class="user-info" id="user-name">佐藤 卓也</div>
+                    <div class="user-role" id="user-role-label">Platform Admin</div>
+                </div>
+                <i class="fa-solid fa-chevron-up" style="font-size:0.7rem; color:#A0AEC0;"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">管理: スポンサー一覧</h1>
+        </div>
+
+        <div class="sponsor-filter-bar">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="企業名、担当者名で検索...">
+            </div>
+            <button class="filter-btn"><i class="fa-solid fa-filter"></i> ランク絞り込み</button>
+            <button class="filter-btn"><i class="fa-solid fa-arrow-up-wide-short"></i> 予算順</button>
+        </div>
+
+        <div class="sponsor-grid">
+            <!-- Sponsor 1 (Toyota) -->
+            <div class="sponsor-rich-card">
+                <div class="card-header-row">
+                    <div class="company-main">
+                        <div class="company-logo-small"><i class="fa-solid fa-car"></i></div>
+                        <div class="company-name-area">
+                            <h3>トヨタ自動車</h3>
+                            <div style="font-size:0.75rem; color:#718096;">ID: SP-001</div>
+                        </div>
+                    </div>
+                    <span class="rank-badge rank-platinum">PLATINUM</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric-item">
+                        <span class="metric-label">年間予算消化率</span>
+                        <span class="metric-value">6,200 <span
+                                style="font-size:0.7rem; font-weight:400; color:#718096;">/ 8,000万円</span></span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">AI CSRスコア</span>
+                        <span class="metric-value">A+ <span
+                                style="font-size:0.7rem; font-weight:400; color:#718096;">(92点)</span></span>
+                    </div>
+                </div>
+                <div class="card-brain">
+                    <div class="brain-title"><i class="fa-solid fa-brain"></i> AI Brain (重点領域)</div>
+                    <div class="brain-tags">
+                        <span class="brain-tag v-high">🌿 環境技術: 90%</span>
+                        <span class="brain-tag">🏙 スマートシティ: 75%</span>
+                        <span class="brain-tag">♿ モビリティ支援: 60%</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="contact-info">
+                        <i class="fa-regular fa-user"></i> 広報部: 佐々木
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-pen-to-square action-icon" style="margin-right:10px;"></i>
+                        <i class="fa-solid fa-ellipsis action-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sponsor 2 (Sony) -->
+            <div class="sponsor-rich-card">
+                <div class="card-header-row">
+                    <div class="company-main">
+                        <div class="company-logo-small"><i class="fa-solid fa-gamepad"></i></div>
+                        <div class="company-name-area">
+                            <h3>ソニーグループ</h3>
+                            <div style="font-size:0.75rem; color:#718096;">ID: SP-002</div>
+                        </div>
+                    </div>
+                    <span class="rank-badge rank-gold">GOLD</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric-item">
+                        <span class="metric-label">年間予算消化率</span>
+                        <span class="metric-value">1,500 <span
+                                style="font-size:0.7rem; font-weight:400; color:#718096;">/ 3,000万円</span></span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">AI CSRスコア</span>
+                        <span class="metric-value">A <span
+                                style="font-size:0.7rem; font-weight:400; color:#718096;">(85点)</span></span>
+                    </div>
+                </div>
+                <div class="card-brain">
+                    <div class="brain-title"><i class="fa-solid fa-brain"></i> AI Brain (重点領域)</div>
+                    <div class="brain-tags">
+                        <span class="brain-tag v-high">🎨 クリエイター支援: 95%</span>
+                        <span class="brain-tag">🏫 教育DX: 70%</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="contact-info">
+                        <i class="fa-regular fa-user"></i> サステナビリティ推進室: 田中
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-pen-to-square action-icon" style="margin-right:10px;"></i>
+                        <i class="fa-solid fa-ellipsis action-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sponsor 3 (Hitachi) -->
+            <div class="sponsor-rich-card">
+                <div class="card-header-row">
+                    <div class="company-main">
+                        <div class="company-logo-small"><i class="fa-solid fa-bolt"></i></div>
+                        <div class="company-name-area">
+                            <h3>日立製作所</h3>
+                            <div style="font-size:0.75rem; color:#718096;">ID: SP-003</div>
+                        </div>
+                    </div>
+                    <span class="rank-badge rank-gold">GOLD</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric-item">
+                        <span class="metric-label">年間予算消化率</span>
+                        <span class="metric-value">800 <span style="font-size:0.7rem; font-weight:400; color:#718096;">/
+                                2,000万円</span></span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">AI CSRスコア</span>
+                        <span class="metric-value">B+ <span
+                                style="font-size:0.7rem; font-weight:400; color:#718096;">(78点)</span></span>
+                    </div>
+                </div>
+                <div class="card-brain">
+                    <div class="brain-title"><i class="fa-solid fa-brain"></i> AI Brain (重点領域)</div>
+                    <div class="brain-tags">
+                        <span class="brain-tag v-high">🌍 社会イノベーション: 88%</span>
+                        <span class="brain-tag">⚙️ 地域インフラ: 65%</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="contact-info">
+                        <i class="fa-regular fa-user"></i> 総務部: 鈴木
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-pen-to-square action-icon" style="margin-right:10px;"></i>
+                        <i class="fa-solid fa-ellipsis action-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sponsor 4 (New) -->
+            <div class="sponsor-rich-card" style="border-style:dashed; background:#fcfcfc;">
+                <div
+                    style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:#A0AEC0; padding:2rem;">
+                    <i class="fa-solid fa-plus-circle" style="font-size:3rem; margin-bottom:1rem; opacity:0.5;"></i>
+                    <h3 style="font-size:1rem; font-weight:600;">新規スポンサー登録</h3>
+                    <p style="font-size:0.8rem;">招待・審査フローを開始</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Sponsor Detail Modal -->
+    <div id="modal-sponsor-detail" class="popup-overlay">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2 class="popup-title"><i class="fa-solid fa-building"></i> 企業スポンサー詳細</h2>
+                <button class="close-btn" onclick="closeModal('modal-sponsor-detail')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div style="display:flex; align-items:center; margin-bottom:2rem;">
+                    <div
+                        style="width:80px; height:80px; background:#f0f0f0; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-right:1.5rem;">
+                        <i class="fa-solid fa-car" style="font-size:2.5rem; color:#555;"></i>
+                    </div>
+                    <div>
+                        <h2 style="margin:0; font-size:1.5rem;">トヨタ自動車株式会社</h2>
+                        <span class="rank-badge rank-platinum" style="margin-top:0.5rem; display:inline-block;">PLATINUM
+                            SPONSOR</span>
+                    </div>
+                </div>
+
+                <div class="modal-grid">
+                    <div>
+                        <div class="modal-label">担当部署 / 担当者</div>
+                        <div class="modal-value">広報部 / 佐々木 健太</div>
+
+                        <div class="modal-label">年間予算 (Budget)</div>
+                        <div class="modal-value">¥80,000,000</div>
+
+                        <div class="modal-label">現在の消化額</div>
+                        <div class="modal-value" style="color:#C53030;">¥62,000,000 (77.5%)</div>
+                    </div>
+                    <div>
+                        <div class="modal-label">AI Brain (注力領域)</div>
+                        <div class="brain-tags" style="margin-bottom:1rem;">
+                            <span class="brain-tag v-high">🌿 環境技術</span>
+                            <span class="brain-tag">🏙 スマートシティ</span>
+                            <span class="brain-tag">♿ モビリティ</span>
+                        </div>
+
+                        <div class="modal-label">AI CSR Score</div>
+                        <div class="modal-value" style="font-size:1.5rem;">92 <span
+                                style="font-size:0.8rem; color:#777;">(Rank A+)</span></div>
+                    </div>
+                </div>
+
+                <h3
+                    style="font-size:1rem; margin-top:2rem; margin-bottom:1rem; border-bottom:1px solid #eee; padding-bottom:0.5rem;">
+                    支援履歴 (直近3件)</h3>
+                <table class="match-table">
+                    <tr>
+                        <td>2026/01</td>
+                        <td>横浜未来都市ワークショップ</td>
+                        <td>¥5,000,000</td>
+                    </tr>
+                    <tr>
+                        <td>2025/11</td>
+                        <td>全日本学生ロボコン</td>
+                        <td>¥3,000,000</td>
+                    </tr>
+                </table>
+
+                <div style="margin-top:2rem; text-align:right;">
+                    <button class="btn-secondary" onclick="closeModal('modal-sponsor-detail')">閉じる</button>
+                    <button class="btn-primary" style="margin-left:10px;">編集する</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        function toggleRoleMenu() {
+            const menu = document.getElementById('role-menu');
+            if (menu.style.display === 'block') { menu.style.display = 'none'; } else { menu.style.display = 'block'; }
+        }
+
+        // Add click triggers to existing cards
+        document.querySelectorAll('.sponsor-rich-card').forEach(card => {
+            card.style.cursor = 'pointer';
+            card.onclick = function () { openModal('modal-sponsor-detail'); };
+        });
+    </script>
+</body>
+
+</html>

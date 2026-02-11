@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Nexus - Sponsor Dashboard</title>
+    <link href="../style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="mode-sponsor">
+
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-link"></i>
+            Sponsor Nexus
+        </div>
+
+        <div id="menu-sponsor" class="nav-menu">
+            <a href="index.html" class="nav-link active">
+                <i class="fa-solid fa-chart-pie"></i> 企業ダッシュボード
+            </a>
+            <a href="search.html" class="nav-link">
+                <i class="fa-solid fa-magnifying-glass"></i> プロジェクトを探す
+            </a>
+            <a href="history.html" class="nav-link">
+                <i class="fa-solid fa-history"></i> 支援履歴
+            </a>
+            <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-cog"></i> 企業設定
+            </a>
+        </div>
+
+        <div class="user-bottom">
+            <div class="role-menu" id="role-menu">
+                <a href="../admin/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
+                </a>
+                <a href="index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                    (Active)
+                </a>
+                <a href="../owner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="../index.html" class="role-option"
+                    style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-sign-out-alt"></i></div>ログアウト
+                </a>
+            </div>
+
+            <div class="user-card" onclick="toggleRoleMenu()">
+                <div class="user-avatar" id="user-avatar" style="background:#0A192F; color:white;">T</div>
+                <div style="flex:1;">
+                    <div class="user-info" id="user-name">トヨタ自動車 (担当者)</div>
+                    <div class="user-role" id="user-role-label">Corporate Sponsor</div>
+                </div>
+                <i class="fa-solid fa-chevron-up" style="font-size:0.7rem; color:#A0AEC0;"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">企業マイページ</h1>
+            <button class="btn-details" style="background:#3182CE; box-shadow:none;">+ 予算追加</button>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card" style="border-top-color:#1A365D;">
+                <div class="kpi-header">支援総額 <i class="fa-solid fa-coins kpi-icon" style="color:#63B3ED;"></i></div>
+                <div class="kpi-value">5,000<span class="kpi-unit">万</span></div>
+            </div>
+            <div class="kpi-card" style="border-top-color:#1A365D;">
+                <div class="kpi-header">CSRスコア <i class="fa-solid fa-leaf kpi-icon" style="color:#63B3ED;"></i></div>
+                <div class="kpi-value">A+</div>
+            </div>
+        </div>
+        <div class="list-section">
+            <div class="section-title">支援中プロジェクト</div>
+            <div style="margin-top:1rem;">
+                <div class="match-row"
+                    style="padding:1.5rem; display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <b>横浜アートフェス2026</b> <span class="badge bg-blue" style="margin-left:5px;">支援中</span>
+                    </div>
+                    <div style="font-size:0.8rem; color:#777;">進捗率: 80%</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Project Detail Modal (Sponsor View) -->
+    <div id="modal-project-detail" class="popup-overlay">
+        <div class="popup-content">
+            <div style="width:100%; height:200px; overflow:hidden;">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop"
+                    style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div class="popup-header" style="position:relative; border-top:none;">
+                <div style="flex:1;">
+                    <div style="font-size:0.8rem; color:#B794F4; font-weight:bold;">Region / Art</div>
+                    <h2 class="popup-title">横浜アートフェスティバル2026</h2>
+                </div>
+                <button class="close-btn" onclick="closeModal('modal-project-detail')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <p style="color:#555; line-height:1.6; margin-bottom:2rem;">
+                    横浜の若手芸術家を支援し、街全体をギャラリー化する大規模イベント。
+                    貴社の支援により、メイン会場の設営が完了し、現在広報活動フェーズに入っています。
+                </p>
+
+                <div class="modal-grid">
+                    <div>
+                        <div class="modal-label">貴社の支援額</div>
+                        <div class="modal-value">¥5,000,000 <span class="badge bg-blue">入金済み</span></div>
+
+                        <div class="modal-label">進捗状況</div>
+                        <div class="modal-value">80% 達成</div>
+                        <div class="progress-track" style="height:8px; margin-top:5px; margin-bottom:1rem;">
+                            <div class="progress-fill" style="width:80%;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="modal-label">リターン・特典</div>
+                        <ul style="font-size:0.9rem; color:#555; padding-left:1.2rem;">
+                            <li>フェス公式パンフレットへのロゴ掲載</li>
+                            <li>VIP席ご招待 (10名様)</li>
+                            <li>会場でのサンプリングブース出展権</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top:2rem; text-align:right;">
+                    <button class="btn-secondary" onclick="closeModal('modal-project-detail')">閉じる</button>
+                    <button class="btn-primary" style="margin-left:10px;">レポートを見る</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        function toggleRoleMenu() {
+            const menu = document.getElementById('role-menu');
+            if (menu.style.display === 'block') { menu.style.display = 'none'; } else { menu.style.display = 'block'; }
+        }
+
+        // Add onclick to active project cards
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.match-row').forEach(card => {
+                card.style.cursor = 'pointer';
+                card.onclick = function () { openModal('modal-project-detail'); };
+            });
+        });
+    </script>
+</body>
+
+</html>

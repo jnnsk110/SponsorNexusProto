@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Nexus - Search Projects</title>
+    <link href="../style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="mode-sponsor">
+
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-link"></i>
+            Sponsor Nexus
+        </div>
+        <div id="menu-sponsor" class="nav-menu">
+            <a href="index.html" class="nav-link">
+                <i class="fa-solid fa-chart-pie"></i> 企業ダッシュボード
+            </a>
+            <a href="search.html" class="nav-link active">
+                <i class="fa-solid fa-magnifying-glass"></i> プロジェクトを探す
+            </a>
+            <a href="history.html" class="nav-link">
+                <i class="fa-solid fa-history"></i> 支援履歴
+            </a>
+            <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-cog"></i> 企業設定
+            </a>
+        </div>
+        <div class="user-bottom">
+            <div class="role-menu" id="role-menu">
+                <a href="../admin/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
+                </a>
+                <a href="index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                    (Active)
+                </a>
+                <a href="../owner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="../index.html" class="role-option"
+                    style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-sign-out-alt"></i></div>ログアウト
+                </a>
+            </div>
+            <div class="user-card" onclick="toggleRoleMenu()">
+                <div class="user-avatar" id="user-avatar" style="background:#0A192F; color:white;">T</div>
+                <div style="flex:1;">
+                    <div class="user-info" id="user-name">トヨタ自動車 (担当者)</div>
+                    <div class="user-role" id="user-role-label">Corporate Sponsor</div>
+                </div>
+                <i class="fa-solid fa-chevron-up" style="font-size:0.7rem; color:#A0AEC0;"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">プロジェクトを探す</h1>
+        </div>
+        <div class="search-area">
+            <input type="text" class="search-input" placeholder="検索...">
+            <button class="btn-details" style="border-radius:0 6px 6px 0;">検索</button>
+        </div>
+        <div class="project-grid"
+            style="display:grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap:2rem;">
+
+            <!-- Project 1 (Best Match) -->
+            <div class="project-rich-card">
+                <div class="project-thumb-area">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1000&auto=format&fit=crop"
+                        class="project-thumb-img" alt="STEM">
+                    <span class="status-badge-overlay status-recruiting">Best Match</span>
+                </div>
+                <div class="project-card-body">
+                    <div class="project-cat-tag" style="color:#3182CE;">Education / Tech</div>
+                    <a href="#" class="project-title-link">STEM教育キャンプ 2026</a>
+                    <p class="project-excerpt">未来のエンジニアを育成。貴社のCSR方針「教育支援」に完璧に合致します。</p>
+
+                    <div class="progress-area">
+                        <div class="progress-header">
+                            <span>マッチ度: 98%</span>
+                            <span>予算内</span>
+                        </div>
+                        <div class="progress-track" style="background:#E2E8F0;">
+                            <div class="progress-fill"
+                                style="width:98%; background: linear-gradient(90deg, #E53E3E 0%, #F56565 100%);"></div>
+                        </div>
+                    </div>
+
+                    <div class="support-footer">
+                        <span><i class="fa-solid fa-users"></i> 主催: 未来教育ラボ</span>
+                        <span class="ai-score-badge" style="background:#FED7D7; color:#C53030;"><i
+                                class="fa-solid fa-heart"></i> 超おすすめ</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-rich-card">
+                <div class="project-thumb-area">
+                    <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1000&auto=format&fit=crop"
+                        class="project-thumb-img" alt="Green">
+                    <span class="status-badge-overlay status-recruiting">High Match</span>
+                </div>
+                <div class="project-card-body">
+                    <div class="project-cat-tag" style="color:#48BB78;">Environment / Local</div>
+                    <a href="#" class="project-title-link">駅前広場 グリーンカーテン計画</a>
+                    <p class="project-excerpt">CO2削減と市民の憩いの場づくり。環境負荷低減目標への貢献が期待できます。</p>
+
+                    <div class="progress-area">
+                        <div class="progress-header">
+                            <span>マッチ度: 92%</span>
+                            <span>残り1枠</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill"
+                                style="width:92%; background: linear-gradient(90deg, #38A169 0%, #48BB78 100%);"></div>
+                        </div>
+                    </div>
+
+                    <div class="support-footer">
+                        <span><i class="fa-solid fa-users"></i> 主催: まちづくり協議会</span>
+                        <span class="ai-score-badge"><i class="fa-solid fa-thumbs-up"></i> おすすめ</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-rich-card">
+                <div class="project-thumb-area">
+                    <img src="https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=1000&auto=format&fit=crop"
+                        class="project-thumb-img" alt="Culture">
+                    <span class="status-badge-overlay status-active">Good Match</span>
+                </div>
+                <div class="project-card-body">
+                    <div class="project-cat-tag" style="color:#ED64A6;">Culture / History</div>
+                    <a href="#" class="project-title-link">地域伝統芸能デジタルアーカイブ</a>
+                    <p class="project-excerpt">失われゆく「祭り」の熱気を後世へ。映像技術による文化保存。</p>
+
+                    <div class="progress-area">
+                        <div class="progress-header">
+                            <span>マッチ度: 85%</span>
+                            <span>低予算で参加可</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill"
+                                style="width:85%; background: linear-gradient(90deg, #D53F8C 0%, #ED64A6 100%);"></div>
+                        </div>
+                    </div>
+
+                    <div class="support-footer">
+                        <span><i class="fa-solid fa-users"></i> 主催: 伝統保存会</span>
+                        <span class="ai-score-badge" style="background:#E2E8F0; color:#4A5568;">Check</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Project Detail Modal (Sponsor View) -->
+    <div id="modal-project-detail" class="popup-overlay">
+        <div class="popup-content">
+            <div style="width:100%; height:200px; overflow:hidden;">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1000&auto=format&fit=crop"
+                    style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div class="popup-header" style="position:relative; border-top:none;">
+                <div style="flex:1;">
+                    <div style="font-size:0.8rem; color:#C53030; font-weight:bold;">AIマッチ度: 98%</div>
+                    <h2 class="popup-title">STEM教育キャンプ</h2>
+                </div>
+                <button class="close-btn" onclick="closeModal('modal-project-detail')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <p style="color:#555; line-height:1.6; margin-bottom:2rem;">
+                    未来のエンジニアを育成するため、全国の小学生を対象としたロボットプログラミングキャンプを開催します。
+                    貴社の「教育・人づくり」に関するCSR方針と極めて高い親和性があります。
+                </p>
+
+                <div class="modal-grid">
+                    <div>
+                        <div class="modal-label">募集金額</div>
+                        <div class="modal-value">¥1,500,000 / 1口</div>
+
+                        <div class="modal-label">主催団体</div>
+                        <div class="modal-value">
+                            <a href="#" onclick="openModal('modal-org-profile')"
+                                style="color:#3182CE; text-decoration:underline; font-weight:bold;">
+                                <i class="fa-solid fa-address-card"></i> 未来教育ラボ
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="modal-label">貴社へのメリット</div>
+                        <ul style="font-size:0.9rem; color:#555; padding-left:1.2rem;">
+                            <li>キャンプTシャツへのロゴ掲載</li>
+                            <li>開会式での挨拶権</li>
+                            <li>参加者（親子）へのサンプリング</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top:2rem; text-align:right;">
+                    <button class="btn-secondary" onclick="closeModal('modal-project-detail')">あとで</button>
+                    <button class="btn-primary" style="margin-left:10px;">支援を申し出る (事務局へ)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Organization Profile Modal (Stacked) -->
+    <div id="modal-org-profile" class="popup-overlay" style="z-index:2000;">
+        <div class="popup-content" style="max-width:600px;">
+            <div class="popup-header" style="background:#F7FAFC; border-bottom:1px solid #E2E8F0;">
+                <h2 class="popup-title" style="color:#2D3748;"><i class="fa-solid fa-building-ngo"></i> 団体プロフィール</h2>
+                <button class="close-btn" onclick="closeModal('modal-org-profile')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div
+                    style="display:flex; gap:1.5rem; align-items:center; margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid #eee;">
+                    <div
+                        style="width:80px; height:80px; background:#E6FFFA; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #38B2AC; flex-shrink:0;">
+                        <i class="fa-solid fa-shapes" style="font-size:2rem; color:#38B2AC;"></i>
+                    </div>
+                    <div>
+                        <div style="font-size:0.85rem; color:#319795; font-weight:bold; margin-bottom:2px;">NPO法人</div>
+                        <h3 style="font-size:1.4rem; margin:0; color:#2D3748; line-height:1.2;">未来教育ラボ</h3>
+                        <div style="color:#718096; font-size:0.9rem; margin-top:8px;">
+                            <i class="fa-solid fa-clock"></i> 設立: 2018年4月 (活動歴 8年)
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:1.5rem;">
+                    <h4 style="font-size:1rem; color:#4A5568; margin-bottom:0.5rem;"><i
+                            class="fa-solid fa-bullseye"></i> Mission (解決したい課題)</h4>
+                    <p
+                        style="color:#555; line-height:1.6; background:#F7FAFC; padding:1rem; border-radius:8px; font-size:0.95rem;">
+                        地域の子供たちの理科離れが進む中、体験型のロボット教室や科学キャンプを通じて「未来のイノベーター」を育成することを目指しています。
+                    </p>
+                </div>
+
+                <div style="margin-bottom:1.5rem;">
+                    <h4 style="font-size:1rem; color:#4A5568; margin-bottom:0.8rem;"><i
+                            class="fa-solid fa-scale-balanced"></i> Governance (信頼性情報)</h4>
+                    <div
+                        style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; font-size:0.95rem; border:1px solid #E2E8F0; padding:1rem; border-radius:8px;">
+                        <div><span style="color:#718096; display:block; font-size:0.8rem;">代表者</span> <span
+                                style="font-weight:bold;">佐藤 科学</span></div>
+                        <div><span style="color:#718096; display:block; font-size:0.8rem;">役員数</span> <span
+                                style="font-weight:bold;">5名</span> (うち社外2名)</div>
+                        <div
+                            style="grid-column: 1 / -1; margin-top:5px; padding-top:10px; border-top:1px dashed #E2E8F0;">
+                            <span style="color:#718096; font-size:0.8rem; margin-right:10px;">情報公開済:</span>
+                            <span class="badge bg-green" style="font-size:0.8rem;"><i class="fa-solid fa-check"></i>
+                                定款</span>
+                            <span class="badge bg-green" style="font-size:0.8rem;"><i class="fa-solid fa-check"></i>
+                                決算書(2024)</span>
+                            <span class="badge bg-green" style="font-size:0.8rem;"><i class="fa-solid fa-check"></i>
+                                事業報告書</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align:center;">
+                    <button class="btn-primary" onclick="closeModal('modal-org-profile')"
+                        style="width:100%;">閉じる</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        function toggleRoleMenu() {
+            const menu = document.getElementById('role-menu');
+            if (menu.style.display === 'block') { menu.style.display = 'none'; } else { menu.style.display = 'block'; }
+        }
+
+        // Add click triggers
+        document.querySelectorAll('.project-rich-card').forEach(card => {
+            card.style.cursor = 'pointer';
+            // Prevent button click from triggering card click twice if needed
+            card.onclick = function (e) {
+                if (e.target.tagName !== 'BUTTON') openModal('modal-project-detail');
+            };
+        });
+    </script>
+</body>
+
+</html>

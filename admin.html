@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Nexus - Admin View</title>
+    <!-- External CSS -->
+    <link href="style.css" rel="stylesheet">
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="mode-admin">
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-link"></i>
+            Sponsor Nexus
+        </div>
+
+        <!-- ADMIN MENU -->
+        <div id="menu-admin" class="nav-menu">
+            <div class="nav-link active" onclick="switchView('admin-dashboard', this)">
+                <i class="fa-solid fa-table-cells-large"></i> ダッシュボード
+            </div>
+            <div class="nav-link" onclick="switchView('admin-sponsors', this)">
+                <i class="fa-solid fa-user-friends"></i> スポンサー一覧
+            </div>
+            <div class="nav-link" onclick="switchView('admin-projects', this)">
+                <i class="fa-solid fa-list-check"></i> プロジェクト一覧
+            </div>
+            <div class="nav-link" onclick="switchView('admin-reports', this)">
+                <i class="fa-regular fa-chart-bar"></i> レポート管理
+            </div>
+            <div class="nav-link" onclick="console.log('Settings clicked')">
+                <i class="fa-solid fa-gear"></i> 設定
+            </div>
+        </div>
+
+        <!-- User Switcher -->
+        <div class="user-bottom">
+            <div class="role-menu" id="role-menu">
+                <a href="admin.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
+                    (Active)
+                </a>
+                <a href="sponsor.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                </a>
+                <a href="owner.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="index.html" class="role-option"
+                    style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-sign-out-alt"></i></div>ログアウト
+                    (Top)
+                </a>
+            </div>
+
+            <div class="user-card" onclick="toggleRoleMenu()">
+                <div class="user-avatar" id="user-avatar">
+                    <img src="https://ui-avatars.com/api/?name=Tak+Yamamoto&background=C5A059&color=fff" alt="User">
+                </div>
+                <div style="flex:1;">
+                    <div class="user-info" id="user-name">山本 隆太</div>
+                    <div class="user-role" id="user-role-label">Platform Admin</div>
+                </div>
+                <i class="fa-solid fa-chevron-up" style="font-size:0.7rem; color:#A0AEC0;"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- ================= ADMIN DASHBOARD ================= -->
+        <div id="view-admin-dashboard" class="view-section active">
+            <div class="page-header">
+                <h1 class="page-title">ダッシュボード概要</h1>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-header">マッチング成約数 <i class="fa-solid fa-handshake kpi-icon"></i></div>
+                    <div class="kpi-value">128<span class="kpi-unit">件</span></div>
+                    <div class="kpi-trend trend-up">前月比 +12% ↗</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-header">成約率 <i class="fa-solid fa-chart-pie kpi-icon"></i></div>
+                    <div class="kpi-value">45.8<span class="kpi-unit">%</span></div>
+                    <div class="kpi-trend trend-up">前月比 +3.5% ↗</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-header">登録プロジェクト数 <i class="fa-regular fa-building kpi-icon"></i></div>
+                    <div class="kpi-value">350<span class="kpi-unit">件</span></div>
+                    <div class="kpi-trend trend-up">前月比 +24% ↗</div>
+                </div>
+            </div>
+
+            <div class="list-section">
+                <div class="section-title">おすすめのマッチング</div>
+                <table class="match-table">
+                    <thead>
+                        <tr>
+                            <th>プロジェクト名</th>
+                            <th>企業名</th>
+                            <th style="text-align:center;">マッチングスコア</th>
+                            <th style="text-align:center;">ステータス</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="match-row">
+                            <td>未来都市開発プロジェクト</td>
+                            <td>株式会社トヨタ自動車</td>
+                            <td align="center">
+                                <div class="score-circle">98<span style="font-size:0.6rem;">点</span></div>
+                            </td>
+                            <td align="center"><span class="badge bg-blue">検討中</span></td>
+                            <td><button class="btn-details" onclick="switchView('admin-match-detail')">詳細を見る</button>
+                            </td>
+                        </tr>
+                        <tr class="match-row">
+                            <td>AI導入促進プラットフォーム</td>
+                            <td>ソニーグループ株式会社</td>
+                            <td align="center">
+                                <div class="score-circle">95<span style="font-size:0.6rem;">点</span></div>
+                            </td>
+                            <td align="center"><span class="badge bg-green">提案済み</span></td>
+                            <td><button class="btn-details" onclick="switchView('admin-match-detail')">詳細を見る</button>
+                            </td>
+                        </tr>
+                        <tr class="match-row">
+                            <td>サステナビリティ推進フォーラム</td>
+                            <td>株式会社日立製作所</td>
+                            <td align="center">
+                                <div class="score-circle">92<span style="font-size:0.6rem;">点</span></div>
+                            </td>
+                            <td align="center"><span class="badge bg-blue">検討中</span></td>
+                            <td><button class="btn-details" onclick="switchView('admin-match-detail')">詳細を見る</button>
+                            </td>
+                        </tr>
+                        <tr class="match-row">
+                            <td>次世代通信インフラ整備</td>
+                            <td>日本電信電話株式会社 (NTT)</td>
+                            <td align="center">
+                                <div class="score-circle">90<span style="font-size:0.6rem;">点</span></div>
+                            </td>
+                            <td align="center"><span class="badge bg-red">未対応</span></td>
+                            <td><button class="btn-details" onclick="switchView('admin-match-detail')">詳細を見る</button>
+                            </td>
+                        </tr>
+                        <tr class="match-row">
+                            <td>グローバル物流最適化システム</td>
+                            <td>三菱商事株式会社</td>
+                            <td align="center">
+                                <div class="score-circle">88<span style="font-size:0.6rem;">点</span></div>
+                            </td>
+                            <td align="center"><span class="badge bg-green">提案済み</span></td>
+                            <td><button class="btn-details" onclick="switchView('admin-match-detail')">詳細を見る</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="margin-top:1.5rem;">
+                    <button class="btn-dark" style="float:right;">すべてのマッチングを見る ></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= MATCH DETAIL ================= -->
+        <div id="view-admin-match-detail" class="view-section">
+            <div class="breadcrumb" onclick="switchView('admin-dashboard')" style="cursor:pointer;">ホーム > マッチング >
+                AIマッチング結果</div>
+
+            <div class="detail-container">
+                <div style="text-align:center; margin-bottom:2rem;">
+                    <h2 class="page-title" style="color:#0A192F;">AIマッチング結果</h2>
+                    <p style="color:#718096; margin-top:0.5rem;">AI Analysis Result</p>
+                </div>
+
+                <div class="match-visual">
+                    <!-- Left: Company -->
+                    <div class="entity-card">
+                        <div class="entity-header header-sponsor">企業スポンサー</div>
+                        <div class="entity-body">
+                            <!-- Placeholder Logo -->
+                            <div
+                                style="width:80px; height:80px; background:white; border-radius:10px; margin:0 auto 1.5rem; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                                <span style="font-size:3rem; color:#1A365D; font-weight:bold;">T</span>
+                            </div>
+                            <h2 class="entity-name">株式会社テックソリューションズ</h2>
+                            <p class="entity-sub">業界: IT・ソフトウェア</p>
+                            <div class="info-list">
+                                <p>• <b>所在地:</b> 東京都渋谷区</p>
+                                <p>• <b>従業員数:</b> 500名</p>
+                                <br>
+                                <p>• <b>企業の強み:</b> 先端技術開発、デジタル変革支援</p>
+                                <p>• <b>スポンサー希望:</b> 地域社会への貢献、技術教育支援</p>
+                            </div>
+                            <button class="btn-large btn-primary"
+                                style="width:100%; margin-top:2rem; font-size:0.9rem; border-radius:8px;">詳細を見る</button>
+                        </div>
+                    </div>
+
+                    <!-- Center: Score -->
+                    <div class="match-score-area">
+                        <div class="score-circle-large">
+                            <div class="score-label">マッチ度</div>
+                            <div class="score-number">95<span class="score-unit">%</span></div>
+                            <div class="match-verdict">非常に高い</div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Project -->
+                    <div class="entity-card">
+                        <div class="entity-header header-project">地域文化プロジェクト</div>
+                        <div class="entity-body">
+                            <div
+                                style="width:100%; height:160px; background:#ddd; border-radius:8px; margin-bottom:1.5rem; overflow:hidden;">
+                                <img src="https://images.unsplash.com/photo-1528696892704-5e1122852276?q=80&w=1000&auto=format&fit=crop"
+                                    style="width:100%; height:100%; object-fit:cover;" alt="Japan Culture">
+                            </div>
+                            <h2 class="entity-name">横浜地域アート振興会</h2>
+                            <p class="entity-sub">カテゴリ: 伝統文化・芸術</p>
+                            <div class="info-list">
+                                <p>• <b>活動地域:</b> 神奈川県横浜市</p>
+                                <p>• <b>概要:</b> 若手アーティストの育成と伝統芸能の継承</p>
+                                <br>
+                                <p>• <b>必要な支援:</b> 資金、技術提供、広報協力</p>
+                                <p>• <b>期間:</b> 2026年4月〜2027年3月</p>
+                            </div>
+                            <!-- Note: Fixed style attribute typo here proactively if not already fixed -->
+                            <button class="btn-large btn-details"
+                                style="width:100%; margin-top:2rem; font-size:0.9rem; border-radius:8px; box-shadow:none;">詳細を見る</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analysis Box -->
+                <div class="analysis-box">
+                    <div class="analysis-icon"><i class="fa-solid fa-brain"></i></div>
+                    <div class="analysis-content">
+                        <h3>AI分析</h3>
+                        <p class="analysis-text">
+                            企業理念と地域貢献性の適合度が高いです。特に、テックソリューションズ社の技術教育支援への関心と、横浜地域アート振興会の若手育成プログラムとの親和性が強く評価されました。双方向の価値創出が期待できるパートナーシップです。
+                        </p>
+                        <div class="action-buttons">
+                            <button class="btn-large btn-primary">マッチングを紹介する (承認)</button>
+                            <button class="btn-large btn-secondary">他の候補を見る</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= ADMIN SPONSORS VIEW ================= -->
+        <div id="view-admin-sponsors" class="view-section">
+            <div class="page-header">
+                <h1 class="page-title">管理: スポンサー一覧</h1>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="sponsor-filter-bar">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="企業名、担当者名で検索...">
+                </div>
+                <button class="filter-btn"><i class="fa-solid fa-filter"></i> ランク絞り込み</button>
+                <button class="filter-btn"><i class="fa-solid fa-arrow-up-wide-short"></i> 予算順</button>
+            </div>
+
+            <!-- Rich Card Grid -->
+            <div class="sponsor-grid">
+
+                <!-- Sponsor 1 (Toyota) -->
+                <div class="sponsor-rich-card">
+                    <div class="card-header-row">
+                        <div class="company-main">
+                            <div class="company-logo-small"><i class="fa-solid fa-car"></i></div>
+                            <div class="company-name-area">
+                                <h3>トヨタ自動車</h3>
+                                <div style="font-size:0.75rem; color:#718096;">ID: SP-001</div>
+                            </div>
+                        </div>
+                        <span class="rank-badge rank-platinum">PLATINUM</span>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-item">
+                            <span class="metric-label">年間予算消化率</span>
+                            <span class="metric-value">6,200 <span
+                                    style="font-size:0.7rem; font-weight:400; color:#718096;">/ 8,000万円</span></span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">AI CSRスコア</span>
+                            <span class="metric-value">A+ <span
+                                    style="font-size:0.7rem; font-weight:400; color:#718096;">(92点)</span></span>
+                        </div>
+                    </div>
+                    <div class="card-brain">
+                        <div class="brain-title"><i class="fa-solid fa-brain"></i> AI Brain (重点領域)</div>
+                        <div class="brain-tags">
+                            <span class="brain-tag v-high">🌿 環境技術: 90%</span>
+                            <span class="brain-tag">🏙 スマートシティ: 75%</span>
+                            <span class="brain-tag">♿ モビリティ支援: 60%</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="contact-info">
+                            <i class="fa-regular fa-user"></i> 広報部: 佐々木
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-pen-to-square action-icon" style="margin-right:10px;"></i>
+                            <i class="fa-solid fa-ellipsis action-icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sponsor 2 (Sony) -->
+                <div class="sponsor-rich-card">
+                    <div class="card-header-row">
+                        <div class="company-main">
+                            <div class="company-logo-small"><i class="fa-solid fa-gamepad"></i></div>
+                            <div class="company-name-area">
+                                <h3>ソニーグループ</h3>
+                                <div style="font-size:0.75rem; color:#718096;">ID: SP-002</div>
+                            </div>
+                        </div>
+                        <span class="rank-badge rank-gold">GOLD</span>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-item">
+                            <span class="metric-label">年間予算消化率</span>
+                            <span class="metric-value">1,500 <span
+                                    style="font-size:0.7rem; font-weight:400; color:#718096;">/ 3,000万円</span></span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">AI CSRスコア</span>
+                            <span class="metric-value">A <span
+                                    style="font-size:0.7rem; font-weight:400; color:#718096;">(85点)</span></span>
+                        </div>
+                    </div>
+                    <div class="card-brain">
+                        <div class="brain-title"><i class="fa-solid fa-brain"></i> AI Brain (重点領域)</div>
+                        <div class="brain-tags">
+                            <span class="brain-tag v-high">🎨 クリエイター支援: 95%</span>
+                            <span class="brain-tag">🏫 教育DX: 70%</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="contact-info">
+                            <i class="fa-regular fa-user"></i> サステナビリティ推進室: 田中
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-pen-to-square action-icon" style="margin-right:10px;"></i>
+                            <i class="fa-solid fa-ellipsis action-icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sponsor 3 (Hitachi) -->
+                <div class="sponsor-rich-card">
+                    <div class="card-header-row">
+                        <div class="company-main">
+                            <div class="company-logo-small"><i class="fa-solid fa-bolt"></i></div>
+                            <div class="company-name-area">
+                                <h3>日立製作所</h3>
+                                <div style="font-size:0.75rem; color:#718096;">ID: SP-003</div>
+                            </div>
+                        </div>
+                        <span class="rank-badge rank-gold">GOLD</span>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-item">
+                            <span class="metric-label">年間予算消化率</span>
+                            <span class="metric-value">800 <span
+                                    style="font-size:0.7rem; font-weight:400; color:#718096;">/ 2,000万円</span></span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">AI CSRスコア</span>
+                            <span class="metric-value">B+ <span
+                                    style="font-size:0.7rem; font-weight:400; color:#718096;">(78点)</span></span>
+                        </div>
+                    </div>
+                    <div class="card-brain">
+                        <div class="brain-title"><i class="fa-solid fa-brain"></i> AI Brain (重点領域)</div>
+                        <div class="brain-tags">
+                            <span class="brain-tag v-high">🌍 社会イノベーション: 88%</span>
+                            <span class="brain-tag">⚙️ 地域インフラ: 65%</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="contact-info">
+                            <i class="fa-regular fa-user"></i> 総務部: 鈴木
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-pen-to-square action-icon" style="margin-right:10px;"></i>
+                            <i class="fa-solid fa-ellipsis action-icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sponsor 4 (Mitsubishi Corp) -->
+                <div class="sponsor-rich-card" style="border-style:dashed; background:#fcfcfc;">
+                    <div
+                        style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:#A0AEC0; padding:2rem;">
+                        <i class="fa-solid fa-plus-circle" style="font-size:3rem; margin-bottom:1rem; opacity:0.5;"></i>
+                        <h3 style="font-size:1rem; font-weight:600;">新規スポンサー登録</h3>
+                        <p style="font-size:0.8rem;">招待・審査フローを開始</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= ADMIN PROJECTS VIEW ================= -->
+        <div id="view-admin-projects" class="view-section">
+            <div class="page-header">
+                <h1 class="page-title">管理: プロジェクト一覧</h1> <button class="btn-details" style="border-radius:6px;">+
+                    代理登録</button>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="sponsor-filter-bar" style="margin-bottom:2rem;">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="プロジェクト名、タグで検索...">
+                </div>
+                <button class="filter-btn"><i class="fa-solid fa-filter"></i> ステータス</button>
+                <button class="filter-btn"><i class="fa-solid fa-layer-group"></i> カテゴリ</button>
+            </div>
+
+            <div class="sponsor-grid">
+
+                <!-- Project 1 -->
+                <div class="project-rich-card">
+                    <div class="project-thumb-area">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop"
+                            class="project-thumb-img" alt="Festival">
+                        <span class="status-badge-overlay status-recruiting">募集中</span>
+                    </div>
+                    <div class="project-card-body">
+                        <div class="project-cat-tag" style="color:#B794F4;">Region / Art</div>
+                        <a href="#" class="project-title-link">横浜アートフェスティバル2026</a>
+                        <p class="project-excerpt">地域の若手芸術家を支援する大規模フェス。来場者数5万人を目標に活動中。</p>
+
+                        <div class="progress-area">
+                            <div class="progress-header">
+                                <span>達成率: 75%</span>
+                                <span>350 / 500万円</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width:75%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="support-footer">
+                            <span><i class="fa-solid fa-handshake"></i> 支援数: 5社</span>
+                            <span class="ai-score-badge"><i class="fa-solid fa-robot"></i> Quality: A</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-rich-card">
+                    <div class="project-thumb-area">
+                        <img src="https://images.unsplash.com/photo-1590955559496-5034521d8934?q=80&w=1000&auto=format&fit=crop"
+                            class="project-thumb-img" alt="Kyoto">
+                        <span class="status-badge-overlay status-recruiting">募集中</span>
+                    </div>
+                    <div class="project-card-body">
+                        <div class="project-cat-tag" style="color:#F687B3;">Culture / Tech</div>
+                        <a href="#" class="project-title-link">京都・伝統工芸DXプロジェクト</a>
+                        <p class="project-excerpt">職人の技をデジタルアーカイブ化し、後継者育成に役立てる取り組み。</p>
+
+                        <div class="progress-area">
+                            <div class="progress-header">
+                                <span>達成率: 40%</span>
+                                <span>200 / 500万円</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill"
+                                    style="width:40%; background: linear-gradient(90deg, #F687B3 0%, #D53F8C 100%);">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="support-footer">
+                            <span><i class="fa-solid fa-handshake"></i> 支援数: 2社</span>
+                            <span class="ai-score-badge"><i class="fa-solid fa-robot"></i> Quality: S</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-rich-card">
+                    <div class="project-thumb-area">
+                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?q=80&w=1000&auto=format&fit=crop"
+                            class="project-thumb-img" alt="Ocean">
+                        <span class="status-badge-overlay status-active">活動中</span>
+                    </div>
+                    <div class="project-card-body">
+                        <div class="project-cat-tag" style="color:#4FD1C5;">Environment</div>
+                        <a href="#" class="project-title-link">瀬戸内海クリーンアップ作戦</a>
+                        <p class="project-excerpt">海洋プラスチックゴミの回収とリサイクル商品の開発。</p>
+
+                        <div class="progress-area">
+                            <div class="progress-header">
+                                <span>達成率: 100%</span>
+                                <span>Full Funded</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill"
+                                    style="width:100%; background: linear-gradient(90deg, #4FD1C5 0%, #38B2AC 100%);">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="support-footer">
+                            <span><i class="fa-solid fa-handshake"></i> 支援数: 12社</span>
+                            <span class="ai-score-badge"><i class="fa-solid fa-robot"></i> Quality: B+</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= ADMIN REPORTS VIEW ================= -->
+        <div id="view-admin-reports" class="view-section">
+            <div class="page-header">
+                <h1 class="page-title">レポート管理</h1>
+            </div>
+            <div class="report-preview">
+                <div class="report-header">
+                    <h2 style="font-size:1.2rem;">2026年1月度 支援活動報告書</h2>
+                    <p style="color:#777; font-size:0.9rem;">生成的AIモデル: Gemini 2.0 Flash</p>
+                </div>
+                <div style="color:#555; line-height:1.8;">
+                    <h3 style="font-size:1rem; margin-bottom:0.5rem; color:#0A192F;">概要</h3>
+                    <p>トヨタ自動車様とのスポンサーシップ契約に基づき、未来都市開発ワークショップを開催。参加者満足度4.8を達成しました。</p>
+                    <h3 style="font-size:1rem; margin-bottom:0.5rem; margin-top:1rem; color:#0A192F;">到達KPI</h3>
+                    <ul style="list-style:none; background:#f8fafc; padding:1rem; border-radius:8px;">
+                        <li>✅ イベント満足度: 4.8 / 5.0</li>
+                        <li>✅ メディア掲載: 5件 (NHK, 日経新聞他)</li>
+                        <li>✅ 参加人数: 120名 (目標比 120%)</li>
+                    </ul>
+                </div>
+                <div class="download-area">
+                    <button class="btn-details"><i class="fa-solid fa-file-pdf"></i> PDFをダウンロード</button>
+                    <button class="btn-primary" style="margin-left:10px;">承認して送信</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Loading Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>

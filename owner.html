@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Nexus - Owner View</title>
+    <!-- External CSS -->
+    <link href="style.css" rel="stylesheet">
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="mode-owner">
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-link"></i>
+            Sponsor Nexus
+        </div>
+
+        <!-- OWNER MENU -->
+        <div id="menu-owner" class="nav-menu">
+            <div class="nav-link active" onclick="switchView('owner-dashboard', this)">
+                <i class="fa-solid fa-home"></i> マイプロジェクト
+            </div>
+            <div class="nav-link" onclick="switchView('owner-offers', this)">
+                <i class="fa-solid fa-envelope-open-text"></i> オファー受信箱 <span class="badge bg-red"
+                    style="margin-left:5px;">2</span>
+            </div>
+            <div class="nav-link" onclick="switchView('owner-report', this)">
+                <i class="fa-solid fa-edit"></i> 活動報告の提出
+            </div>
+            <div class="nav-link" onclick="switchView('owner-settings', this)">
+                <i class="fa-solid fa-cog"></i> 団体設定
+            </div>
+        </div>
+
+        <!-- User Switcher -->
+        <div class="user-bottom">
+            <div class="role-menu" id="role-menu">
+                <a href="admin.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
+                </a>
+                <a href="sponsor.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                </a>
+                <a href="owner.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                    (Active)
+                </a>
+                <a href="index.html" class="role-option"
+                    style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-sign-out-alt"></i></div>ログアウト
+                    (Top)
+                </a>
+            </div>
+
+            <div class="user-card" onclick="toggleRoleMenu()">
+                <div class="user-avatar" id="user-avatar" style="background:#2C7A7B; color:white;">横</div>
+                <div style="flex:1;">
+                    <div class="user-info" id="user-name">横浜アート振興会 (代表)</div>
+                    <div class="user-role" id="user-role-label">Project Owner</div>
+                </div>
+                <i class="fa-solid fa-chevron-up" style="font-size:0.7rem; color:#A0AEC0;"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- ================= OWNER VIEWS ================= -->
+        <div id="view-owner-dashboard" class="view-section active">
+            <div class="page-header">
+                <h1 class="page-title">プロジェクト管理</h1> <button class="btn-details"
+                    style="background:#38A169; box-shadow:none;">編集</button>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card" style="border-top-color:#22543D;">
+                    <div class="kpi-header">調達達成率 <i class="fa-solid fa-flag-checkered kpi-icon"
+                            style="color:#68D391;"></i></div>
+                    <div class="kpi-value">75<span class="kpi-unit">%</span></div>
+                    <div class="kpi-trend trend-up">あと150万円</div>
+                </div>
+                <div class="kpi-card" style="border-top-color:#22543D;">
+                    <div class="kpi-header">オファー受信 <i class="fa-solid fa-envelope kpi-icon" style="color:#68D391;"></i>
+                    </div>
+                    <div class="kpi-value">2<span class="kpi-unit">件</span></div>
+                    <div class="kpi-trend" style="color:#E53E3E; font-weight:bold;">New!</div>
+                </div>
+            </div>
+
+            <div class="list-section">
+                <h3 style="margin-bottom:1rem;">プロジェクトの健全性 (AI診断)</h3>
+                <div style="background:#F0FFF4; padding:1.5rem; border-radius:12px; border:1px solid #C6F6D5;">
+                    <p style="color:#2F855A; font-weight:bold; font-size:1.1rem;">ランク A: 非常に魅力的です</p>
+                    <p style="font-size:0.95rem; color:#555; margin-top:10px; line-height:1.6;">
+                        <i class="fa-solid fa-lightbulb" style="color:#F6E05E; margin-right:5px;"></i>
+                        AIアドバイス: 活動写真を2枚追加すると、企業の注目度が15%アップする見込みです。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-owner-offers" class="view-section">
+            <div class="page-header">
+                <h1 class="page-title">オファー受信箱</h1>
+            </div>
+            <div class="offer-card">
+                <div>
+                    <h4 style="color:var(--text-primary); margin-bottom:0.5rem; font-size:1.1rem;">株式会社日立製作所</h4>
+                    <p style="font-size:0.9rem; color:#555;">「地方創生枠」でのスポンサーシップを検討しています。</p>
+                </div>
+                <div><button class="btn-details"
+                        style="background:#38A169; box-shadow:none; border-radius:6px;">承諾する</button></div>
+            </div>
+        </div>
+
+        <div id="view-owner-report" class="view-section">
+            <div class="page-header">
+                <h1 class="page-title">活動報告の提出</h1>
+            </div>
+            <div class="list-section">
+                <p style="margin-bottom:1rem;">スポンサー企業への月次レポートを作成します。</p>
+                <div
+                    style="border:2px dashed #ccc; padding:3rem; text-align:center; border-radius:12px; color:#999; margin-bottom:1.5rem; background:#fafafa;">
+                    <i class="fa-solid fa-camera" style="font-size:2.5rem; margin-bottom:15px; color:#ccc;"></i><br>
+                    ここに写真をドラッグ＆ドロップ<br>
+                    <span style="font-size:0.8rem;">(AIが自動でレポート記事を生成します)</span>
+                </div>
+                <button class="btn-details"
+                    style="width:100%; background:#38A169; border-radius:6px; box-shadow:none;">AIでレポート生成</button>
+            </div>
+        </div>
+
+        <div id="view-owner-settings" class="view-section">
+            <div class="page-header">
+                <h1 class="page-title">団体設定</h1>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Loading Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>

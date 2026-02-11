@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Nexus - Corporate Settings</title>
+    <!-- External CSS -->
+    <link href="../style.css" rel="stylesheet">
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for the slider */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F7FAFC;
+            border-radius: 30px;
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+
+        .slider-track {
+            width: 80%;
+            height: 8px;
+            background: #CBD5E0;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .slider-thumb {
+            width: 24px;
+            height: 24px;
+            background: #1A365D;
+            border-radius: 50%;
+            position: absolute;
+            left: 20%;
+            /* Example position */
+            top: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            margin: 0 auto;
+            color: #4A5568;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        /* Premium Tag Styles */
+        .brain-tag {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .brain-tag.v-high {
+            background: #C6F6D5;
+            color: #22543D;
+            border-color: #9AE6B4;
+        }
+
+        .brain-tag.default {
+            background: white;
+            border-color: #CBD5E0;
+            color: #718096;
+        }
+
+        .brain-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body class="mode-sponsor">
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-link"></i>
+            Sponsor Nexus
+        </div>
+
+        <div id="menu-sponsor" class="nav-menu">
+            <a href="index.html" class="nav-link">
+                <i class="fa-solid fa-chart-pie"></i> 企業ダッシュボード
+            </a>
+            <a href="search.html" class="nav-link">
+                <i class="fa-solid fa-magnifying-glass"></i> プロジェクトを探す
+            </a>
+            <a href="history.html" class="nav-link">
+                <i class="fa-solid fa-history"></i> 支援履歴
+            </a>
+            <a href="settings.html" class="nav-link active">
+                <i class="fa-solid fa-cog"></i> 企業設定
+            </a>
+        </div>
+
+        <div class="user-bottom">
+            <div class="role-menu" id="role-menu">
+                <a href="../admin/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
+                </a>
+                <a href="index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                    (Active)
+                </a>
+                <a href="../owner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="../index.html" class="role-option"
+                    style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-sign-out-alt"></i></div>ログアウト
+                </a>
+            </div>
+
+            <div class="user-card" onclick="toggleRoleMenu()">
+                <div class="user-avatar" id="user-avatar" style="background:#0A192F; color:white;">T</div>
+                <div style="flex:1;">
+                    <div class="user-info" id="user-name">トヨタ自動車 (担当者)</div>
+                    <div class="user-role" id="user-role-label">Corporate Sponsor</div>
+                </div>
+                <i class="fa-solid fa-chevron-up" style="font-size:0.7rem; color:#A0AEC0;"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">企業設定 (Settings)</h1>
+            <span style="color:#718096; font-size:0.9rem;">最終更新: 2026/02/11 10:30</span>
+        </div>
+
+        <div class="list-section" style="max-width:900px; margin:0 auto; margin-top:1rem;">
+
+            <!-- AI Brain Section -->
+            <div
+                style="background:white; border-radius:12px; padding:2rem; box-shadow:0 4px 15px rgba(0,0,0,0.05); margin-bottom:2rem; border-top:5px solid #1A365D;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                    <h2 style="font-size:1.4rem; color:#1A202C; display:flex; align-items:center;">
+                        <i class="fa-solid fa-brain" style="color:#3182CE; margin-right:10px;"></i>
+                        AI Brain 設定
+                    </h2>
+                    <span class="badge bg-green"><i class="fa-solid fa-check"></i> Active</span>
+                </div>
+                <p style="color:#718096; margin-bottom:2rem; border-bottom:1px solid #eee; padding-bottom:1rem;">
+                    貴社のCSR方針をAIに学習させ、最適な支援先を自動的にピックアップします。この設定はいつでも変更可能です。
+                </p>
+
+                <!-- 1. Value Slider -->
+                <div style="margin-bottom:2.5rem;">
+                    <label style="display:block; font-weight:bold; color:#4A5568; margin-bottom:1rem;">
+                        <i class="fa-solid fa-scale-balanced"></i> 重視する価値バランス
+                    </label>
+                    <div style="max-width: 600px; margin: 0 auto;">
+                        <div class="slider-labels">
+                            <span><i class="fa-solid fa-hand-holding-heart"></i> CSR (社会貢献)</span>
+                            <span><i class="fa-solid fa-bullhorn"></i> PR (広告効果)</span>
+                        </div>
+                        <div class="slider-container">
+                            <input type="range" min="0" max="100" value="30" style="width:90%; cursor:pointer;">
+                        </div>
+                        <div style="text-align:center; font-size:0.8rem; color:#718096; margin-top:5px;">
+                            現在はやや **「CSR重視」** の設定になっています
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Focus Areas -->
+                <div style="margin-bottom:2.5rem;">
+                    <label style="display:block; font-weight:bold; color:#4A5568; margin-bottom:1rem;">
+                        <i class="fa-solid fa-crosshairs"></i> 注力領域 (Focus Areas)
+                    </label>
+                    <div style="display:flex; flex-wrap:wrap; gap:12px;">
+                        <span class="brain-tag v-high"><i class="fa-solid fa-leaf"></i> 環境・SDGs</span>
+                        <span class="brain-tag v-high"><i class="fa-solid fa-graduation-cap"></i> 次世代教育</span>
+                        <span class="brain-tag default"><i class="fa-solid fa-hospital"></i> 医療・福祉</span>
+                        <span class="brain-tag default"><i class="fa-solid fa-palette"></i> 芸術・文化</span>
+                        <span class="brain-tag default"><i class="fa-solid fa-landmark"></i> 地域活性化</span>
+                    </div>
+                </div>
+
+                <!-- 3. Budget & Negative -->
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem; margin-bottom:1.5rem;">
+                    <div>
+                        <label style="display:block; font-weight:bold; color:#4A5568; margin-bottom:0.8rem;">
+                            年間予算上限 (Budget Cap)
+                        </label>
+                        <div style="position:relative;">
+                            <span
+                                style="position:absolute; left:1rem; top:50%; transform:translateY(-50%); color:#718096;">¥</span>
+                            <input type="text" value="100,000,000"
+                                style="width:100%; padding:0.8rem 1rem 0.8rem 2.5rem; font-size:1.2rem; font-weight:bold; color:#2D3748; border:1px solid #E2E8F0; border-radius:8px;">
+                        </div>
+                    </div>
+                    <div>
+                        <label style="display:block; font-weight:bold; color:#4A5568; margin-bottom:0.8rem;">
+                            除外キーワード (Negative Prompt)
+                        </label>
+                        <input type="text" value="政治活動, 宗教関連, ギャンブル"
+                            style="width:100%; padding:0.8rem; border:1px solid #E2E8F0; border-radius:8px; color:#4A5568; background:#F7FAFC;">
+                    </div>
+                </div>
+
+                <div style="text-align:right; border-top:1px solid #eee; padding-top:1.5rem;">
+                    <button class="btn-primary"
+                        style="background:#1A365D; border-radius:8px; padding:0.8rem 2rem; box-shadow:0 4px 6px rgba(26, 54, 93, 0.3);">
+                        <i class="fa-solid fa-rotate"></i> AI分析を更新する
+                    </button>
+                </div>
+            </div>
+
+            <!-- Basic Info Section -->
+            <div
+                style="background:white; border-radius:12px; padding:2rem; box-shadow:0 4px 15px rgba(0,0,0,0.05); color:#A0AEC0;">
+                <div style="display:flex; justify-content:space-between;">
+                    <h3 style="font-size:1.2rem; margin-bottom:1rem; color:#718096;">基本情報 (Admin Only)</h3>
+                    <button style="border:none; background:none; color:#3182CE; cursor:pointer;">編集</button>
+                </div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; font-size:0.9rem;">
+                    <div>
+                        <div style="margin-bottom:0.2rem;">担当社名</div>
+                        <div style="color:#2D3748; font-weight:bold;">トヨタ自動車 株式会社</div>
+                    </div>
+                    <div>
+                        <div style="margin-bottom:0.2rem;">通知メール</div>
+                        <div style="color:#2D3748; font-weight:bold;">csr_admin@toyota.co.jp</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../script.js"></script>
+    <script>
+        function toggleRoleMenu() {
+            const menu = document.getElementById('role-menu');
+            if (menu.style.display === 'block') { menu.style.display = 'none'; } else { menu.style.display = 'block'; }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Nexus - Sponsor View</title>
+    <!-- External CSS -->
+    <link href="style.css" rel="stylesheet">
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="mode-sponsor">
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-link"></i>
+            Sponsor Nexus
+        </div>
+
+        <!-- SPONSOR MENU -->
+        <div id="menu-sponsor" class="nav-menu">
+            <div class="nav-link active" onclick="switchView('sponsor-dashboard', this)">
+                <i class="fa-solid fa-chart-pie"></i> 企業ダッシュボード
+            </div>
+            <div class="nav-link" onclick="switchView('sponsor-search', this)">
+                <i class="fa-solid fa-magnifying-glass"></i> プロジェクトを探す
+            </div>
+            <div class="nav-link" onclick="switchView('sponsor-history', this)">
+                <i class="fa-solid fa-history"></i> 支援履歴
+            </div>
+            <div class="nav-link" onclick="switchView('sponsor-settings', this)">
+                <i class="fa-solid fa-cog"></i> 企業設定
+            </div>
+        </div>
+
+        <!-- User Switcher -->
+        <div class="user-bottom">
+            <div class="role-menu" id="role-menu">
+                <a href="admin.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
+                </a>
+                <a href="sponsor.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                    (Active)
+                </a>
+                <a href="owner.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="index.html" class="role-option"
+                    style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-sign-out-alt"></i></div>ログアウト
+                    (Top)
+                </a>
+            </div>
+
+            <div class="user-card" onclick="toggleRoleMenu()">
+                <div class="user-avatar" id="user-avatar" style="background:#0A192F; color:white;">T</div>
+                <div style="flex:1;">
+                    <div class="user-info" id="user-name">トヨタ自動車 (担当者)</div>
+                    <div class="user-role" id="user-role-label">Corporate Sponsor</div>
+                </div>
+                <i class="fa-solid fa-chevron-up" style="font-size:0.7rem; color:#A0AEC0;"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- ================= SPONSOR VIEWS ================= -->
+        <div id="view-sponsor-dashboard" class="view-section active">
+            <div class="page-header">
+                <h1 class="page-title">企業マイページ</h1> <button class="btn-details"
+                    style="background:#3182CE; box-shadow:none;">+ 予算追加</button>
+            </div>
+            <div class="kpi-grid">
+                <div class="kpi-card" style="border-top-color:#1A365D;">
+                    <div class="kpi-header">支援総額 <i class="fa-solid fa-coins kpi-icon" style="color:#63B3ED;"></i></div>
+                    <div class="kpi-value">5,000<span class="kpi-unit">万</span></div>
+                </div>
+                <div class="kpi-card" style="border-top-color:#1A365D;">
+                    <div class="kpi-header">CSRスコア <i class="fa-solid fa-leaf kpi-icon" style="color:#63B3ED;"></i>
+                    </div>
+                    <div class="kpi-value">A+</div>
+                </div>
+            </div>
+            <div class="list-section">
+                <div class="section-title">支援中プロジェクト</div>
+                <div style="margin-top:1rem;">
+                    <div class="match-row"
+                        style="padding:1.5rem; display:flex; justify-content:space-between; align-items:center;">
+                        <div>
+                            <b>横浜アートフェス2026</b> <span class="badge bg-blue" style="margin-left:5px;">支援中</span>
+                        </div>
+                        <div style="font-size:0.8rem; color:#777;">進捗率: 80%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-sponsor-search" class="view-section">
+            <div class="page-header">
+                <h1 class="page-title">プロジェクトを探す</h1>
+            </div>
+            <div class="search-area"><input type="text" class="search-input" placeholder="検索..."><button
+                    class="btn-details" style="border-radius:0 6px 6px 0;">検索</button></div>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-img" style="background:#A3BFFA; position:relative;">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1000&auto=format&fit=crop"
+                            style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="project-body">
+                        <div style="color:#C53030; font-weight:bold; font-size:0.8rem; margin-bottom:5px;">AIマッチ度: 98%
+                        </div>
+                        <div class="project-title">STEM教育キャンプ</div>
+                        <p class="project-desc">未来のエンジニア育成。小学生向けロボット教室の全国展開。</p>
+                        <button class="btn-details"
+                            style="width:100%; border-radius:6px; background:#3182CE; box-shadow:none;">支援する
+                            (事務局に依頼)</button>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img" style="background:#68D391; position:relative;">
+                        <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1000&auto=format&fit=crop"
+                            style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="project-body">
+                        <div style="color:#C53030; font-weight:bold; font-size:0.8rem; margin-bottom:5px;">AIマッチ度: 92%
+                        </div>
+                        <div class="project-title">都市緑化プロジェクト</div>
+                        <p class="project-desc">駅前広場の緑地化でCO2削減と市民の憩いの場を創出。</p>
+                        <button class="btn-details"
+                            style="width:100%; border-radius:6px; background:#3182CE; box-shadow:none;">支援する
+                            (事務局に依頼)</button>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img" style="background:#F687B3; position:relative;">
+                        <img src="https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=1000&auto=format&fit=crop"
+                            style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="project-body">
+                        <div style="color:#718096; font-weight:bold; font-size:0.8rem; margin-bottom:5px;">AIマッチ度: 75%
+                        </div>
+                        <div class="project-title">伝統文化保存会</div>
+                        <p class="project-desc">失われゆく地域の祭りをデジタルアーカイブ化。</p>
+                        <button class="btn-details"
+                            style="width:100%; border-radius:6px; background:#CBD5E0; box-shadow:none; color:#4A5568;">詳細を見る</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-sponsor-history" class="view-section">
+            <div class="page-header">
+                <h1 class="page-title">支援履歴</h1>
+            </div>
+            <div class="list-section">
+                <p>過去の決済・支援履歴リスト (開発中)</p>
+            </div>
+        </div>
+
+        <div id="view-sponsor-settings" class="view-section">
+            <div class="page-header">
+                <h1 class="page-title">企業設定 (AI Brain)</h1>
+            </div>
+            <div class="list-section">
+                <h3>AI Tuning</h3>
+                <p style="color:#555; font-size:0.9rem; margin-bottom:1.5rem;">
+                    AIがあなたの企業の「支援方針」を学習し、最適なマッチングを提案します。
+                </p>
+
+                <div style="margin-bottom:2rem;">
+                    <h4 style="font-size:0.95rem; margin-bottom:10px; color:#2D3748;">① 重視する指標のバランス</h4>
+                    <div
+                        style="display:flex; justify-content:space-between; font-size:0.8rem; color:#777; margin-bottom:5px;">
+                        <span>CSR (社会貢献) 重視</span><span>PR (広告効果) 重視</span>
+                    </div>
+                    <input type="range" class="styled-slider" value="30">
+                </div>
+
+                <div style="margin-bottom:2rem;">
+                    <h4 style="font-size:0.95rem; margin-bottom:10px; color:#2D3748;">② 注力領域 (キーワード選択)</h4>
+                    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                        <span class="brain-tag v-high" style="cursor:pointer; border:1px solid #3182CE;">🌱 SDGs /
+                            環境</span>
+                        <span class="brain-tag v-high" style="cursor:pointer; border:1px solid #3182CE;">🎓
+                            教育・人づくり</span>
+                        <span class="brain-tag"
+                            style="cursor:pointer; background:#EDF2F7; border:1px solid #CBD5E0; color:#718096;">🏥
+                            医療・福祉</span>
+                        <span class="brain-tag"
+                            style="cursor:pointer; background:#EDF2F7; border:1px solid #CBD5E0; color:#718096;">🎨
+                            文化・芸術</span>
+                        <span class="brain-tag"
+                            style="cursor:pointer; background:#EDF2F7; border:1px solid #CBD5E0; color:#718096;">⚽
+                            スポーツ振興</span>
+                        <span class="brain-tag v-high" style="cursor:pointer; border:1px solid #3182CE;">🚀
+                            スタートアップ支援</span>
+                    </div>
+                </div>
+
+                <div style="text-align:right;">
+                    <button class="btn-primary" style="border-radius:6px; box-shadow:none;">設定を更新する</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Loading Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
