@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Cloud - Impact Partner Dashboard</title>
+    <!-- External CSS -->
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/layout.css" rel="stylesheet">
+    <link href="../css/components.css" rel="stylesheet">
+    <link href="../css/specific_ui.css" rel="stylesheet">
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .mode-partner {
+            background: #fdfdfd;
+        }
+
+        .mode-partner .sidebar {
+            background: #1A202C;
+        }
+
+        /* Very dark */
+        .mode-partner .logo {
+            color: #E2E8F0;
+        }
+
+        /* Light */
+        .mode-partner .nav-link:hover,
+        .mode-partner .nav-link.active {
+            background: #2D3748;
+            color: #FFFFFF;
+            border-left: 4px solid #805AD5;
+        }
+    </style>
+</head>
+
+<body class="mode-partner">
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-link"></i>
+            Sponsor Cloud
+        </div>
+
+        <div id="menu-partner" class="nav-menu">
+            <a href="index.html" class="nav-link active">
+                <i class="fa-solid fa-chart-pie"></i> アナリティクス
+            </a>
+            <a href="details.html" class="nav-link">
+                <i class="fa-solid fa-magnifying-glass-chart"></i> プロジェクト比較・分析
+            </a>
+            <a href="audit.html" class="nav-link">
+                <i class="fa-solid fa-file-contract"></i> 監査証跡・エクスポート
+            </a>
+            <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-cog"></i> 評価設定
+            </a>
+            <a href="../concept.html" class="nav-link"
+                style="margin-top: 1.5rem; color: #B794F4; font-weight: bold; border-top: 1px solid #2D3748; padding-top: 1rem;">
+                <i class="fa-solid fa-book-open"></i> コンセプト・意義
+            </a>
+        </div>
+
+        <div class="legal-links"
+            style="padding: 1rem 1.5rem; font-size: 0.75rem; text-align: center; margin-top: auto; padding-bottom: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+            <a href="../tokushoho.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">特定商取引法に基づく表記</a>
+            <a href="../privacy.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">プライバシーポリシー</a>
+            <a href="../terms.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block;">利用規約・免責事項</a>
+        </div>
+
+        <div class="user-bottom">
+            <div class="role-menu" id="role-menu">
+                <a href="../admin/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
+                </a>
+                <a href="../sponsor/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>スポンサーモード
+                </a>
+                <a href="../owner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    インパクトパートナーモード
+                    (Active)
+                </a>
+                <a href="../index.html" class="role-option"
+                    style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-sign-out-alt"></i></div>ログアウト
+                </a>
+            </div>
+
+            <div class="user-card" onclick="toggleRoleMenu()">
+                <div class="user-avatar" id="user-avatar" style="background:#553C9A; color:white;">総</div>
+                <div style="flex:1;">
+                    <div class="user-info" id="user-name">総合政策研究所 (担当)</div>
+                    <div class="user-role" id="user-role-label">Impact Partner</div>
+                </div>
+                <i class="fa-solid fa-chevron-up" style="font-size:0.7rem; color:#A0AEC0;"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">プラットフォーム全体分析・インパクトレポート</h1>
+            <button class="btn-primary" style="background:#6B46C1; box-shadow:none;">
+                <i class="fa-solid fa-download"></i> データ出力 (CSV/API)
+            </button>
+        </div>
+
+        <!-- KPI Grid for Data Analytics -->
+        <div class="kpi-grid" style="margin-bottom: 2rem;">
+            <div class="kpi-card" style="border-top-color:#6B46C1;">
+                <div class="kpi-header">トラッキング対象証跡数 <i class="fa-solid fa-file-contract kpi-icon"
+                        style="color:#6B46C1;"></i></div>
+                <div class="kpi-value" style="font-size: 1.8rem;">1,284<span class="kpi-unit">件</span></div>
+                <div class="kpi-trend trend-up">直近30日で +142件増加</div>
+            </div>
+            <div class="kpi-card" style="border-top-color:#3182CE;">
+                <div class="kpi-header">平均 TOKUスコア <i class="fa-solid fa-chart-line kpi-icon"
+                        style="color:#3182CE;"></i></div>
+                <div class="kpi-value" style="font-size: 1.8rem;">68.4<span class="kpi-unit">pt</span></div>
+                <div class="kpi-trend trend-down">全活動プロジェクト基準</div>
+            </div>
+            <div class="kpi-card" style="border-top-color:#38A169;">
+                <div class="kpi-header">算出された合計社会的価値 <i class="fa-solid fa-globe kpi-icon" style="color:#38A169;"></i>
+                </div>
+                <div class="kpi-value" style="font-size: 1.8rem;">12.5<span class="kpi-unit">億円分</span></div>
+                <div class="kpi-trend trend-up">前年度比 +210% (推計値)</div>
+            </div>
+        </div>
+
+        <!-- Dashboard Analytics Section -->
+        <div
+            style="background:white; border-radius:12px; padding:2rem; box-shadow:0 2px 10px rgba(0,0,0,0.05); margin-bottom:2rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                <h2 style="font-size:1.3rem; margin:0; color:#2D3748;">
+                    <i class="fa-solid fa-magnifying-glass-chart" style="color:#805AD5;"></i> 注目プロジェクトのトレンド (AI分析)
+                </h2>
+                <div style="display:flex; gap:10px;">
+                    <select style="padding:0.5rem; border:1px solid #E2E8F0; border-radius:6px; font-size:0.85rem;">
+                        <option>直近3ヶ月</option>
+                        <option>今年度</option>
+                        <option>全期間</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="border: 1px solid #E2E8F0; border-radius: 8px; overflow: hidden;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <thead style="background: #F7FAFC; border-bottom: 2px solid #E2E8F0;">
+                        <tr>
+                            <th style="padding: 1rem; color: #4A5568; font-size: 0.85rem;">プロジェクト名 / 団体</th>
+                            <th style="padding: 1rem; color: #4A5568; font-size: 0.85rem;">証跡頻度</th>
+                            <th style="padding: 1rem; color: #4A5568; font-size: 0.85rem;">TOKUスコア推移</th>
+                            <th style="padding: 1rem; color: #4A5568; font-size: 0.85rem;">監査ステータス</th>
+                            <th style="padding: 1rem; color: #4A5568; font-size: 0.85rem;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #E2E8F0;">
+                            <td style="padding: 1rem;">
+                                <div style="font-weight:bold; color:#2D3748; margin-bottom:0.2rem;">未来都市開発プロジェクト</div>
+                                <div style="font-size:0.75rem; color:#718096;"><i class="fa-solid fa-flag"></i> NPO法人
+                                    シティラボ</div>
+                            </td>
+                            <td style="padding: 1rem;">
+                                <span class="badge" style="background:#C6F6D5; color:#22543D;">高 (週2.4回)</span>
+                            </td>
+                            <td style="padding: 1rem; font-weight:bold; color:#38A169;">
+                                88pt <i class="fa-solid fa-arrow-up" style="font-size:0.8rem;"></i>
+                            </td>
+                            <td style="padding: 1rem;">
+                                <i class="fa-solid fa-check-circle" style="color:#3182CE;"></i> 承認済み
+                            </td>
+                            <td style="padding: 1rem; text-align:right;">
+                                <button class="btn-secondary"
+                                    style="font-size:0.75rem; padding:0.4rem 0.8rem;">詳細データ</button>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #E2E8F0;">
+                            <td style="padding: 1rem;">
+                                <div style="font-weight:bold; color:#2D3748; margin-bottom:0.2rem;">グローバル物流最適化システム</div>
+                                <div style="font-size:0.75rem; color:#718096;"><i class="fa-solid fa-flag"></i> 一般社団法人
+                                    物流改革機構</div>
+                            </td>
+                            <td style="padding: 1rem;">
+                                <span class="badge" style="background:#FEEBC8; color:#744210;">中 (週0.8回)</span>
+                            </td>
+                            <td style="padding: 1rem; font-weight:bold; color:#ECC94B;">
+                                72pt <i class="fa-solid fa-minus" style="font-size:0.8rem;"></i>
+                            </td>
+                            <td style="padding: 1rem;">
+                                <i class="fa-solid fa-clock" style="color:#D69E2E;"></i> レポート待機中
+                            </td>
+                            <td style="padding: 1rem; text-align:right;">
+                                <button class="btn-secondary"
+                                    style="font-size:0.75rem; padding:0.4rem 0.8rem;">詳細データ</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div
+                style="margin-top:2rem; padding:1.5rem; background:#FAF5FF; border:1px dashed #D6BCFA; border-radius:8px;">
+                <h3 style="font-size:1rem; margin-top:0; color:#44337A;"><i class="fa-solid fa-info-circle"></i>
+                    インパクトパートナー（評価・研究・政策）向け機能について</h3>
+                <p style="font-size:0.85rem; color:#4A5568; line-height:1.6; margin-bottom:0;">
+                    当モードでは、プラットフォーム上に蓄積された一次データ（報告証跡）および、AIによって生成されたインパクトスコア等への客観的アクセスを提供します。金融機関、行政、研究機関など、外部からプロジェクトの社会性を評価し、投融資判断や政策決定の根拠として利用する第三者評価機関向けに用意されたアナリティクス機能群です。
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="../script.js"></script>
+    <script>
+        function toggleRoleMenu() {
+            const menu = document.getElementById('role-menu');
+            if (menu.style.display === 'block') { menu.style.display = 'none'; } else { menu.style.display = 'block'; }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,8 +1,8 @@
-# Sponsor Nexus (Prototype)
+# Sponsor Cloud (Prototype)
 
 **「企業の志」と「地域の熱量」をつなぐ、次世代スポンサーシッププラットフォーム**
 
-このリポジトリは、Sponsor Nexus（仮）のプロトタイプ（HTML/CSS/JS）を管理します。
+このリポジトリは、Sponsor Cloud（仮）のプロトタイプ（HTML/CSS/JS）を管理します。
 
 ## 📂 ディレクトリ構成
 - **`/admin`**: 運営事務局用ダッシュボード（審査、レポート承認、オーナー管理）

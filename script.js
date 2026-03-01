@@ -1,5 +1,5 @@
-// Sponsor Nexus Prototype Script
-console.log('Sponsor Nexus Prototype Loaded');
+// Sponsor Cloud Prototype Script
+console.log('Sponsor Cloud Prototype Loaded');
 
 // Original switchView logic is removed as we moved to multi-page structure.
 // This script now handles simulated interactions.

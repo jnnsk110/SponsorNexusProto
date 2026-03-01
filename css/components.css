@@ -1,0 +1,313 @@
+/* =========================================
+   KPI Cards (Replicating Image 1)
+   ========================================= */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.kpi-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-top: 6px solid var(--sidebar-bg);
+    /* Use variable for dynamic color */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 160px;
+}
+
+/* Force Admin specific border color to match image exactly if needed */
+body.mode-admin .kpi-card {
+    border-top-color: var(--sidebar-bg-admin);
+}
+
+.kpi-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-secondary);
+    /* using secondary text color variable equivalent */
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.kpi-icon {
+    font-size: 1.5rem;
+    color: #C5A059;
+    opacity: 0.8;
+}
+
+/* Gold icon */
+
+.kpi-value {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1;
+    margin: 10px 0;
+}
+
+.kpi-unit {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.kpi-trend {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.trend-up {
+    color: var(--status-green);
+}
+
+/* =========================================
+   Lists & Tables (Replicating Image 1)
+   ========================================= */
+.list-section {
+    /* No white background container for the whole list, items are cards */
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.match-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+    /* Space between rows */
+}
+
+/* Header Row */
+.match-table th {
+    text-align: left;
+    color: var(--text-secondary);
+    font-weight: 600;
+    padding: 0 1.5rem;
+    font-size: 0.85rem;
+}
+
+/* Body Rows (Cards) */
+.match-row {
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border-radius: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.match-row td {
+    padding: 1.2rem 1.5rem;
+    vertical-align: middle;
+    background: white;
+    /* Needed for border-radius to show on tr */
+}
+
+.match-row td:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.match-row td:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    text-align: right;
+}
+
+.match-row:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Badges & Buttons */
+.badge {
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: white;
+    display: inline-block;
+    min-width: 80px;
+    text-align: center;
+}
+
+.bg-blue {
+    background-color: #3182CE;
+}
+
+.bg-green {
+    background-color: #38A169;
+}
+
+.bg-red {
+    background-color: #E53E3E;
+}
+
+.bg-gray {
+    background-color: #A0AEC0;
+}
+
+.btn-details {
+    background: linear-gradient(135deg, #DFBD69 0%, #C5A059 100%);
+    /* Gold Gradient */
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(197, 160, 89, 0.3);
+    transition: all 0.2s;
+}
+
+.btn-details:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(197, 160, 89, 0.4);
+}
+
+.view-all-btn {
+    display: block;
+    width: 100%;
+    text-align: right;
+}
+
+.btn-dark {
+    background: var(--sidebar-bg-admin);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    border: none;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+/* =========================================
+   Modal Popup Styles
+   ========================================= */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+}
+
+.popup-overlay.active {
+    display: flex;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.popup-content {
+    background: white;
+    padding: 0;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease-out;
+}
+
+.popup-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8fafc;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.popup-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1A365D;
+    margin: 0;
+}
+
+.popup-body {
+    padding: 2rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #718096;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #E53E3E;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Modal Specific Components */
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.modal-label {
+    font-size: 0.8rem;
+    color: #718096;
+    margin-bottom: 0.25rem;
+}
+
+.modal-value {
+    font-size: 1rem;
+    color: #2D3748;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}

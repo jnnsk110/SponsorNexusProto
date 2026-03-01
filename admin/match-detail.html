@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sponsor Nexus - Match Detail</title>
+    <title>Sponsor Cloud - Match Detail</title>
     <!-- External CSS -->
-    <link href="../style.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/layout.css" rel="stylesheet">
+    <link href="../css/components.css" rel="stylesheet">
+    <link href="../css/specific_ui.css" rel="stylesheet">
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
         rel="stylesheet">
@@ -19,11 +22,11 @@
     <nav class="sidebar">
         <div class="logo">
             <i class="fa-solid fa-link"></i>
-            Sponsor Nexus
+            Sponsor Cloud
         </div>
 
         <div id="menu-admin" class="nav-menu">
-            <a href="index.html" class="nav-link active">
+            <a href="index.html" class="nav-link">
                 <i class="fa-solid fa-table-cells-large"></i> ダッシュボード
             </a>
             <a href="sponsors.html" class="nav-link">
@@ -35,9 +38,32 @@
             <a href="projects.html" class="nav-link">
                 <i class="fa-solid fa-list-check"></i> プロジェクト一覧
             </a>
-            <a href="reports.html" class="nav-link">
-                <i class="fa-regular fa-chart-bar"></i> レポート管理
+            <a href="reports-project.html" class="nav-link">
+                <i class="fa-solid fa-file-lines"></i> Project Report承認
             </a>
+            <a href="reports-impact.html" class="nav-link">
+                <i class="fa-solid fa-chart-pie"></i> Impact Report生成
+            </a>
+            <a href="payments.html" class="nav-link">
+                <i class="fa-solid fa-money-bill-transfer"></i> 資金循環管理
+            </a>
+            <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-cog"></i> 運営設定
+            </a>
+            <a href="../concept.html" class="nav-link"
+                style="margin-top: 1.5rem; color: #B794F4; font-weight: bold; border-top: 1px solid #2D3748; padding-top: 1rem;">
+                <i class="fa-solid fa-book-open"></i> コンセプト・意義
+            </a>
+        </div>
+
+        <div class="legal-links"
+            style="padding: 1rem 1.5rem; font-size: 0.75rem; text-align: center; margin-top: auto; padding-bottom: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+            <a href="../tokushoho.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">特定商取引法に基づく表記</a>
+            <a href="../privacy.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">プライバシーポリシー</a>
+            <a href="../terms.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block;">利用規約・免責事項</a>
         </div>
 
         <div class="user-bottom">
@@ -47,10 +73,14 @@
                     (Active)
                 </a>
                 <a href="../sponsor/index.html" class="role-option">
-                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>スポンサーモード
                 </a>
                 <a href="../owner/index.html" class="role-option">
                     <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="../partner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    インパクトパートナーモード
                 </a>
                 <a href="../index.html" class="role-option"
                     style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
@@ -103,7 +133,7 @@
                             <p>• <b>企業の強み:</b> 先端技術開発、デジタル変革支援</p>
                             <p>• <b>スポンサー希望:</b> 地域社会への貢献、技術教育支援</p>
                         </div>
-                        <button class="btn-large btn-primary"
+                        <button class="btn-large btn-primary" onclick="openModal('modal-sponsor-profile')"
                             style="width:100%; margin-top:2rem; font-size:0.9rem; border-radius:8px;">詳細を見る</button>
                     </div>
                 </div>
@@ -135,7 +165,7 @@
                             <p>• <b>必要な支援:</b> 資金、技術提供、広報協力</p>
                             <p>• <b>期間:</b> 2026年4月〜2027年3月</p>
                         </div>
-                        <button class="btn-large btn-details"
+                        <button class="btn-large btn-details" onclick="openModal('modal-project-detail')"
                             style="width:100%; margin-top:2rem; font-size:0.9rem; border-radius:8px; box-shadow:none;">詳細を見る</button>
                     </div>
                 </div>
@@ -157,6 +187,185 @@
             </div>
         </div>
     </main>
+
+    <!-- Sponsor Profile Modal (Generic) -->
+    <div id="modal-sponsor-profile" class="popup-overlay" style="z-index:2000;">
+        <div class="popup-content" style="max-width:600px;">
+            <div class="popup-header" style="background:#F7FAFC; border-bottom:1px solid #E2E8F0;">
+                <h2 class="popup-title" style="color:#2D3748;"><i class="fa-solid fa-building"></i> 企業プロフィール</h2>
+                <button class="close-btn" onclick="closeModal('modal-sponsor-profile')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div
+                    style="display:flex; gap:1.5rem; align-items:center; margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid #eee;">
+                    <div
+                        style="width:80px; height:80px; background:white; border-radius:10px; display:flex; align-items:center; justify-content:center; border:2px solid #CBD5E0; box-shadow:0 2px 5px rgba(0,0,0,0.05); flex-shrink:0;">
+                        <span style="font-size:2rem; color:#1A365D; font-weight:bold;">T</span>
+                    </div>
+                    <div>
+                        <div style="font-size:0.85rem; color:#A0AEC0; font-weight:bold; margin-bottom:2px;">株式会社</div>
+                        <h3 style="font-size:1.4rem; margin:0; color:#2D3748; line-height:1.2;">テックソリューションズ</h3>
+                        <div style="color:#718096; font-size:0.9rem; margin-top:8px;">
+                            <i class="fa-solid fa-industry"></i> IT・ソフトウェア
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:1.5rem;">
+                    <h4 style="font-size:1rem; color:#4A5568; margin-bottom:0.5rem;"><i
+                            class="fa-solid fa-lightbulb"></i> 企業の強み・特徴</h4>
+                    <p
+                        style="color:#555; line-height:1.6; background:#F7FAFC; padding:1rem; border-radius:8px; font-size:0.95rem;">
+                        最先端のAI技術とクラウドインフラを活用し、企業のデジタルトランスフォーメーションを支援。特に教育分野への技術提供に強い関心を持っています。
+                    </p>
+                </div>
+
+                <div style="margin-bottom:1.5rem;">
+                    <h4 style="font-size:1rem; color:#4A5568; margin-bottom:0.8rem;"><i
+                            class="fa-solid fa-handshake"></i> スポンサー方針 (CSR/ESG)</h4>
+                    <div
+                        style="display:grid; grid-template-columns: 1fr; gap:0.5rem; font-size:0.95rem; border:1px solid #E2E8F0; padding:1rem; border-radius:8px; background: white;">
+                        <div style="display:flex; align-items:flex-start; gap:10px;">
+                            <i class="fa-solid fa-check" style="color:#38A169; margin-top:4px;"></i>
+                            <span>次世代のIT人材、デジタルクリエイターの育成支援</span>
+                        </div>
+                        <div style="display:flex; align-items:flex-start; gap:10px;">
+                            <i class="fa-solid fa-check" style="color:#38A169; margin-top:4px;"></i>
+                            <span>地域社会のデジタルインフラ整備、情報格差の是正</span>
+                        </div>
+                        <div style="display:flex; align-items:flex-start; gap:10px;">
+                            <i class="fa-solid fa-check" style="color:#38A169; margin-top:4px;"></i>
+                            <span>文化芸術とテクノロジーの融合を通じた地域活性化</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align:center;">
+                    <button class="btn-primary" onclick="closeModal('modal-sponsor-profile')"
+                        style="width:100%;">閉じる</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Detail Modal (Generic) -->
+    <div id="modal-project-detail" class="popup-overlay">
+        <div class="popup-content">
+            <div style="width:100%; height:200px; overflow:hidden;">
+                <img src="https://images.unsplash.com/photo-1528696892704-5e1122852276?q=80&w=1000&auto=format&fit=crop"
+                    style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div class="popup-header"
+                style="position:relative; border-top:none; display: flex; align-items: flex-start; gap: 1rem;">
+                <div style="flex:1;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
+                        <span style="font-size:0.8rem; color:#B794F4; font-weight:bold;">Culture / Art</span>
+                        <span style="color: #CBD5E0;">|</span>
+                        <a href="#" onclick="openModal('modal-org-profile')"
+                            style="font-size: 0.8rem; color: #3182CE; text-decoration: none; font-weight: bold;">
+                            <i class="fa-solid fa-building"></i> 横浜地域アート振興会
+                        </a>
+                    </div>
+                    <h2 class="popup-title">若手アーティスト育成・広報プロジェクト</h2>
+                </div>
+                <!-- Target SDGs Badge Section -->
+                <div style="display: flex; gap: 6px;">
+                    <div title="Goal 4: Quality Education"
+                        style="width:28px; height:28px; background:#E5243B; color:white; font-size:0.7rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                        4</div>
+                    <div title="Goal 8: Decent Work and Economic Growth"
+                        style="width:28px; height:28px; background:#A21942; color:white; font-size:0.7rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                        8</div>
+                    <div title="Goal 11: Sustainable Cities"
+                        style="width:28px; height:28px; background:#DDA63A; color:white; font-size:0.7rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                        11</div>
+                </div>
+                <button class="close-btn" onclick="closeModal('modal-project-detail')"
+                    style="margin-left: 10px;">&times;</button>
+            </div>
+            <div class="popup-body">
+                <p style="color:#555; line-height:1.6; margin-bottom:2rem;">
+                    横浜の若手芸術家を支援し、街全体をギャラリー化する大規模イベントの企画立案フェーズ。テクノロジーを駆使した新しい展示方法やPRの仕組みづくりに向け、IT企業の知見と資金支援を求めています。
+                </p>
+
+                <div class="modal-grid">
+                    <div>
+                        <div class="modal-label">募集金額</div>
+                        <div class="modal-value">¥2,000,000 / 1社限定</div>
+
+                        <div class="modal-label">期間</div>
+                        <div class="modal-value">2026年4月〜2027年3月</div>
+                    </div>
+                    <div>
+                        <div class="modal-label">お返し（リターン）</div>
+                        <ul style="font-size:0.9rem; color:#555; padding-left:1.2rem;">
+                            <li>公式アプリへの特別協賛ロゴ</li>
+                            <li>イベントでのデジタル技術活用事例としてのPR</li>
+                            <li>VIP向けプライベートツアーご招待</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top:2rem; text-align:right;">
+                    <button class="btn-primary" onclick="closeModal('modal-project-detail')"
+                        style="min-width: 150px;">閉じる</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Organization Profile Modal (Project Owner Detail) -->
+    <div id="modal-org-profile" class="popup-overlay" style="z-index:10000;">
+        <div class="popup-content" style="max-width:600px;">
+            <div class="popup-header" style="background:#F7FAFC; border-bottom:1px solid #E2E8F0;">
+                <h2 class="popup-title" style="color:#2D3748;"><i class="fa-solid fa-building-ngo"></i> 団体プロフィール</h2>
+                <button class="close-btn" onclick="closeModal('modal-org-profile')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div
+                    style="display:flex; gap:1.5rem; align-items:center; margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid #eee;">
+                    <div
+                        style="width:80px; height:80px; background:white; border-radius:10px; display:flex; align-items:center; justify-content:center; border:2px solid #CBD5E0; box-shadow:0 2px 5px rgba(0,0,0,0.05); flex-shrink:0;">
+                        <span style="font-size:2rem; color:#1A365D; font-weight:bold;">Y</span>
+                    </div>
+                    <div>
+                        <div style="font-size:0.85rem; color:#A0AEC0; font-weight:bold; margin-bottom:2px;">NPO法人
+                        </div>
+                        <h3 style="font-size:1.4rem; margin:0; color:#2D3748; line-height:1.2;">横浜クリエイティブ組合</h3>
+                        <div style="color:#718096; font-size:0.9rem; margin-top:8px;">
+                            <i class="fa-solid fa-location-dot"></i> 神奈川県横浜市中区
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:1.5rem;">
+                    <h4 style="font-size:1rem; color:#4A5568; margin-bottom:0.5rem;"><i
+                            class="fa-solid fa-bullseye"></i>
+                        団体のミッション</h4>
+                    <p
+                        style="color:#555; line-height:1.6; background:#F7FAFC; padding:1rem; border-radius:8px; font-size:0.95rem;">
+                        アートと地域社会の架け橋となり、誰もが創造性を発揮できる文化的なまちづくりを推進する。若手アーティストの活動基盤を提供し、持続可能な文化芸術エコシステムを横浜から発信します。
+                    </p>
+                </div>
+
+                <div style="margin-bottom:1.5rem;">
+                    <h4 style="font-size:1rem; color:#4A5568; margin-bottom:0.8rem;"><i
+                            class="fa-solid fa-clock-rotate-left"></i>
+                        主な活動実績</h4>
+                    <ul style="font-size:0.95rem; color:#555; padding-left:1.2rem; line-height:1.6;">
+                        <li>2024年: みなとみらい公共空間アートプロジェクト 企画運営 (来場者5万人)</li>
+                        <li>2025年: 横浜市内廃校活用 アトリエシェア事業開始 (入居アーティスト20名)</li>
+                        <li>定期: 月1回 地域連携アートワークショップ (延べ参加者1,200名)</li>
+                    </ul>
+                </div>
+
+                <div style="text-align:center;">
+                    <button class="btn-primary" onclick="closeModal('modal-org-profile')"
+                        style="width:100%;">閉じる</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="../script.js"></script>
     <script>

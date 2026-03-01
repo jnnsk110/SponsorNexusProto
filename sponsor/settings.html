@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sponsor Nexus - Corporate Settings</title>
+    <title>Sponsor Cloud - Corporate Settings</title>
     <!-- External CSS -->
-    <link href="../style.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/layout.css" rel="stylesheet">
+    <link href="../css/components.css" rel="stylesheet">
+    <link href="../css/specific_ui.css" rel="stylesheet">
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
         rel="stylesheet">
@@ -96,22 +99,47 @@
     <nav class="sidebar">
         <div class="logo">
             <i class="fa-solid fa-link"></i>
-            Sponsor Nexus
+            Sponsor Cloud
         </div>
 
         <div id="menu-sponsor" class="nav-menu">
             <a href="index.html" class="nav-link">
-                <i class="fa-solid fa-chart-pie"></i> 企業ダッシュボード
+                <i class="fa-solid fa-chart-pie"></i> ダッシュボード
             </a>
             <a href="search.html" class="nav-link">
                 <i class="fa-solid fa-magnifying-glass"></i> プロジェクトを探す
             </a>
+            <a href="report.html" class="nav-link">
+                <i class="fa-solid fa-file-invoice"></i> インパクトレポート
+            </a>
             <a href="history.html" class="nav-link">
-                <i class="fa-solid fa-history"></i> 支援履歴
+                <i class="fa-solid fa-history"></i> 投資・支援履歴 (Asset)
             </a>
             <a href="settings.html" class="nav-link active">
-                <i class="fa-solid fa-cog"></i> 企業設定
+                <i class="fa-solid fa-cog"></i> 設定
             </a>
+            <a href="../concept.html" class="nav-link"
+                style="margin-top: 1.5rem; color: #B794F4; font-weight: bold; border-top: 1px solid #2D3748; padding-top: 1rem;">
+                <i class="fa-solid fa-book-open"></i> コンセプト・意義
+            </a>
+            <a href="#" class="nav-link" onclick="openModal('modal-toku-explanation')"
+                style="color: #C5A059; font-weight: bold;">
+                <i class="fa-solid fa-circle-question"></i> TOKUスコアとは？
+            </a>
+            <a href="#" class="nav-link" onclick="openModal('modal-sdg-explanation')"
+                style="color: #4C9F38; font-weight: bold;">
+                <i class="fa-solid fa-chart-line"></i> SDG貢献分布とは？
+            </a>
+        </div>
+
+        <div class="legal-links"
+            style="padding: 1rem 1.5rem; font-size: 0.75rem; text-align: center; margin-top: auto; padding-bottom: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+            <a href="../tokushoho.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">特定商取引法に基づく表記</a>
+            <a href="../privacy.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">プライバシーポリシー</a>
+            <a href="../terms.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block;">利用規約・免責事項</a>
         </div>
 
         <div class="user-bottom">
@@ -120,11 +148,15 @@
                     <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
                 </a>
                 <a href="index.html" class="role-option">
-                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>スポンサーモード
                     (Active)
                 </a>
                 <a href="../owner/index.html" class="role-option">
                     <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="../partner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    インパクトパートナーモード
                 </a>
                 <a href="../index.html" class="role-option"
                     style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
@@ -146,11 +178,59 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="page-header">
-            <h1 class="page-title">企業設定 (Settings)</h1>
+            <h1 class="page-title">設定 (Settings)</h1>
             <span style="color:#718096; font-size:0.9rem;">最終更新: 2026/02/11 10:30</span>
         </div>
 
         <div class="list-section" style="max-width:900px; margin:0 auto; margin-top:1rem;">
+
+            <!-- Attribute Settings (New) -->
+            <div
+                style="background:white; border-radius:12px; padding:2rem; box-shadow:0 4px 15px rgba(0,0,0,0.05); margin-bottom:2rem; border-top:5px solid #718096;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                    <h2 style="font-size:1.4rem; color:#1A202C; display:flex; align-items:center;">
+                        <i class="fa-solid fa-id-card" style="color:#718096; margin-right:10px;"></i>
+                        スポンサー属性 (Attribute)
+                    </h2>
+                </div>
+                <p style="color:#718096; margin-bottom:1.5rem;">
+                    あなたの属性を選択してください。属性に応じてダッシュボードの表示項目やAIのマッチングロジックが最適化されます。
+                </p>
+                <div style="display:flex; gap:15px;">
+                    <!-- Corporate -->
+                    <label style="flex:1; cursor:pointer;">
+                        <input type="radio" name="sponsor_type" checked style="display:none;">
+                        <div class="attr-card active"
+                            style="border:2px solid #1A365D; background:#ebf8ff; padding:1.5rem; border-radius:12px; text-align:center;">
+                            <i class="fa-solid fa-building"
+                                style="font-size:2rem; color:#1A365D; margin-bottom:10px;"></i>
+                            <div style="font-weight:bold; color:#1A365D;">Corporate</div>
+                            <div style="font-size:0.8rem; color:#4A5568;">企業・法人</div>
+                        </div>
+                    </label>
+                    <!-- Government -->
+                    <label style="flex:1; cursor:pointer;">
+                        <input type="radio" name="sponsor_type" style="display:none;">
+                        <div class="attr-card"
+                            style="border:1px solid #E2E8F0; padding:1.5rem; border-radius:12px; text-align:center; opacity:0.6;">
+                            <i class="fa-solid fa-landmark"
+                                style="font-size:2rem; color:#718096; margin-bottom:10px;"></i>
+                            <div style="font-weight:bold; color:#718096;">Government</div>
+                            <div style="font-size:0.8rem; color:#A0AEC0;">自治体・行政</div>
+                        </div>
+                    </label>
+                    <!-- Individual -->
+                    <label style="flex:1; cursor:pointer;">
+                        <input type="radio" name="sponsor_type" style="display:none;">
+                        <div class="attr-card"
+                            style="border:1px solid #E2E8F0; padding:1.5rem; border-radius:12px; text-align:center; opacity:0.6;">
+                            <i class="fa-solid fa-user" style="font-size:2rem; color:#718096; margin-bottom:10px;"></i>
+                            <div style="font-weight:bold; color:#718096;">Individual</div>
+                            <div style="font-size:0.8rem; color:#A0AEC0;">個人投資家</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
 
             <!-- AI Brain Section -->
             <div
@@ -250,6 +330,197 @@
 
         </div>
     </main>
+
+    <!-- TOKU Score Explanation Modal -->
+    <div id="modal-toku-explanation" class="popup-overlay">
+        <div class="popup-content" style="max-width: 800px;">
+            <div class="popup-header"
+                style="background: linear-gradient(135deg, #1A202C 0%, #2D3748 100%); color: white; border-bottom: none; padding: 2rem;">
+                <div style="flex: 1;">
+                    <div
+                        style="font-size: 0.9rem; color: #C5A059; font-weight: bold; letter-spacing: 0.1em; margin-bottom: 0.5rem;">
+                        STANDARD FOR IMPACT</div>
+                    <h2 class="popup-title" style="color: white; font-size: 2rem; font-weight: 900;">TOKUスコアとは？</h2>
+                </div>
+                <button class="close-btn" onclick="closeModal('modal-toku-explanation')"
+                    style="color: white; opacity: 0.8;">&times;</button>
+            </div>
+
+            <div class="popup-body" style="padding: 2.5rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem;">
+                    <div>
+                        <h3
+                            style="font-size: 1.25rem; margin-bottom: 1rem; color: #2D3748; display: flex; align-items: center; gap: 10px;">
+                            <i class="fa-solid fa-flask" style="color: #C5A059;"></i> 利他を科学する
+                        </h3>
+                        <p style="line-height: 1.8; color: #4A5568; font-size: 0.95rem;">
+                            TOKUスコア（旧Nexusスコア）は、これまで「善意」や「ボランティア」として片付けられてきた非財務的な価値を、
+                            独自の算定ロジックにより標準化した指標です。<br><br>
+                            支援がどのように社会を変えたのかを可視化し、企業のESG投資や地域貢献の「資産」として蓄積することを可能にします。
+                        </p>
+                    </div>
+                    <div style="background: #F7FAFC; border-radius: 16px; padding: 1.5rem; border: 1px solid #E2E8F0;">
+                        <h3 style="font-size: 1rem; margin-bottom: 1rem; color: #2D3748; font-weight: 700;">信頼の三層構造</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="display: flex; gap: 12px; align-items: center;">
+                                <div
+                                    style="width: 32px; height: 32px; background: #EBF8FF; color: #3182CE; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold;">
+                                    1</div>
+                                <div style="font-size: 0.9rem; color: #2D3748;"><b>現場の証跡:</b> 写真とメモによる一次データ</div>
+                            </div>
+                            <div style="display: flex; gap: 12px; align-items: center;">
+                                <div
+                                    style="width: 32px; height: 32px; background: #EBF8FF; color: #3182CE; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold;">
+                                    2</div>
+                                <div style="font-size: 0.9rem; color: #2D3748;"><b>AI解析:</b> 構造化とリスク・矛盾の検知</div>
+                            </div>
+                            <div style="display: flex; gap: 12px; align-items: center;">
+                                <div
+                                    style="width: 32px; height: 32px; background: #EBF8FF; color: #3182CE; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold;">
+                                    3</div>
+                                <div style="font-size: 0.9rem; color: #2D3748;"><b>専門家審査:</b> 目利きによる妥当性の最終担保</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <h3
+                        style="font-size: 1.25rem; margin-bottom: 1.5rem; color: #2D3748; text-align: center; font-weight: 900;">
+                        4つの主要評価軸
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+                        <div
+                            style="text-align: center; padding: 1rem; background: #FFF5F5; border-radius: 12px; border-bottom: 4px solid #E53E3E;">
+                            <i class="fa-solid fa-coins"
+                                style="font-size: 1.5rem; color: #E53E3E; margin-bottom: 0.5rem;"></i>
+                            <div style="font-weight: bold; font-size: 0.85rem; margin-bottom: 0.3rem;">市場価値</div>
+                            <div style="font-size: 0.7rem; color: #718096; line-height: 1.3;">経済的インパクトの<br>直接的換算</div>
+                        </div>
+                        <div
+                            style="text-align: center; padding: 1rem; background: #EBF8FF; border-radius: 12px; border-bottom: 4px solid #3182CE;">
+                            <i class="fa-solid fa-puzzle-piece"
+                                style="font-size: 1.5rem; color: #3182CE; margin-bottom: 0.5rem;"></i>
+                            <div style="font-weight: bold; font-size: 0.85rem; margin-bottom: 0.3rem;">ニーズ適合</div>
+                            <div style="font-size: 0.7rem; color: #718096; line-height: 1.3;">社会・地域の課題<br>解決への純度</div>
+                        </div>
+                        <div
+                            style="text-align: center; padding: 1rem; background: #F0FFF4; border-radius: 12px; border-bottom: 4px solid #38A169;">
+                            <i class="fa-solid fa-arrow-up-right-dots"
+                                style="font-size: 1.5rem; color: #38A169; margin-bottom: 0.5rem;"></i>
+                            <div style="font-weight: bold; font-size: 0.85rem; margin-bottom: 0.3rem;">ポテンシャル</div>
+                            <div style="font-size: 0.7rem; color: #718096; line-height: 1.3;">社会変革の波及性<br>と持続可能性</div>
+                        </div>
+                        <div
+                            style="text-align: center; padding: 1rem; background: #FAF5FF; border-radius: 12px; border-bottom: 4px solid #805AD5;">
+                            <i class="fa-solid fa-shield-halved"
+                                style="font-size: 1.5rem; color: #805AD5; margin-bottom: 0.5rem;"></i>
+                            <div style="font-weight: bold; font-size: 0.85rem; margin-bottom: 0.3rem;">実行信頼性</div>
+                            <div style="font-size: 0.7rem; color: #718096; line-height: 1.3;">透明性と実績<br>に基づく確実性</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #EDF2F7;">
+                    <button class="btn-primary" onclick="closeModal('modal-toku-explanation')"
+                        style="min-width: 200px; padding: 0.8rem 2.5rem;">閉じる</button>
+                    <div style="margin-top: 1rem; font-size: 0.8rem; color: #A0AEC0;">Standard Version 0.4 | Powered by
+                        Sponsor Nexus AI</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SDG Explanation Modal -->
+    <div id="modal-sdg-explanation" class="popup-overlay">
+        <div class="popup-content" style="max-width: 800px;">
+            <div class="popup-header"
+                style="background: linear-gradient(135deg, #1A365D 0%, #2A4365 100%); color: white; border-bottom: none; padding: 2rem;">
+                <div style="flex: 1;">
+                    <div
+                        style="font-size: 0.9rem; color: #63B3ED; font-weight: bold; letter-spacing: 0.1em; margin-bottom: 0.5rem;">
+                        ASSET ALLOCATION</div>
+                    <h2 class="popup-title" style="color: white; font-size: 2rem; font-weight: 900;">SDG貢献分布とは？</h2>
+                </div>
+                <button class="close-btn" onclick="closeModal('modal-sdg-explanation')"
+                    style="color: white; opacity: 0.8;">&times;</button>
+            </div>
+
+            <div class="popup-body" style="padding: 2.5rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem;">
+                    <div>
+                        <h3
+                            style="font-size: 1.25rem; margin-bottom: 1rem; color: #2D3748; display: flex; align-items: center; gap: 10px;">
+                            <i class="fa-solid fa-diagram-project" style="color: #3182CE;"></i> インパクトのポートフォリオ
+                        </h3>
+                        <p style="line-height: 1.8; color: #4A5568; font-size: 0.95rem;">
+                            SDG貢献分布は、貴社が支援している複数のプロジェクトが生み出す「社会的価値」を、国連の持続可能な開発目標（SDGs）の17目標にマッピング・集計したものです。<br><br>
+                            特定の目標に偏らずバランス良く貢献しているか、あるいは貴社のCSRマテリアリティ（重要課題）に合致した領域に集中できているかを一目で把握できます。
+                        </p>
+                    </div>
+                    <div style="background: #F7FAFC; border-radius: 16px; padding: 1.5rem; border: 1px solid #E2E8F0;">
+                        <h3 style="font-size: 1rem; margin-bottom: 1rem; color: #2D3748; font-weight: 700;">算定の仕組み</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="display: flex; gap: 12px; align-items: start;">
+                                <div style="color: #3182CE; margin-top: 3px;"><i class="fa-solid fa-tag"></i></div>
+                                <div style="font-size: 0.9rem; color: #2D3748;"><b>タグ付与:</b>
+                                    各プロジェクトの活動ログをAIが解析し、関連する目標を抽出。</div>
+                            </div>
+                            <div style="display: flex; gap: 12px; align-items: start;">
+                                <div style="color: #3182CE; margin-top: 3px;"><i class="fa-solid fa-calculator"></i>
+                                </div>
+                                <div style="font-size: 0.9rem; color: #2D3748;"><b>加重評価:</b>
+                                    支援金額と現場のインパクト証跡に基づき、各目標への貢献度をポイント化。</div>
+                            </div>
+                            <div style="display: flex; gap: 12px; align-items: start;">
+                                <div style="color: #3182CE; margin-top: 3px;"><i class="fa-solid fa-chart-pie"></i>
+                                </div>
+                                <div style="font-size: 0.9rem; color: #2D3748;"><b>リアルタイム集計:</b>
+                                    支援先ポートフォリオ全体を自動集約し、現在の貢献バランスを提示。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <h3
+                        style="font-size: 1.1rem; color: #2D3748; margin-bottom: 1.5rem; text-align: center; font-weight: 900;">
+                        アイコンと色の意味 (実装例)
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                        <div
+                            style="display: flex; align-items: center; gap: 10px; background: #FFF5F5; padding: 10px; border-radius: 8px;">
+                            <div
+                                style="width:30px; height:30px; background:#E5243B; color:white; font-size:0.8rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                4</div>
+                            <div style="font-size: 0.85rem; color: #2D3748; font-weight: bold;">質の高い教育を</div>
+                        </div>
+                        <div
+                            style="display: flex; align-items: center; gap: 10px; background: #FFFBEB; padding: 10px; border-radius: 8px;">
+                            <div
+                                style="width:30px; height:30px; background:#DDA63A; color:white; font-size:0.8rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                11</div>
+                            <div style="font-size: 0.85rem; color: #2D3748; font-weight: bold;">住み続けられる街</div>
+                        </div>
+                        <div
+                            style="display: flex; align-items: center; gap: 10px; background: #F0FFF4; padding: 10px; border-radius: 8px;">
+                            <div
+                                style="width:30px; height:30px; background:#4C9F38; color:white; font-size:0.8rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                13</div>
+                            <div style="font-size: 0.85rem; color: #2D3748; font-weight: bold;">気候変動に具体策</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #EDF2F7;">
+                    <button class="btn-primary" onclick="closeModal('modal-sdg-explanation')"
+                        style="min-width: 200px; padding: 0.8rem 2.5rem;">閉じる</button>
+                    <div style="margin-top: 1rem; font-size: 0.8rem; color: #A0AEC0;">SDG Integration Engine v1.2 |
+                        Powered by Sponsor Nexus</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="../script.js"></script>
     <script>

@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sponsor Nexus - My Projects</title>
-    <link href="../style.css" rel="stylesheet">
+    <title>Sponsor Cloud - My Projects</title>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/layout.css" rel="stylesheet">
+    <link href="../css/components.css" rel="stylesheet">
+    <link href="../css/specific_ui.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -16,34 +19,56 @@
     <nav class="sidebar">
         <div class="logo">
             <i class="fa-solid fa-link"></i>
-            Sponsor Nexus
+            Sponsor Cloud
         </div>
         <div id="menu-owner" class="nav-menu">
             <a href="index.html" class="nav-link active">
                 <i class="fa-solid fa-home"></i> マイプロジェクト
             </a>
             <a href="offers.html" class="nav-link">
-                <i class="fa-solid fa-envelope-open-text"></i> オファー受信箱 <span class="badge bg-red"
+                <i class="fa-solid fa-envelope-open-text"></i> スポンサー候補 (AI推奨) <span class="badge bg-red"
                     style="margin-left:5px;">2</span>
             </a>
             <a href="report.html" class="nav-link">
-                <i class="fa-solid fa-edit"></i> 活動報告の提出
+                <i class="fa-solid fa-edit"></i> 日々の証跡・活動報告
             </a>
             <a href="settings.html" class="nav-link">
                 <i class="fa-solid fa-cog"></i> 団体設定
             </a>
+            <a href="../concept.html" class="nav-link"
+                style="margin-top: 1.5rem; color: #B794F4; font-weight: bold; border-top: 1px solid #2D3748; padding-top: 1rem;">
+                <i class="fa-solid fa-book-open"></i> コンセプト・意義
+            </a>
+            <a href="#" class="nav-link" onclick="openModal('modal-sdg-explanation')"
+                style="color: #4C9F38; font-weight: bold;">
+                <i class="fa-solid fa-chart-line"></i> SDG貢献分布とは？
+            </a>
         </div>
+        <div class="legal-links"
+            style="padding: 1rem 1.5rem; font-size: 0.75rem; text-align: center; margin-top: auto; padding-bottom: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+            <a href="../tokushoho.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">特定商取引法に基づく表記</a>
+            <a href="../privacy.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">プライバシーポリシー</a>
+            <a href="../terms.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block;">利用規約・免責事項</a>
+        </div>
+
         <div class="user-bottom">
             <div class="role-menu" id="role-menu">
                 <a href="../admin/index.html" class="role-option">
                     <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
                 </a>
                 <a href="../sponsor/index.html" class="role-option">
-                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>スポンサーモード
                 </a>
                 <a href="index.html" class="role-option">
                     <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
                     (Active)
+                </a>
+                <a href="../partner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    インパクトパートナーモード
                 </a>
                 <a href="../index.html" class="role-option"
                     style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
@@ -64,13 +89,97 @@
     <main class="main-content">
         <div class="page-header">
             <h1 class="page-title">マイプロジェクト管理</h1>
-            <button class="btn-primary" style="background:#2C7A7B; box-shadow:none;">
+            <button class="btn-primary" style="background:#2C7A7B; box-shadow:none;" onclick="openCreateModal()">
                 <i class="fa-solid fa-plus"></i> 新規プロジェクト作成
             </button>
         </div>
 
+        <!-- Impact KPI Grid (Synchronized with Sponsor Mode) -->
+        <div class="kpi-grid" style="margin-bottom: 2rem;">
+            <div class="kpi-card" style="border-top-color:#63B3ED;">
+                <div class="kpi-header">獲得支援総額 <i class="fa-solid fa-wallet kpi-icon"></i></div>
+                <div class="kpi-value">850<span class="kpi-unit">万円</span></div>
+                <div class="kpi-trend trend-up">▲ 前月比 +15%</div>
+            </div>
+            <div class="kpi-card" style="border-top-color:#C5A059;">
+                <div class="kpi-header">TOKUスコア (平均) <i class="fa-solid fa-trophy kpi-icon" style="color:#C5A059;"></i>
+                </div>
+                <div class="kpi-value">8.5<span class="kpi-unit">pt</span></div>
+                <div class="kpi-trend" style="color:#718096; font-size:0.8rem;">(プロジェクト全体平均)</div>
+            </div>
+            <div class="kpi-card" style="border-top-color:#38A169;">
+                <div class="kpi-header">社会還元指標 <i class="fa-solid fa-chart-line kpi-icon" style="color:#38A169;"></i>
+                </div>
+                <div class="kpi-value">12.4<span class="kpi-unit">x</span></div>
+                <div class="kpi-trend trend-up">投資対効果の高い事業継続</div>
+            </div>
+            <div class="kpi-card" style="border-top-color:#E53E3E;">
+                <div class="kpi-header">SDG貢献分布</div>
+                <div style="margin-top:15px; display:flex; gap:10px; align-items:center;">
+                    <div title="SDGs 4: Quality Education"
+                        style="width:36px; height:36px; background:#E5243B; color:white; font-size:0.9rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                        4</div>
+                    <div title="SDGs 11: Sustainable Cities"
+                        style="width:36px; height:36px; background:#DDA63A; color:white; font-size:0.9rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                        11</div>
+                    <div title="SDGs 13: Climate Action"
+                        style="width:36px; height:36px; background:#4C9F38; color:white; font-size:0.9rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                        13</div>
+                    <span style="font-size:0.75rem; color:#718096; line-height:1.2;">全事業の合計<br>インパクト</span>
+                </div>
+            </div>
+        </div>
+
         <div style="margin-bottom:2rem;">
-            <p style="color:#718096; margin-bottom:1rem;">現在管理中のプロジェクト一覧です。</p>
+            <!-- Primary Action: Evidence Upload (Step 2 Implementation) -->
+            <div
+                style="background:linear-gradient(135deg, #E6FFFA 0%, #B2F5EA 100%); border-radius:12px; padding:2rem; box-shadow:0 4px 15px rgba(56, 178, 172, 0.15); margin-bottom:2.5rem; border:2px solid #81E6D9;">
+                <h2
+                    style="font-size:1.4rem; color:#234E52; margin-top:0; margin-bottom:1rem; display:flex; align-items:center; gap:10px;">
+                    <i class="fa-solid fa-camera-retro"></i> 今日の活動を記録しましょう
+                </h2>
+                <p style="color:#2C7A7B; margin-bottom:1.5rem; font-size:0.95rem;">
+                    事務局AIが投稿内容から自動でレポートを作成し、支援企業へ共有します。日々の少しの記録が、大きな信頼（TOKUスコア）を生み出します。
+                </p>
+
+                <div
+                    style="background:white; border-radius:8px; padding:1.5rem; display:flex; gap:1.5rem; align-items:flex-start;">
+                    <!-- Photo Upload Area -->
+                    <div style="width:150px; flex-shrink:0;">
+                        <div style="border:2px dashed #CBD5E0; border-radius:8px; height:120px; display:flex; flex-direction:column; justify-content:center; align-items:center; cursor:pointer; background:#F7FAFC; transition:all 0.2s;"
+                            onmouseover="this.style.borderColor='#319795'; this.style.background='#E6FFFA';"
+                            onmouseout="this.style.borderColor='#CBD5E0'; this.style.background='#F7FAFC';">
+                            <i class="fa-solid fa-image" style="font-size:2rem; color:#A0AEC0; margin-bottom:10px;"></i>
+                            <span style="font-size:0.8rem; color:#718096; font-weight:bold;">写真を追加</span>
+                        </div>
+                    </div>
+                    <!-- Quick Text Area -->
+                    <div style="flex:1;">
+                        <div style="margin-bottom: 10px;">
+                            <label
+                                style="font-size:0.8rem; color:#4A5568; font-weight:bold; display:block; margin-bottom:5px;">記録するプロジェクト</label>
+                            <select
+                                style="width:100%; padding:0.6rem; border:1px solid #E2E8F0; border-radius:8px; font-size:0.9rem; color:#2D3748; background:white;">
+                                <option>横浜アートフェスティバル 2026</option>
+                                <option>若手アーティスト スタジオ支援プログラム (準備中)</option>
+                            </select>
+                        </div>
+                        <textarea placeholder="今日の活動を一言で！ (例: 地元の子供たちとワークショップの準備をしました！)"
+                            style="width:100%; height:80px; padding:1rem; border:1px solid #E2E8F0; border-radius:8px; resize:none; margin-bottom:10px; font-size:0.95rem;"></textarea>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-size:0.8rem; color:#A0AEC0;"><i class="fa-solid fa-magic"></i>
+                                AIが後で綺麗にまとめます</span>
+                            <button class="btn-primary"
+                                style="background:#2C7A7B; padding:0.6rem 2rem; border-radius:30px; box-shadow:0 4px 6px rgba(44, 122, 123, 0.2);"
+                                onclick="alert('証跡を保存しました。AIがレポートの下書きを作成中です。')">投稿する</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3
+                style="font-size:1.2rem; margin-bottom:1rem; color:#4A5568; border-bottom:2px solid #E2E8F0; padding-bottom:0.5rem;">
+                管理中のプロジェクト</h3>
 
             <!-- Project 1 (Active) -->
             <div
@@ -83,8 +192,12 @@
                         </div>
                         <h2 style="font-size:1.3rem; margin:0; color:#2D3748;">横浜アートフェスティバル 2026</h2>
                     </div>
-                    <div style="text-align:right;">
-                        <button class="btn-secondary" style="font-size:0.8rem; padding:0.4rem 1rem;">編集</button>
+                    <div style="text-align:right; display:flex; flex-direction:column; gap:8px; align-items:flex-end;">
+                        <button class="btn-secondary" style="font-size:0.8rem; padding:0.4rem 1rem;"
+                            onclick="openEditModal()">編集</button>
+                        <button class="btn-primary"
+                            style="font-size:0.75rem; padding:0.4rem 1rem; background:#38A169; box-shadow:none;"
+                            onclick="openModal('modal-receipt-report')">支援金の受領を報告</button>
                     </div>
                 </div>
 
@@ -146,13 +259,740 @@
         </div>
     </main>
 
+    <!-- Edit Project Modal (Aligned with Creation Flow) -->
+    <div id="edit-project-modal" class="popup-overlay">
+        <div class="popup-content" style="max-width: 700px; border: none;">
+            <div class="popup-header" style="background: white; color: #2D3748; border-bottom: 2px solid #E2E8F0;">
+                <h3 class="popup-title"><i class="fa-solid fa-pen-to-square"></i> プロジェクトを編集</h3>
+                <span class="close-btn" onclick="closeModal('edit-project-modal')">&times;</span>
+            </div>
+            <div class="popup-body" style="padding: 2rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                    <div style="grid-column: span 2;">
+                        <label
+                            style="display:block; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; color: #4A5568;">プロジェクト名</label>
+                        <input type="text" id="edit-project-title" value="横浜アートフェスティバル 2026"
+                            style="width: 100%; padding: 0.8rem; border: 1px solid #E2E8F0; border-radius: 8px;">
+                    </div>
+
+                    <div style="grid-column: span 2;">
+                        <label
+                            style="display:block; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; color: #4A5568;">メインビジュアル
+                            (写真の変更)</label>
+                        <div
+                            style="height: 150px; background: url('https://images.unsplash.com/photo-1460666819451-7410f5406d01?auto=format&fit=crop&q=80&w=1200') center/cover; border-radius: 12px; position: relative;">
+                            <div
+                                style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; cursor: pointer;">
+                                <i class="fa-solid fa-camera"></i> 写真を変更
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label
+                            style="display:block; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; color: #4A5568;">主セグメント
+                            (6循環分類)</label>
+                        <select id="edit-project-segment"
+                            style="width: 100%; padding: 0.8rem; border: 1px solid #E2E8F0; border-radius: 8px; background: white;">
+                            <option value="SEG-01">SEG-01 山 (Forest / Mountain)</option>
+                            <option value="SEG-02">SEG-02 里 (Village / Community)</option>
+                            <option value="SEG-03">SEG-03 海 (Ocean / Coastal)</option>
+                            <option value="SEG-04" selected>SEG-04 文化 (Culture / Heritage)</option>
+                            <option value="SEG-05">SEG-05 一次産業 (Primary Industry)</option>
+                            <option value="SEG-06">SEG-06 教育・人材 (Education / Human Capital)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label
+                            style="display:block; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; color: #4A5568;">活動地域
+                            / 自治体名</label>
+                        <input type="text" id="edit-project-region" value="神奈川県横浜市"
+                            style="width: 100%; padding: 0.8rem; border: 1px solid #E2E8F0; border-radius: 8px;">
+                    </div>
+
+                    <div>
+                        <label
+                            style="display:block; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; color: #4A5568;">ターゲット層</label>
+                        <input type="text" value="全世代・アート愛好家"
+                            style="width: 100%; padding: 0.8rem; border: 1px solid #E2E8F0; border-radius: 8px;">
+                    </div>
+
+                    <div>
+                        <label
+                            style="display:block; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; color: #4A5568;">目標金額
+                            (円)</label>
+                        <input type="number" id="edit-project-funding" value="10000000"
+                            style="width: 100%; padding: 0.8rem; border: 1px solid #E2E8F0; border-radius: 8px;">
+                    </div>
+
+                    <div style="grid-column: span 2;">
+                        <label
+                            style="display:block; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; color: #4A5568;">プロジェクト概要</label>
+                        <textarea id="edit-project-desc"
+                            style="width: 100%; height: 100px; padding: 0.8rem; border: 1px solid #E2E8F0; border-radius: 8px; resize: vertical;">「都市とアートの融合」をテーマに、横浜市内の遊休施設を利活用した現代アートの祭典を開催します。地元アーティストと市民が協働するワークショップを通じて、クリエイティブな地域コミュニティの再構築を目指します。</textarea>
+                    </div>
+
+                    <!-- AI Assessment Parameters Alignment -->
+                    <div
+                        style="grid-column: span 2; border-top: 1px solid #E2E8F0; padding-top: 1.5rem; margin-top: 1rem;">
+                        <h3
+                            style="font-size: 1rem; color: #2D3748; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                            <i class="fa-solid fa-robot" style="color: #2D3748;"></i> AI判定用パラメータの再調整
+                        </h3>
+
+                        <label
+                            style="display:block; font-size: 0.9rem; font-weight: bold; margin-bottom: 12px; color: #4A5568;">計上するSDGs
+                            (複数選択可)</label>
+                        <div id="edit-sdg-selector"
+                            style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem;">
+                            <!-- Generate 17 SDG icons with pre-selection for 4, 11, 13 -->
+                            <script>
+                                (function () {
+                                    const editPreSelected = new Set([4, 11, 13]);
+                                    const sdgColors = [
+                                        '#E5243B', '#DDA63A', '#4C9F38', '#C5192D', '#FF3A21',
+                                        '#26BDE2', '#FCC30B', '#A21942', '#FD6925', '#DD1367',
+                                        '#FD9D24', '#BF8B2E', '#3F7E44', '#0A97D9', '#56BC27',
+                                        '#00689D', '#19486A'
+                                    ];
+                                    for (let i = 1; i <= 17; i++) {
+                                        const isActive = editPreSelected.has(i);
+                                        const bg = isActive ? sdgColors[i - 1] : '#EDF2F7';
+                                        const color = isActive ? 'white' : '#718096';
+                                        const border = isActive ? sdgColors[i - 1] : 'transparent';
+                                        document.write(`<div class="sdg-tag" onclick="toggleSDG(this, ${i})" data-sdg="${i}" style="width: 36px; height: 36px; background: ${bg}; color: ${color}; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer; border: 2px solid ${border}; transition: all 0.2s;">${i}</div>`);
+                                        if (isActive) { selectedSDGs.add(i); }
+                                    }
+                                })();
+                            </script>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;">
+                            <div>
+                                <label
+                                    style="display:block; font-size: 0.8rem; font-weight: bold; margin-bottom: 5px; color: #718096;">市場価値
+                                    / 波及効果</label>
+                                <textarea
+                                    style="width: 100%; height: 60px; padding: 0.5rem; border: 1px solid #E2E8F0; border-radius: 6px; font-size: 0.85rem;">地域外からの来場者増による経済効果を年間1億円と試算。また、他都市へのプラットフォーム提供による波及を目指します。</textarea>
+                            </div>
+                            <div>
+                                <label
+                                    style="display:block; font-size: 0.8rem; font-weight: bold; margin-bottom: 5px; color: #718096;">ニーズ適合
+                                    / 課題解決</label>
+                                <textarea
+                                    style="width: 100%; height: 60px; padding: 0.5rem; border: 1px solid #E2E8F0; border-radius: 6px; font-size: 0.85rem;">文化庁の調査に基づき、若年層の芸術離れを食い止める。また遊休資産の維持管理費削減にも寄与します。</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                style="padding: 1.5rem 2.5rem; background: #F7FAFC; border-top: 1px solid #E2E8F0; display: flex; justify-content: flex-end; gap: 1rem; border-radius: 0 0 12px 12px;">
+                <button class="btn-secondary" onclick="closeModal('edit-project-modal')"
+                    style="padding: 0.8rem 2.5rem; font-weight: bold;">変更を破棄</button>
+                <button class="btn-primary" style="background: #2C7A7B; padding: 0.8rem 2.5rem; font-weight: bold;"
+                    onclick="showEditReview()">変更内容を確認へ進む</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Project Modal (Step 1: Input) -->
+    <div id="create-project-modal" class="popup-overlay">
+        <div class="popup-content" style="max-width: 700px; border: none;">
+            <div class="popup-header" style="background: #2C7A7B; color: white; border-bottom: none;">
+                <h3 class="popup-title" style="color: white;"><i class="fa-solid fa-plus-circle"></i> 新規プロジェクト作成</h3>
+                <span class="close-btn" onclick="closeCreateModal()" style="color: white;">&times;</span>
+            </div>
+            <div class="popup-body" style="padding: 2rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                    <div style="grid-column: span 2;">
+                        <label
+                            style="display:block; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; color: #4A5568;">プロジェクト名</label>
+                        <input type="text" id="input-project-title" placeholder="例: 地域を元気にする文化祭"
+                            style="width: 100%; padding: 0.8rem; border: 1px solid #E2E8F0; border-radius: 8px;">
+                    </div>
+
+                    <div style="grid-column: span 2;">
+                        <label
+                            style="display:block; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; color: #4A5568;">メインビジュアル
+                            (写真添付)</label>
+                        <div id="image-upload-area"
+                            style="border: 2px dashed #E2E8F0; border-radius: 12px; padding: 2rem; text-align: center; background: #F7FAFC; cursor: pointer; transition: all 0.3s;"
+                            onclick="document.getElementById('input-project-image').click()">
+                            <i class="fa-solid fa-cloud-arrow-up"
+                                style="font-size: 2rem; color: #CBD5E0; margin-bottom: 10px;"></i>
+                            <div style="font-size: 0.9rem; color: #718096;">クリックして画像をアップロード、またはドラッグ＆ドロップ</div>
+                            <input type="file" id="input-project-image" style="display: none;"
+                                onchange="handleImageSelect(this)">
+                            <div id="image-preview-thumbnail" style="display: none; margin-top: 15px;">
+                                <img src=""
+                                    style="max-height: 100px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label
+                            style="display:block; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; color: #4A5568;">主セグメント
+                            (6循環分類)</label>
+                        <select id="input-project-segment"
+                            style="width: 100%; padding: 0.8rem; border: 1px solid #E2E8F0; border-radius: 8px; background: white;">
+                            <option value="SEG-01">SEG-01 山 (Forest / Mountain)</option>
+                            <option value="SEG-02">SEG-02 里 (Village / Community)</option>
+                            <option value="SEG-03">SEG-03 海 (Ocean / Coastal)</option>
+                            <option value="SEG-04" selected>SEG-04 文化 (Culture / Heritage)</option>
+                            <option value="SEG-05">SEG-05 一次産業 (Primary Industry)</option>
+                            <option value="SEG-06">SEG-06 教育・人材 (Education / Human Capital)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            style="display:block; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; color: #4A5568;">活動地域
+                            / 自治体名</label>
+                        <input type="text" id="input-project-region" placeholder="例: 神奈川県横浜市"
+                            style="width: 100%; padding: 0.8rem; border: 1px solid #E2E8F0; border-radius: 8px;">
+                    </div>
+                    <div>
+                        <label
+                            style="display:block; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; color: #4A5568;">ターゲット層</label>
+                        <input type="text" id="input-project-target" placeholder="例: 20-40代のファミリー層"
+                            style="width: 100%; padding: 0.8rem; border: 1px solid #E2E8F0; border-radius: 8px;">
+                    </div>
+                    <div>
+                        <label
+                            style="display:block; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; color: #4A5568;">目標金額
+                            (円)</label>
+                        <input type="number" id="input-project-funding" placeholder="例: 5000000"
+                            style="width: 100%; padding: 0.8rem; border: 1px solid #E2E8F0; border-radius: 8px;">
+                    </div>
+                    <div>
+                        <label
+                            style="display:block; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; color: #4A5568;">来場/参加者目標</label>
+                        <input type="number" id="input-project-participants" placeholder="例: 10000"
+                            style="width: 100%; padding: 0.8rem; border: 1px solid #E2E8F0; border-radius: 8px;">
+                    </div>
+                    <div style="grid-column: span 2;">
+                        <label
+                            style="display:block; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; color: #4A5568;">プロジェクト概要</label>
+                        <textarea id="input-project-desc"
+                            style="width: 100%; height: 80px; padding: 0.8rem; border: 1px solid #E2E8F0; border-radius: 8px; resize: vertical;"
+                            placeholder="プロジェクトの背景や、達成したいインパクトについて詳しく記入してください..."></textarea>
+                    </div>
+
+                    <!-- AI Assessment Parameters Section -->
+                    <div
+                        style="grid-column: span 2; border-top: 1px solid #E2E8F0; padding-top: 1.5rem; margin-top: 1rem;">
+                        <h3
+                            style="font-size: 1rem; color: #2D3748; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                            <i class="fa-solid fa-robot" style="color: #2D3748;"></i> AI判定用パラメータ入力
+                        </h3>
+
+                        <label
+                            style="display:block; font-size: 0.9rem; font-weight: bold; margin-bottom: 12px; color: #4A5568;">貢献するSDGs
+                            (複数選択可)</label>
+                        <div id="sdg-selector" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem;">
+                            <!-- Generate 17 SDG icons -->
+                            <script>
+                                const sdgColors = [
+                                    '#E5243B', '#DDA63A', '#4C9F38', '#C5192D', '#FF3A21',
+                                    '#26BDE2', '#FCC30B', '#A21942', '#FD6925', '#DD1367',
+                                    '#FD9D24', '#BF8B2E', '#3F7E44', '#0A97D9', '#56BC27',
+                                    '#00689D', '#19486A'
+                                ];
+                                for (let i = 1; i <= 17; i++) {
+                                    document.write(`<div class="sdg-tag" onclick="toggleSDG(this, ${i})" data-sdg="${i}" style="width: 40px; height: 40px; background: #EDF2F7; color: #718096; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer; border: 2px solid transparent; transition: all 0.2s;">${i}</div>`);
+                                }
+                            </script>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div>
+                                <label
+                                    style="display:block; font-size: 0.8rem; font-weight: bold; margin-bottom: 5px; color: #718096;">市場価値
+                                    / 期待される波及効果</label>
+                                <textarea id="input-param-market"
+                                    style="width: 100%; height: 60px; padding: 0.5rem; border: 1px solid #E2E8F0; border-radius: 6px; font-size: 0.85rem;"
+                                    placeholder="経済的な換算価値や他地域への展開性など..."></textarea>
+                            </div>
+                            <div>
+                                <label
+                                    style="display:block; font-size: 0.8rem; font-weight: bold; margin-bottom: 5px; color: #718096;">ニーズ適合
+                                    / 地域の課題解決</label>
+                                <textarea id="input-param-need"
+                                    style="width: 100%; height: 60px; padding: 0.5rem; border: 1px solid #E2E8F0; border-radius: 6px; font-size: 0.85rem;"
+                                    placeholder="地域のどのような痛みを解決するか、その必然性..."></textarea>
+                            </div>
+                            <div>
+                                <label
+                                    style="display:block; font-size: 0.8rem; font-weight: bold; margin-bottom: 5px; color: #718096;">将来性
+                                    / サステナビリティ</label>
+                                <textarea id="input-param-potential"
+                                    style="width: 100%; height: 60px; padding: 0.5rem; border: 1px solid #E2E8F0; border-radius: 6px; font-size: 0.85rem;"
+                                    placeholder="一時的なイベントで終わらない継続的な仕組み..."></textarea>
+                            </div>
+                            <div>
+                                <label
+                                    style="display:block; font-size: 0.8rem; font-weight: bold; margin-bottom: 5px; color: #718096;">実行信頼性
+                                    / 過去の実績</label>
+                                <textarea id="input-param-reliability"
+                                    style="width: 100%; height: 60px; padding: 0.5rem; border: 1px solid #E2E8F0; border-radius: 6px; font-size: 0.85rem;"
+                                    placeholder="チームの体制、過去の類似プロジェクトの成功実績..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                style="padding: 1.5rem 2rem; background: #F7FAFC; border-top: 1px solid #E2E8F0; text-align: right; border-radius: 0 0 12px 12px;">
+                <button class="btn-secondary" onclick="closeCreateModal()" style="margin-right: 10px;">キャンセル</button>
+                <button class="btn-primary" style="background:#2C7A7B;"
+                    onclick="showCreateReview()">プレビュー・確認へ進む</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Project Preview Modal (Step 2: Review mimicking reference image) -->
+    <div id="create-project-review-modal" class="popup-overlay">
+        <div class="popup-content" style="max-width: 900px; border: none; overflow: hidden; position: relative;">
+            <!-- Image Header (Mirroring reference image) -->
+            <div id="review-header-container"
+                style="height: 350px; background: url('https://images.unsplash.com/photo-1514525253344-a81f3f746766?auto=format&fit=crop&q=80&w=1200') center/cover; position: relative;">
+                <div style="position: absolute; top: 20px; right: 20px;">
+                    <button class="close-btn" onclick="closeCreateReview()"
+                        style="color: white; font-size: 2rem; background: rgba(0,0,0,0.3); border-radius: 50%; width: 44px; height: 44px; display: flex; justify-content: center; align-items: center; border: none;">&times;</button>
+                </div>
+            </div>
+
+            <!-- Floating Header Info -->
+            <div style="padding: 2.5rem; margin-top: -60px; position: relative;">
+                <div
+                    style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border: 1px solid #E2E8F0;">
+                    <div style="display: flex; gap: 15px; align-items: center; margin-bottom: 1rem;">
+                        <span class="badge"
+                            style="background: #3182CE; color: white; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 0.8rem;">募集中</span>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <div id="review-segment-info" style="color: #805AD5; font-weight: bold; font-size: 0.9rem;">
+                                Region / Art</div>
+                            <span style="color: #CBD5E0;">|</span>
+                            <div id="review-region-info" style="color: #2B6CB0; font-weight: bold; font-size: 0.9rem;">
+                                横浜市</div>
+                        </div>
+                    </div>
+                    <h2 id="review-title-info" style="font-size: 2.2rem; color: #1A202C; margin-bottom: 1.5rem;">
+                        横浜アートフェスティバル2026</h2>
+
+                    <p id="review-desc-info"
+                        style="line-height: 1.8; color: #4A5568; margin-bottom: 2rem; border-top: 1px solid #EDF2F7; padding-top: 1.5rem;">
+                        横浜の若手芸術家を支援し、街全体をギャラリー化する大規模イベント。過去5回の開催実績があり、今年は「AIとアート」をテーマにトヨタ自動車等の技術協力とのコラボレーションを目指しています。
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
+                        <div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <div
+                                    style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 8px; color: #718096; font-weight: bold;">
+                                    <span>目標金額 / 現在地</span>
+                                    <span id="review-goal-text">¥0 (0% 達成済み)</span>
+                                </div>
+                                <div style="height: 10px; background: #EDF2F7; border-radius: 5px; overflow: hidden;">
+                                    <div style="width: 5%; height: 100%; background: #3182CE; border-radius: 5px;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="font-size: 0.9rem; color: #718096;">
+                                <div style="margin-bottom: 5px;">主催団体 (Owner)</div>
+                                <div
+                                    style="color: #2D3748; font-weight: bold; display: flex; align-items: center; gap: 8px;">
+                                    <i class="fa-solid fa-circle-user" style="color: #3182CE;"></i> 横浜地域アート振興会
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            style="background: #F8FAFC; border-radius: 12px; padding: 2rem; border: 1px solid #E2E8F0;">
+                            <div
+                                style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <div
+                                    style="display: flex; align-items: center; gap: 10px; color: #2C5282; font-weight: 800;">
+                                    <i class="fa-solid fa-robot"></i> AI Analysis
+                                </div>
+                                <div id="review-sdgs-badges" style="display: flex; gap: 4px;">
+                                    <!-- Dynamic SDG badges -->
+                                </div>
+                            </div>
+                            <div style="font-size: 1.5rem; font-weight: 900; color: #2D3748; margin-bottom: 1rem;">
+                                <i class="fa-solid fa-graduation-cap"></i> Quality: <span
+                                    id="review-quality-grade">A</span>
+                            </div>
+                            <div style="margin-bottom: 1rem; display: flex; gap: 5px; flex-wrap: wrap;">
+                                <span class="badge" style="background:#EBF8FF; color:#2B6CB0; font-size:0.7rem;">信頼性
+                                    ◎</span>
+                                <span class="badge" style="background:#F0FFF4; color:#2F855A; font-size:0.7rem;">波及性
+                                    〇</span>
+                                <span class="badge" style="background:#FFF5F5; color:#C53030; font-size:0.7rem;">地域ニーズ
+                                    〇</span>
+                            </div>
+                            <p id="review-ai-assessment" style="font-size: 0.85rem; line-height: 1.6; color: #718096;">
+                                入力された情報を元に、AIが社会的インパクトと実行確実性を多角的に分析します。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky Footer in Modal -->
+            <div
+                style="padding: 1.5rem 2.5rem; background: #F7FAFC; border-top: 1px solid #E2E8F0; display: flex; justify-content: flex-end; gap: 1rem; border-radius: 0 0 12px 12px;">
+                <button class="btn-secondary" onclick="closeCreateReview()"
+                    style="padding: 0.8rem 2.5rem; font-weight: bold; font-size: 1rem;">修正する</button>
+                <button class="btn-primary"
+                    style="background: #2D3748; padding: 0.8rem 2.5rem; font-weight: bold; font-size: 1rem;"
+                    onclick="alert('申請が完了しました。事務局による審査（数営業日）をお待ちください。')">承認・申請</button>
+            </div>
+        </div>
+    </div>
+
     <script src="../script.js"></script>
     <script>
         function toggleRoleMenu() {
             const menu = document.getElementById('role-menu');
             if (menu.style.display === 'block') { menu.style.display = 'none'; } else { menu.style.display = 'block'; }
         }
+
+        function openEditModal() {
+            document.getElementById('edit-project-modal').classList.add('active');
+        }
+
+        function openCreateModal() {
+            document.getElementById('create-project-modal').classList.add('active');
+        }
+
+        function closeCreateModal() {
+            document.getElementById('create-project-modal').classList.remove('active');
+        }
+
+        let selectedImageData = null;
+        let selectedSDGs = new Set();
+
+        function toggleSDG(el, id) {
+            const colors = [
+                '#E5243B', '#DDA63A', '#4C9F38', '#C5192D', '#FF3A21',
+                '#26BDE2', '#FCC30B', '#A21942', '#FD6925', '#DD1367',
+                '#FD9D24', '#BF8B2E', '#3F7E44', '#0A97D9', '#56BC27',
+                '#00689D', '#19486A'
+            ];
+            if (selectedSDGs.has(id)) {
+                selectedSDGs.delete(id);
+                el.style.background = '#EDF2F7';
+                el.style.color = '#718096';
+                el.style.borderColor = 'transparent';
+            } else {
+                selectedSDGs.add(id);
+                el.style.background = colors[id - 1];
+                el.style.color = 'white';
+                el.style.borderColor = colors[id - 1];
+            }
+        }
+
+        function handleImageSelect(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    selectedImageData = e.target.result;
+                    const preview = document.getElementById('image-preview-thumbnail');
+                    preview.style.display = 'block';
+                    preview.querySelector('img').src = selectedImageData;
+                    document.getElementById('image-upload-area').style.borderColor = '#2C7A7B';
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function showCreateReview() {
+            const title = document.getElementById('input-project-title').value || "無題のプロジェクト";
+            const segment = document.getElementById('input-project-segment');
+            const segmentLabel = segment.options[segment.selectedIndex].text.split(' ')[1]; // Get name after SEG-XX
+            const region = document.getElementById('input-project-region').value || "未発表エリア";
+            const desc = document.getElementById('input-project-desc').value || "説明なし";
+            const funding = document.getElementById('input-project-funding').value || "0";
+
+            // AI Analysis Mockup logic
+            const marketPara = document.getElementById('input-param-market').value;
+            const needPara = document.getElementById('input-param-need').value;
+            const qualityGrade = (marketPara.length > 20 && needPara.length > 20) ? "S" : "A";
+            const assessmentTxt = (qualityGrade === "S") ?
+                "提供された詳細なパラメータに基づき、極めて高い社会的価値と実現性が認められました。特有の課題に対する明確なアプローチが評価されています。" :
+                "入力された情報を元に、AIが社会的インパクトを暫定的に分析しました。地域活性化とTOKUスコア向上に寄与する標準的な品質が確認されています。";
+
+            document.getElementById('review-title-info').innerText = title;
+            document.getElementById('review-segment-info').innerText = segmentLabel;
+            document.getElementById('review-region-info').innerText = region;
+            document.getElementById('review-desc-info').innerText = desc;
+            document.getElementById('review-goal-text').innerText = "¥" + Number(funding).toLocaleString() + " (0% 達成済み)";
+
+            document.getElementById('review-quality-grade').innerText = qualityGrade;
+            document.getElementById('review-ai-assessment').innerText = assessmentTxt;
+
+            // Render SDG badges in review
+            const sdgBadgeContainer = document.getElementById('review-sdgs-badges');
+            sdgBadgeContainer.innerHTML = '';
+            const colors = [
+                '#E5243B', '#DDA63A', '#4C9F38', '#C5192D', '#FF3A21',
+                '#26BDE2', '#FCC30B', '#A21942', '#FD6925', '#DD1367',
+                '#FD9D24', '#BF8B2E', '#3F7E44', '#0A97D9', '#56BC27',
+                '#00689D', '#19486A'
+            ];
+            selectedSDGs.forEach(id => {
+                const badge = document.createElement('div');
+                badge.style.cssText = `width: 20px; height: 20px; background: ${colors[id - 1]}; color: white; border-radius: 2px; font-size: 0.6rem; display: flex; align-items: center; justify-content: center; font-weight: bold;`;
+                badge.innerText = id;
+                sdgBadgeContainer.appendChild(badge);
+            });
+
+            if (selectedImageData) {
+                document.getElementById('review-header-container').style.backgroundImage = `url(${selectedImageData})`;
+            }
+
+            closeCreateModal();
+            document.getElementById('create-project-review-modal').classList.add('active');
+        }
+
+        function closeCreateReview() {
+            document.getElementById('create-project-review-modal').classList.remove('active');
+        }
+
+        function showEditReview() {
+            const title = document.getElementById('edit-project-title').value;
+            const segment = document.getElementById('edit-project-segment');
+            const segmentLabel = segment.options[segment.selectedIndex].text.split(' ')[1];
+            const region = document.getElementById('edit-project-region').value;
+            const desc = document.getElementById('edit-project-desc').value;
+            const funding = document.getElementById('edit-project-funding').value;
+
+            document.getElementById('review-title-info').innerText = title;
+            document.getElementById('review-segment-info').innerText = segmentLabel;
+            document.getElementById('review-region-info').innerText = region;
+            document.getElementById('review-desc-info').innerText = desc;
+            document.getElementById('review-goal-text').innerText = "¥" + Number(funding).toLocaleString() + " (現状維持・再審査中)";
+
+            // Update header image
+            const header = document.getElementById('review-header-container');
+            header.style.background = "url('https://images.unsplash.com/photo-1460666819451-7410f5406d01?auto=format&fit=crop&q=80&w=1200') center/cover";
+
+            document.getElementById('edit-project-modal').classList.remove('active');
+            document.getElementById('create-project-review-modal').classList.add('active');
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function submitReceiptReport() {
+            alert('受領報告を送信しました。事務局で内容を確認いたします。');
+            closeModal('modal-receipt-report');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function (event) {
+            const editModal = document.getElementById('edit-project-modal');
+            const createModal = document.getElementById('create-project-modal');
+            const reviewModal = document.getElementById('create-project-review-modal');
+            const sdgModal = document.getElementById('modal-sdg-explanation');
+            const receiptModal = document.getElementById('modal-receipt-report');
+
+            if (event.target == editModal) closeModal('edit-project-modal');
+            if (event.target == createModal) closeCreateModal();
+            if (event.target == reviewModal) closeCreateReview();
+            if (event.target == sdgModal) closeModal('modal-sdg-explanation');
+            if (event.target == receiptModal) closeModal('modal-receipt-report');
+        }
     </script>
+
+    <!-- SDG Explanation Modal (Synchronized from Sponsor) -->
+    <div id="modal-sdg-explanation" class="popup-overlay">
+        <div class="popup-content" style="max-width: 800px;">
+            <div class="popup-header"
+                style="background: linear-gradient(135deg, #1A365D 0%, #2A4365 100%); color: white; border-bottom: none; padding: 2rem;">
+                <div style="flex: 1;">
+                    <div
+                        style="font-size: 0.9rem; color: #63B3ED; font-weight: bold; letter-spacing: 0.1em; margin-bottom: 0.5rem;">
+                        IMPACT ALLOCATION</div>
+                    <h2 class="popup-title" style="color: white; font-size: 2rem; font-weight: 900;">SDG貢献分布とは？</h2>
+                </div>
+                <button class="close-btn" onclick="closeModal('modal-sdg-explanation')"
+                    style="color: white; opacity: 0.8;">&times;</button>
+            </div>
+
+            <div class="popup-body" style="padding: 2.5rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem;">
+                    <div>
+                        <h3
+                            style="font-size: 1.25rem; margin-bottom: 1rem; color: #2D3748; display: flex; align-items: center; gap: 10px;">
+                            <i class="fa-solid fa-diagram-project" style="color: #3182CE;"></i> インパクトのポートフォリオ
+                        </h3>
+                        <p style="line-height: 1.8; color: #4A5568; font-size: 0.95rem;">
+                            SDG貢献分布は、あなたが運営している複数のプロジェクトが生み出す「社会的価値」を、国連の持続可能な開発目標（SDGs）の17目標にマッピング・集計したものです。<br><br>
+                            プロジェクト全体でどの目標に深く寄与しているか、また自身の強みがどこにあるかを客観的に把握し、スポンサー企業への提案材料として活用できます。
+                        </p>
+                    </div>
+                    <div style="background: #F7FAFC; border-radius: 16px; padding: 1.5rem; border: 1px solid #E2E8F0;">
+                        <h3 style="font-size: 1rem; margin-bottom: 1rem; color: #2D3748; font-weight: 700;">算定の仕組み</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="display: flex; gap: 12px; align-items: start;">
+                                <div style="color: #3182CE; margin-top: 3px;"><i class="fa-solid fa-tag"></i></div>
+                                <div style="font-size: 0.9rem; color: #2D3748;"><b>AI自動マッピング:</b>
+                                    活動報告やプロジェクト詳細をAIが解析し、関連する目標を自動抽出。</div>
+                            </div>
+                            <div style="display: flex; gap: 12px; align-items: start;">
+                                <div style="color: #3182CE; margin-top: 3px;"><i class="fa-solid fa-star"></i>
+                                </div>
+                                <div style="font-size: 0.9rem; color: #2D3748;"><b>インパクト証跡評価:</b>
+                                    日々の証跡（写真・メモ）の質と量に基づき、貢献度を数値化。</div>
+                            </div>
+                            <div style="display: flex; gap: 12px; align-items: start;">
+                                <div style="color: #3182CE; margin-top: 3px;"><i class="fa-solid fa-chart-pie"></i>
+                                </div>
+                                <div style="font-size: 0.9rem; color: #2D3748;"><b>リアルタイム集計:</b>
+                                    管理プロジェクト全ての貢献度をリアルタイムで集約し、グラフ化。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <h3
+                        style="font-size: 1.1rem; color: #2D3748; margin-bottom: 1.5rem; text-align: center; font-weight: 900;">
+                        主要な目標の例
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                        <div
+                            style="display: flex; align-items: center; gap: 10px; background: #FFF5F5; padding: 10px; border-radius: 8px;">
+                            <div
+                                style="width:30px; height:30px; background:#E5243B; color:white; font-size:0.8rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                4</div>
+                            <div style="font-size: 0.85rem; color: #2D3748; font-weight: bold;">質の高い教育を</div>
+                        </div>
+                        <div
+                            style="display: flex; align-items: center; gap: 10px; background: #FFFBEB; padding: 10px; border-radius: 8px;">
+                            <div
+                                style="width:30px; height:30px; background:#DDA63A; color:white; font-size:0.8rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                11</div>
+                            <div style="font-size: 0.85rem; color: #2D3748; font-weight: bold;">住み続けられる街</div>
+                        </div>
+                        <div
+                            style="display: flex; align-items: center; gap: 10px; background: #F0FFF4; padding: 10px; border-radius: 8px;">
+                            <div
+                                style="width:30px; height:30px; background:#4C9F38; color:white; font-size:0.8rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                13</div>
+                            <div style="font-size: 0.85rem; color: #2D3748; font-weight: bold;">気候変動に具体策</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #EDF2F7;">
+                    <button class="btn-primary" onclick="closeModal('modal-sdg-explanation')"
+                        style="min-width: 200px; padding: 0.8rem 2.5rem;">閉じる</button>
+                    <div style="margin-top: 1rem; font-size: 0.8rem; color: #A0AEC0;">SDG Integration Engine v1.2 |
+                        Powered by Sponsor Nexus</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Support Receipt Report Modal (Synchronized with Admin's Non-Custodial Logic) -->
+    <div id="modal-receipt-report" class="popup-overlay">
+        <div class="popup-content" style="max-width: 600px;">
+            <div class="popup-header" style="background:#2C7A7B; color:white;">
+                <h2 class="popup-title" style="color:white;">支援金の受領報告</h2>
+                <button class="close-btn" onclick="closeModal('modal-receipt-report')"
+                    style="color:white;">&times;</button>
+            </div>
+            <div class="popup-body" style="padding:2.5rem;">
+                <div
+                    style="background:#E6FFFA; border:1px solid #B2F5EA; padding:1.2rem; border-radius:12px; margin-bottom:1.5rem; color:#234E52; font-size:0.9rem; line-height:1.6;">
+                    <i class="fa-solid fa-circle-info" style="color:#2C7A7B; margin-right:5px;"></i>
+                    スポンサーから直接の振込等で支援金を受け取った場合に、このフォームから事務局へ報告してください。事務局で確認後、プロジェクトの支援総額に反映されます。
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:1.5rem;">
+                    <div>
+                        <label
+                            style="display:block; font-size:0.9rem; font-weight:bold; margin-bottom:0.6rem; color:#4A5568;">対象プロジェクト</label>
+                        <select
+                            style="width:100%; padding:0.8rem; border:1px solid #E2E8F0; border-radius:10px; background:#F7FAFC; color:#718096; font-size:0.95rem;"
+                            disabled>
+                            <option>横浜アートフェスティバル 2026</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label
+                            style="display:block; font-size:0.9rem; font-weight:bold; margin-bottom:0.6rem; color:#4A5568;">支援企業（スポンサー）</label>
+                        <select
+                            style="width:100%; padding:0.8rem; border:1px solid #E2E8F0; border-radius:10px; font-size:0.95rem; color:#2D3748; background:white;">
+                            <option value="">企業を選択してください</option>
+                            <option>株式会社グローバルブリッジ (支援確定済: 500万円)</option>
+                            <option>東日本都市開発株式会社 (支援確定済: 200万円)</option>
+                            <option>横浜クリエイティブ産業推進機構 (支援確定済: 150万円)</option>
+                            <option>その他 (新規・飛び込み等)</option>
+                        </select>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.2rem;">
+                        <div>
+                            <label
+                                style="display:block; font-size:0.9rem; font-weight:bold; margin-bottom:0.6rem; color:#4A5568;">受領金額</label>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <input type="number" placeholder="金額を入力"
+                                    style="flex:1; padding:0.8rem; border:1px solid #E2E8F0; border-radius:10px; font-size:0.95rem;">
+                                <span style="font-weight:bold; color:#4A5568;">円</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label
+                                style="display:block; font-size:0.9rem; font-weight:bold; margin-bottom:0.6rem; color:#4A5568;">受領日</label>
+                            <input type="date"
+                                style="width:100%; padding:0.8rem; border:1px solid #E2E8F0; border-radius:10px; font-size:0.95rem; color:#2D3748;">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label
+                            style="display:block; font-size:0.9rem; font-weight:bold; margin-bottom:0.6rem; color:#4A5568;">振込明細・領収書の写し
+                            (任意)</label>
+                        <div style="border:2px dashed #CBD5E0; border-radius:12px; padding:2rem; text-align:center; background:#F7FAFC; cursor:pointer;"
+                            onmouseover="this.style.borderColor='#2C7A7B'; this.style.background='#E6FFFA';"
+                            onmouseout="this.style.borderColor='#CBD5E0'; this.style.background='#F7FAFC';">
+                            <i class="fa-solid fa-file-invoice-dollar"
+                                style="font-size:2rem; color:#A0AEC0; margin-bottom:10px;"></i>
+                            <div style="font-size:0.85rem; color:#718096; font-weight:bold;">ファイルをドラッグ＆ドロップ</div>
+                            <div style="font-size:0.75rem; color:#A0AEC0; margin-top:5px;">または クリックして選択</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label
+                            style="display:block; font-size:0.9rem; font-weight:bold; margin-bottom:0.6rem; color:#4A5568;">備考・メッセージ
+                            (任意)</label>
+                        <textarea placeholder="受領に関する補足事項（特定の使途指定など）があれば入力してください"
+                            style="width:100%; height:100px; padding:1rem; border:1px solid #E2E8F0; border-radius:10px; resize:none; font-size:0.9rem; line-height:1.6;"></textarea>
+                    </div>
+                </div>
+
+                <div style="margin-top:2.5rem; display:flex; gap:1.2rem;">
+                    <button class="btn-secondary" style="flex:1; padding:0.8rem;"
+                        onclick="closeModal('modal-receipt-report')">キャンセル</button>
+                    <button class="btn-primary"
+                        style="flex:2; background:#2C7A7B; padding:0.8rem; font-weight:bold; box-shadow:0 4px 12px rgba(44, 122, 123, 0.2);"
+                        onclick="submitReceiptReport()">事務局に受領報告を送る</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

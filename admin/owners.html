@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sponsor Nexus - Admin Owner Management</title>
+    <title>Sponsor Cloud - Admin Owner Management</title>
     <!-- External CSS -->
-    <link href="../style.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/layout.css" rel="stylesheet">
+    <link href="../css/components.css" rel="stylesheet">
+    <link href="../css/specific_ui.css" rel="stylesheet">
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
         rel="stylesheet">
@@ -19,7 +22,7 @@
     <nav class="sidebar">
         <div class="logo">
             <i class="fa-solid fa-link"></i>
-            Sponsor Nexus
+            Sponsor Cloud
         </div>
 
         <div id="menu-admin" class="nav-menu">
@@ -35,15 +38,32 @@
             <a href="projects.html" class="nav-link">
                 <i class="fa-solid fa-list-check"></i> プロジェクト一覧
             </a>
-            <a href="reports.html" class="nav-link">
-                <i class="fa-regular fa-chart-bar"></i> レポート管理
+            <a href="reports-project.html" class="nav-link">
+                <i class="fa-solid fa-file-lines"></i> Project Report承認
+            </a>
+            <a href="reports-impact.html" class="nav-link">
+                <i class="fa-solid fa-chart-pie"></i> Impact Report生成
             </a>
             <a href="payments.html" class="nav-link">
-                <i class="fa-solid fa-money-bill-transfer"></i> 入出金管理
+                <i class="fa-solid fa-money-bill-transfer"></i> 資金循環管理
             </a>
             <a href="settings.html" class="nav-link">
                 <i class="fa-solid fa-cog"></i> 運営設定
             </a>
+            <a href="../concept.html" class="nav-link"
+                style="margin-top: 1.5rem; color: #B794F4; font-weight: bold; border-top: 1px solid #2D3748; padding-top: 1rem;">
+                <i class="fa-solid fa-book-open"></i> コンセプト・意義
+            </a>
+        </div>
+
+        <div class="legal-links"
+            style="padding: 1rem 1.5rem; font-size: 0.75rem; text-align: center; margin-top: auto; padding-bottom: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+            <a href="../tokushoho.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">特定商取引法に基づく表記</a>
+            <a href="../privacy.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">プライバシーポリシー</a>
+            <a href="../terms.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block;">利用規約・免責事項</a>
         </div>
 
         <div class="user-bottom">
@@ -53,10 +73,14 @@
                     (Active)
                 </a>
                 <a href="../sponsor/index.html" class="role-option">
-                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>スポンサーモード
                 </a>
                 <a href="../owner/index.html" class="role-option">
                     <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="../partner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    インパクトパートナーモード
                 </a>
                 <a href="../index.html" class="role-option"
                     style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
@@ -129,8 +153,10 @@
                                 src="https://ui-avatars.com/api/?name=Mirai+Lab&background=38B2AC&color=fff"
                                 style="width:32px; height:32px; border-radius:50%;"></td>
                         <td>
-                            <div style="font-weight:bold; color:#2D3748;">未来教育ラボ</div>
-                            <div style="font-size:0.85rem; color:#718096;">代表: 佐藤 科学</div>
+                            <div style="font-weight:bold; color:#2D3748;">未来都市開発機構</div>
+                            <div style="font-size:0.85rem; color:#718096;">代表: 未来 創</div>
+                            <div style="font-size:0.75rem; color:#3182CE; margin-top:4px;"><i
+                                    class="fa-solid fa-flag"></i> 未来都市開発プロジェクト</div>
                         </td>
                         <td>
                             <div>NPO法人</div>
@@ -144,17 +170,79 @@
                     <!-- Approved Owner 2 -->
                     <tr class="match-row">
                         <td align="center"><img
-                                src="https://ui-avatars.com/api/?name=Yokohama+Art&background=2C7A7B&color=fff"
+                                src="https://ui-avatars.com/api/?name=Tech+AI&background=2C7A7B&color=fff"
                                 style="width:32px; height:32px; border-radius:50%;"></td>
                         <td>
-                            <div style="font-weight:bold; color:#2D3748;">横浜アート振興会</div>
-                            <div style="font-size:0.85rem; color:#718096;">代表: 横井 太郎</div>
+                            <div style="font-weight:bold; color:#2D3748;">AI・DX推進コンソーシアム</div>
+                            <div style="font-size:0.85rem; color:#718096;">代表: デジタル 太郎</div>
+                            <div style="font-size:0.75rem; color:#3182CE; margin-top:4px;"><i
+                                    class="fa-solid fa-flag"></i> AI導入促進プラットフォーム</div>
                         </td>
                         <td>
                             <div>一般社団法人</div>
-                            <div style="font-size:0.85rem; color:#718096;">2015年4月 (11年)</div>
+                            <div style="font-size:0.85rem; color:#718096;">2020年4月 (6年)</div>
                         </td>
                         <td>5件 (募集中:1)</td>
+                        <td align="center"><span class="badge bg-green">承認済み</span></td>
+                        <td><button class="btn-secondary" style="padding:0.4rem 1rem;">詳細</button></td>
+                    </tr>
+
+                    <!-- Approved Owner 3 -->
+                    <tr class="match-row">
+                        <td align="center"><img
+                                src="https://ui-avatars.com/api/?name=Sus+Future&background=2B6CB0&color=fff"
+                                style="width:32px; height:32px; border-radius:50%;"></td>
+                        <td>
+                            <div style="font-weight:bold; color:#2D3748;">サステナビリティ・フューチャー</div>
+                            <div style="font-size:0.85rem; color:#718096;">代表: エコ 葉子</div>
+                            <div style="font-size:0.75rem; color:#3182CE; margin-top:4px;"><i
+                                    class="fa-solid fa-flag"></i> サステナビリティ推進フォーラム</div>
+                        </td>
+                        <td>
+                            <div>NPO法人</div>
+                            <div style="font-size:0.85rem; color:#718096;">2015年10月 (10年)</div>
+                        </td>
+                        <td>2件 (募集中:1)</td>
+                        <td align="center"><span class="badge bg-green">承認済み</span></td>
+                        <td><button class="btn-secondary" style="padding:0.4rem 1rem;">詳細</button></td>
+                    </tr>
+
+                    <!-- Approved Owner 4 -->
+                    <tr class="match-row">
+                        <td align="center"><img
+                                src="https://ui-avatars.com/api/?name=Next+Gen&background=6B46C1&color=fff"
+                                style="width:32px; height:32px; border-radius:50%;"></td>
+                        <td>
+                            <div style="font-weight:bold; color:#2D3748;">次世代通信インフラ協議会</div>
+                            <div style="font-size:0.85rem; color:#718096;">代表: 電波 次郎</div>
+                            <div style="font-size:0.75rem; color:#3182CE; margin-top:4px;"><i
+                                    class="fa-solid fa-flag"></i> 次世代通信インフラ整備</div>
+                        </td>
+                        <td>
+                            <div>一般社団法人</div>
+                            <div style="font-size:0.85rem; color:#718096;">2021年6月 (4年)</div>
+                        </td>
+                        <td>1件 (募集中:1)</td>
+                        <td align="center"><span class="badge bg-green">承認済み</span></td>
+                        <td><button class="btn-secondary" style="padding:0.4rem 1rem;">詳細</button></td>
+                    </tr>
+
+                    <!-- Approved Owner 5 -->
+                    <tr class="match-row">
+                        <td align="center"><img
+                                src="https://ui-avatars.com/api/?name=Global+Logi&background=DD6B20&color=fff"
+                                style="width:32px; height:32px; border-radius:50%;"></td>
+                        <td>
+                            <div style="font-weight:bold; color:#2D3748;">グローバル物流革新ネットワーク</div>
+                            <div style="font-size:0.85rem; color:#718096;">代表: 運送 剛</div>
+                            <div style="font-size:0.75rem; color:#3182CE; margin-top:4px;"><i
+                                    class="fa-solid fa-flag"></i> グローバル物流最適化システム</div>
+                        </td>
+                        <td>
+                            <div>NPO法人</div>
+                            <div style="font-size:0.85rem; color:#718096;">2019年2月 (7年)</div>
+                        </td>
+                        <td>4件 (募集中:2)</td>
                         <td align="center"><span class="badge bg-green">承認済み</span></td>
                         <td><button class="btn-secondary" style="padding:0.4rem 1rem;">詳細</button></td>
                     </tr>

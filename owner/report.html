@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sponsor Nexus - Reporting</title>
-    <link href="../style.css" rel="stylesheet">
+    <title>Sponsor Cloud - Reporting</title>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/layout.css" rel="stylesheet">
+    <link href="../css/components.css" rel="stylesheet">
+    <link href="../css/specific_ui.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -16,34 +19,56 @@
     <nav class="sidebar">
         <div class="logo">
             <i class="fa-solid fa-link"></i>
-            Sponsor Nexus
+            Sponsor Cloud
         </div>
         <div id="menu-owner" class="nav-menu">
             <a href="index.html" class="nav-link">
                 <i class="fa-solid fa-home"></i> マイプロジェクト
             </a>
             <a href="offers.html" class="nav-link">
-                <i class="fa-solid fa-envelope-open-text"></i> オファー受信箱 <span class="badge bg-red"
+                <i class="fa-solid fa-envelope-open-text"></i> スポンサー候補 (AI推奨) <span class="badge bg-red"
                     style="margin-left:5px;">2</span>
             </a>
             <a href="report.html" class="nav-link active">
-                <i class="fa-solid fa-edit"></i> 活動報告の提出
+                <i class="fa-solid fa-edit"></i> 日々の証跡・活動報告
             </a>
             <a href="settings.html" class="nav-link">
                 <i class="fa-solid fa-cog"></i> 団体設定
             </a>
+            <a href="../concept.html" class="nav-link"
+                style="margin-top: 1.5rem; color: #B794F4; font-weight: bold; border-top: 1px solid #2D3748; padding-top: 1rem;">
+                <i class="fa-solid fa-book-open"></i> コンセプト・意義
+            </a>
+            <a href="#" class="nav-link" onclick="openModal('modal-sdg-explanation')"
+                style="color: #4C9F38; font-weight: bold;">
+                <i class="fa-solid fa-chart-line"></i> SDG貢献分布とは？
+            </a>
         </div>
+        <div class="legal-links"
+            style="padding: 1rem 1.5rem; font-size: 0.75rem; text-align: center; margin-top: auto; padding-bottom: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+            <a href="../tokushoho.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">特定商取引法に基づく表記</a>
+            <a href="../privacy.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">プライバシーポリシー</a>
+            <a href="../terms.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block;">利用規約・免責事項</a>
+        </div>
+
         <div class="user-bottom">
             <div class="role-menu" id="role-menu">
                 <a href="../admin/index.html" class="role-option">
                     <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
                 </a>
                 <a href="../sponsor/index.html" class="role-option">
-                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>スポンサーモード
                 </a>
                 <a href="index.html" class="role-option">
                     <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
                     (Active)
+                </a>
+                <a href="../partner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    インパクトパートナーモード
                 </a>
                 <a href="../index.html" class="role-option"
                     style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
@@ -66,52 +91,225 @@
             <h1 class="page-title">活動報告の提出</h1>
         </div>
 
-        <div class="list-section" style="max-width:800px; margin:0 auto;">
+        <div class="list-section" style="max-width:900px; margin:0 auto;">
 
-            <!-- Project Selector -->
+            <!-- Unified Recording Component (From Dashboard) -->
             <div
-                style="margin-bottom:2rem; background:white; padding:1.5rem; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.05);">
-                <label style="display:block; font-weight:bold; color:#4A5568; margin-bottom:0.8rem;">
-                    1. 報告するプロジェクトを選択
-                </label>
-                <select
-                    style="width:100%; padding:0.8rem; border:1px solid #CBD5E0; border-radius:6px; font-size:1rem; background:#F7FAFC;">
-                    <option>横浜アートフェスティバル 2026 (募集中)</option>
-                    <option>(2025) 横浜アートフェスティバル (終了 - 完了報告)</option>
-                </select>
+                style="background:linear-gradient(135deg, #E6FFFA 0%, #B2F5EA 100%); border-radius:12px; padding:2rem; box-shadow:0 4px 15px rgba(56, 178, 172, 0.1); margin-bottom:3rem; border:2px solid #81E6D9;">
+                <h2
+                    style="font-size:1.4rem; color:#234E52; margin-top:0; margin-bottom:1rem; display:flex; align-items:center; gap:10px;">
+                    <i class="fa-solid fa-camera-retro"></i> 今日の活動を記録しましょう
+                </h2>
+                <p style="color:#2C7A7B; margin-bottom:1.5rem; font-size:0.95rem;">
+                    事務局AIが投稿内容から自動でレポートを作成し、支援企業へ共有します。日々の記録が、TOKUスコア（社会的信頼）の源泉となります。
+                </p>
+
+                <div
+                    style="background:white; border-radius:12px; padding:1.5rem; display:flex; gap:1.5rem; align-items:flex-start; border: 1px solid #B2F5EA;">
+                    <!-- Photo Upload Area -->
+                    <div style="width:160px; flex-shrink:0;">
+                        <div style="border:2px dashed #CBD5E0; border-radius:12px; height:130px; display:flex; flex-direction:column; justify-content:center; align-items:center; cursor:pointer; background:#F7FAFC; transition:all 0.2s;"
+                            onmouseover="this.style.borderColor='#319795'; this.style.background='#E6FFFA';"
+                            onmouseout="this.style.borderColor='#CBD5E0'; this.style.background='#F7FAFC';">
+                            <i class="fa-solid fa-image" style="font-size:2rem; color:#A0AEC0; margin-bottom:10px;"></i>
+                            <span style="font-size:0.85rem; color:#718096; font-weight:bold;">写真をアップロード</span>
+                        </div>
+                    </div>
+                    <!-- Quick Text Area -->
+                    <div style="flex:1;">
+                        <div style="margin-bottom: 12px;">
+                            <label
+                                style="font-size:0.85rem; color:#4A5568; font-weight:bold; display:block; margin-bottom:6px;">記録するプロジェクト</label>
+                            <select
+                                style="width:100%; padding:0.7rem; border:1px solid #E2E8F0; border-radius:8px; font-size:0.95rem; color:#2D3748; background:white;">
+                                <option>横浜アートフェスティバル 2026 (募集中)</option>
+                                <option>若手アーティスト スタジオ支援プログラム (準備中)</option>
+                            </select>
+                        </div>
+                        <textarea placeholder="今日の活動を一言で！ (例: 地元の子供たちとワークショップの準備をしました！)"
+                            style="width:100%; height:90px; padding:1rem; border:1px solid #E2E8F0; border-radius:8px; resize:none; margin-bottom:12px; font-size:1rem; line-height:1.5;"></textarea>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-size:0.8rem; color:#718096;"><i class="fa-solid fa-magic"
+                                    style="color:#B794F4; margin-right:5px;"></i>
+                                AIが自動でインパクトレポートに清書します</span>
+                            <button class="btn-primary"
+                                style="background:#2C7A7B; padding:0.7rem 2.5rem; border-radius:30px; font-weight:bold; box-shadow:0 4px 10px rgba(44, 122, 123, 0.2);"
+                                onclick="alert('記録を保存しました。AIが分析を開始します。')">記録を投稿</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Upload Area -->
-            <div style="background:white; padding:2rem; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.05);">
-                <label style="display:block; font-weight:bold; color:#4A5568; margin-bottom:1rem;">
-                    2. 活動の様子 (写真とメモ)
-                </label>
-
-                <div class="upload-area"
-                    style="border: 2px dashed #CBD5E0; border-radius: 12px; padding: 2rem; text-align: center; margin-bottom: 2rem; background: #F7FAFC; cursor:pointer; transition:all 0.2s;"
-                    onmouseover="this.style.background='#EDF2F7'" onmouseout="this.style.background='#F7FAFC'">
-                    <i class="fa-solid fa-cloud-arrow-up"
-                        style="font-size: 3rem; color: #A0AEC0; margin-bottom: 1rem;"></i>
-                    <p style="color: #4A5568; font-weight: bold;">ここに写真をドラッグ＆ドロップ</p>
-                    <p style="color: #718096; font-size: 0.9rem;">または クリックしてファイルを選択</p>
+            <!-- Historical Activity List -->
+            <div style="margin-top:2rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                    <h3 style="font-size:1.2rem; color:#2D3748; margin:0; font-weight:bold;">
+                        <i class="fa-solid fa-clock-rotate-left" style="margin-right:8px; color:#4A5568;"></i> これまでの活動記録
+                    </h3>
+                    <div style="font-size:0.9rem; color:#718096;">全 12 件の記録</div>
                 </div>
 
-                <div style="margin-bottom:2rem;">
-                    <label style="display:block; font-size:0.9rem; color:#718096; margin-bottom:0.5rem;">ひとことメモ
-                        (AIがこれを元に記事を書きます)</label>
-                    <textarea
-                        placeholder="例: 今日は地元の小学生50人を招いて、廃材を使ったアートワークショップを行いました。みんな夢中で取り組んでくれて、素晴らしい作品がたくさん生まれました！"
-                        style="width:100%; height:120px; padding:1rem; border:1px solid #E2E8F0; border-radius:8px; resize:vertical; line-height:1.6;"></textarea>
+                <div style="display:flex; flex-direction:column; gap:1.2rem;">
+                    <!-- Activity Card 1 -->
+                    <div
+                        style="background:white; border-radius:12px; padding:1.2rem; display:flex; gap:1.2rem; border:1px solid #E2E8F0; box-shadow:0 2px 4px rgba(0,0,0,0.02);">
+                        <div
+                            style="width:100px; height:80px; background:#F7FAFC; border-radius:8px; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                            <i class="fa-solid fa-image" style="color:#CBD5E0; font-size:1.5rem;"></i>
+                        </div>
+                        <div style="flex:1;">
+                            <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                                <span style="font-size:0.8rem; color:#718096; font-weight:bold;">2026.03.01 (今日)</span>
+                                <span
+                                    style="font-size:0.75rem; background:#E6FFFA; color:#2C7A7B; padding:2px 8px; border-radius:4px; font-weight:bold;">AI解析中</span>
+                            </div>
+                            <div style="font-weight:bold; color:#2D3748; margin-bottom:5px; font-size:1rem;">
+                                地域ボランティア向けのアート講習会を実施</div>
+                            <div style="font-size:0.85rem; color:#4A5568; line-height:1.5;">
+                                横浜アートフェスティバル2026：本日は20名のボランティアの方にお集まりいただき、展示サポートの講習を行いました。</div>
+                        </div>
+                    </div>
+
+                    <!-- Activity Card 2 -->
+                    <div
+                        style="background:white; border-radius:12px; padding:1.2rem; display:flex; gap:1.2rem; border:1px solid #E2E8F0; box-shadow:0 2px 4px rgba(0,0,0,0.02);">
+                        <div style="width:100px; height:80px; background:#F7FAFC; border-radius:8px; overflow:hidden;">
+                            <img src="https://images.unsplash.com/photo-1460666819451-7412e8b26a6e?auto=format&fit=crop&w=100&h=80&q=80"
+                                alt="Activity" style="width:100%; height:100%; object-fit:cover;">
+                        </div>
+                        <div style="flex:1;">
+                            <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                                <span style="font-size:0.8rem; color:#718096; font-weight:bold;">2026.02.26</span>
+                                <span
+                                    style="font-size:0.75rem; background:#EBF8FF; color:#3182CE; padding:2px 8px; border-radius:4px; font-weight:bold;">レポート送信済</span>
+                            </div>
+                            <div style="font-weight:bold; color:#2D3748; margin-bottom:5px; font-size:1rem;">
+                                メインビジュアルのラフデザインが完成</div>
+                            <div style="font-size:0.85rem; color:#4A5568; line-height:1.5;">
+                                事務局会議にて告知用のメインビジュアルを決定。地域住民の方々の声を反映させたデザインになりました。</div>
+                        </div>
+                    </div>
+
+                    <!-- Activity Card 3 -->
+                    <div
+                        style="background:white; border-radius:12px; padding:1.2rem; display:flex; gap:1.2rem; border:1px solid #E2E8F0; box-shadow:0 2px 4px rgba(0,0,0,0.02);">
+                        <div style="width:100px; height:80px; background:#F7FAFC; border-radius:8px; overflow:hidden;">
+                            <img src="https://images.unsplash.com/photo-1541462608141-ad6712b77c68?auto=format&fit=crop&w=100&h=80&q=80"
+                                alt="Activity" style="width:100%; height:100%; object-fit:cover;">
+                        </div>
+                        <div style="flex:1;">
+                            <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                                <span style="font-size:0.8rem; color:#718096; font-weight:bold;">2026.02.15</span>
+                                <span
+                                    style="font-size:0.75rem; background:#F7FAFC; color:#A0AEC0; padding:2px 8px; border-radius:4px; font-weight:bold;">アーカイブ済</span>
+                            </div>
+                            <div style="font-weight:bold; color:#2D3748; margin-bottom:5px; font-size:1rem;">
+                                プロジェクトキックオフ会議</div>
+                            <div style="font-size:0.85rem; color:#4A5568; line-height:1.5;">
+                                2026年の開催に向けた最初の全体ミーティング。目標動員数1万人に向けて、各チームの役割分担を決定。</div>
+                        </div>
+                    </div>
                 </div>
 
-                <button class="btn-details"
-                    style="width:100%; background:#2C7A7B; justify-content:center; padding:1rem; font-size:1.1rem; box-shadow:0 4px 6px rgba(44, 122, 123, 0.3);">
-                    <i class="fa-solid fa-wand-magic-sparkles" style="margin-right:10px;"></i> AIでレポートを作成する
-                </button>
+                <div style="text-align:center; margin-top:2rem;">
+                    <a href="#" style="color:#3182CE; font-size:0.9rem; font-weight:bold; text-decoration:none;">もっと見る
+                        <i class="fa-solid fa-chevron-down"></i></a>
+                </div>
             </div>
 
         </div>
     </main>
+
+    <!-- SDG Explanation Modal (Synchronized from Sponsor) -->
+    <div id="modal-sdg-explanation" class="popup-overlay">
+        <div class="popup-content" style="max-width: 800px;">
+            <div class="popup-header"
+                style="background: linear-gradient(135deg, #1A365D 0%, #2A4365 100%); color: white; border-bottom: none; padding: 2rem;">
+                <div style="flex: 1;">
+                    <div
+                        style="font-size: 0.9rem; color: #63B3ED; font-weight: bold; letter-spacing: 0.1em; margin-bottom: 0.5rem;">
+                        IMPACT ALLOCATION</div>
+                    <h2 class="popup-title" style="color: white; font-size: 2rem; font-weight: 900;">SDG貢献分布とは？</h2>
+                </div>
+                <button class="close-btn" onclick="closeModal('modal-sdg-explanation')"
+                    style="color: white; opacity: 0.8;">&times;</button>
+            </div>
+
+            <div class="popup-body" style="padding: 2.5rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem;">
+                    <div>
+                        <h3
+                            style="font-size: 1.25rem; margin-bottom: 1rem; color: #2D3748; display: flex; align-items: center; gap: 10px;">
+                            <i class="fa-solid fa-diagram-project" style="color: #3182CE;"></i> インパクトのポートフォリオ
+                        </h3>
+                        <p style="line-height: 1.8; color: #4A5568; font-size: 0.95rem;">
+                            SDG貢献分布は、あなたが運営している複数のプロジェクトが生み出す「社会的価値」を、国連の持続可能な開発目標（SDGs）の17目標にマッピング・集計したものです。<br><br>
+                            プロジェクト全体でどの目標に深く寄与しているか、また自身の強みがどこにあるかを客観的に把握し、スポンサー企業への提案材料として活用できます。
+                        </p>
+                    </div>
+                    <div style="background: #F7FAFC; border-radius: 16px; padding: 1.5rem; border: 1px solid #E2E8F0;">
+                        <h3 style="font-size: 1rem; margin-bottom: 1rem; color: #2D3748; font-weight: 700;">算定の仕組み</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="display: flex; gap: 12px; align-items: start;">
+                                <div style="color: #3182CE; margin-top: 3px;"><i class="fa-solid fa-tag"></i></div>
+                                <div style="font-size: 0.9rem; color: #2D3748;"><b>AI自動マッピング:</b>
+                                    活動報告やプロジェクト詳細をAI가解析し、関連する目標を自動抽出。</div>
+                            </div>
+                            <div style="display: flex; gap: 12px; align-items: start;">
+                                <div style="color: #3182CE; margin-top: 3px;"><i class="fa-solid fa-star"></i>
+                                </div>
+                                <div style="font-size: 0.9rem; color: #2D3748;"><b>インパクト証跡評価:</b>
+                                    日々の証跡（写真・メモ）の質と量に基づき、貢献度を数値化。</div>
+                            </div>
+                            <div style="display: flex; gap: 12px; align-items: start;">
+                                <div style="color: #3182CE; margin-top: 3px;"><i class="fa-solid fa-chart-pie"></i>
+                                </div>
+                                <div style="font-size: 0.9rem; color: #2D3748;"><b>リアルタイム集計:</b>
+                                    管理プロジェクト全ての貢献度をリアルタイムで集約し、グラフ化。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <h3
+                        style="font-size: 1.1rem; color: #2D3748; margin-bottom: 1.5rem; text-align: center; font-weight: 900;">
+                        主要な目標の例
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                        <div
+                            style="display: flex; align-items: center; gap: 10px; background: #FFF5F5; padding: 10px; border-radius: 8px;">
+                            <div
+                                style="width:30px; height:30px; background:#E5243B; color:white; font-size:0.8rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                4</div>
+                            <div style="font-size: 0.85rem; color: #2D3748; font-weight: bold;">質の高い教育を</div>
+                        </div>
+                        <div
+                            style="display: flex; align-items: center; gap: 10px; background: #FFFBEB; padding: 10px; border-radius: 8px;">
+                            <div
+                                style="width:30px; height:30px; background:#DDA63A; color:white; font-size:0.8rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                11</div>
+                            <div style="font-size: 0.85rem; color: #2D3748; font-weight: bold;">住み続けられる街</div>
+                        </div>
+                        <div
+                            style="display: flex; align-items: center; gap: 10px; background: #F0FFF4; padding: 10px; border-radius: 8px;">
+                            <div
+                                style="width:30px; height:30px; background:#4C9F38; color:white; font-size:0.8rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                13</div>
+                            <div style="font-size:0.85rem; color: #2D3748; font-weight: bold;">気候変動に具体策</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #EDF2F7;">
+                    <button class="btn-primary" onclick="closeModal('modal-sdg-explanation')"
+                        style="min-width: 200px; padding: 0.8rem 2.5rem;">閉じる</button>
+                    <div style="margin-top: 1rem; font-size: 0.8rem; color: #A0AEC0;">SDG Integration Engine v1.2 |
+                        Powered by Sponsor Nexus</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="../script.js"></script>
     <script>

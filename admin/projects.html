@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sponsor Nexus - Admin Projects</title>
+    <title>Sponsor Cloud - Admin Projects</title>
     <!-- External CSS -->
-    <link href="../style.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/layout.css" rel="stylesheet">
+    <link href="../css/components.css" rel="stylesheet">
+    <link href="../css/specific_ui.css" rel="stylesheet">
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
         rel="stylesheet">
@@ -19,7 +22,7 @@
     <nav class="sidebar">
         <div class="logo">
             <i class="fa-solid fa-link"></i>
-            Sponsor Nexus
+            Sponsor Cloud
         </div>
 
         <div id="menu-admin" class="nav-menu">
@@ -35,15 +38,32 @@
             <a href="projects.html" class="nav-link active">
                 <i class="fa-solid fa-list-check"></i> プロジェクト一覧
             </a>
-            <a href="reports.html" class="nav-link">
-                <i class="fa-regular fa-chart-bar"></i> レポート管理
+            <a href="reports-project.html" class="nav-link">
+                <i class="fa-solid fa-file-lines"></i> Project Report承認
+            </a>
+            <a href="reports-impact.html" class="nav-link">
+                <i class="fa-solid fa-chart-pie"></i> Impact Report生成
             </a>
             <a href="payments.html" class="nav-link">
-                <i class="fa-solid fa-money-bill-transfer"></i> 入出金管理
+                <i class="fa-solid fa-money-bill-transfer"></i> 資金循環管理
             </a>
             <a href="settings.html" class="nav-link">
                 <i class="fa-solid fa-cog"></i> 運営設定
             </a>
+            <a href="../concept.html" class="nav-link"
+                style="margin-top: 1.5rem; color: #B794F4; font-weight: bold; border-top: 1px solid #2D3748; padding-top: 1rem;">
+                <i class="fa-solid fa-book-open"></i> コンセプト・意義
+            </a>
+        </div>
+
+        <div class="legal-links"
+            style="padding: 1rem 1.5rem; font-size: 0.75rem; text-align: center; margin-top: auto; padding-bottom: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+            <a href="../tokushoho.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">特定商取引法に基づく表記</a>
+            <a href="../privacy.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">プライバシーポリシー</a>
+            <a href="../terms.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block;">利用規約・免責事項</a>
         </div>
 
         <div class="user-bottom">
@@ -53,10 +73,14 @@
                     (Active)
                 </a>
                 <a href="../sponsor/index.html" class="role-option">
-                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>スポンサーモード
                 </a>
                 <a href="../owner/index.html" class="role-option">
                     <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="../partner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    インパクトパートナーモード
                 </a>
                 <a href="../index.html" class="role-option"
                     style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
@@ -98,28 +122,28 @@
             <!-- Project 1 -->
             <div class="project-rich-card">
                 <div class="project-thumb-area">
-                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop"
-                        class="project-thumb-img" alt="Festival">
+                    <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=1000&auto=format&fit=crop"
+                        class="project-thumb-img" alt="Cityscape">
                     <span class="status-badge-overlay status-recruiting">募集中</span>
                 </div>
                 <div class="project-card-body">
-                    <div class="project-cat-tag" style="color:#B794F4;">Region / Art</div>
-                    <a href="#" class="project-title-link">横浜アートフェスティバル2026</a>
-                    <p class="project-excerpt">地域の若手芸術家を支援する大規模フェス。来場者数5万人を目標に活動中。</p>
+                    <div class="project-cat-tag" style="color:#B794F4;">City / Tech</div>
+                    <a href="#" class="project-title-link">未来都市開発プロジェクト</a>
+                    <p class="project-excerpt">スマートモビリティと環境技術を融合させた次世代都市モデルの構築と実証実験。</p>
 
                     <div class="progress-area">
                         <div class="progress-header">
-                            <span>達成率: 75%</span>
-                            <span>350 / 500万円</span>
+                            <span>達成率: 50%</span>
+                            <span>500 / 1,000万円</span>
                         </div>
                         <div class="progress-track">
-                            <div class="progress-fill" style="width:75%;"></div>
+                            <div class="progress-fill" style="width:50%;"></div>
                         </div>
                     </div>
 
                     <div class="support-footer">
-                        <span><i class="fa-solid fa-handshake"></i> 支援数: 5社</span>
-                        <span class="ai-score-badge"><i class="fa-solid fa-robot"></i> Quality: A</span>
+                        <span><i class="fa-solid fa-handshake"></i> 支援数: 3社</span>
+                        <span class="ai-score-badge"><i class="fa-solid fa-robot"></i> Quality: S</span>
                     </div>
                 </div>
             </div>
@@ -127,29 +151,29 @@
             <!-- Project 2 -->
             <div class="project-rich-card">
                 <div class="project-thumb-area">
-                    <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1000&auto=format&fit=crop"
-                        class="project-thumb-img" alt="Kyoto">
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1000&auto=format&fit=crop"
+                        class="project-thumb-img" alt="AI Robot">
                     <span class="status-badge-overlay status-recruiting">募集中</span>
                 </div>
                 <div class="project-card-body">
-                    <div class="project-cat-tag" style="color:#F687B3;">Culture / Tech</div>
-                    <a href="#" class="project-title-link">京都・伝統工芸DXプロジェクト</a>
-                    <p class="project-excerpt">職人の技をデジタルアーカイブ化し、後継者育成に役立てる取り組み。</p>
+                    <div class="project-cat-tag" style="color:#F687B3;">Tech / Education</div>
+                    <a href="#" class="project-title-link">AI導入促進プラットフォーム</a>
+                    <p class="project-excerpt">中小企業向けのAI導入支援と、若手エンジニアの育成を両立するオープン教育プログラム。</p>
 
                     <div class="progress-area">
                         <div class="progress-header">
-                            <span>達成率: 40%</span>
-                            <span>200 / 500万円</span>
+                            <span>達成率: 80%</span>
+                            <span>400 / 500万円</span>
                         </div>
                         <div class="progress-track">
                             <div class="progress-fill"
-                                style="width:40%; background: linear-gradient(90deg, #F687B3 0%, #D53F8C 100%);"></div>
+                                style="width:80%; background: linear-gradient(90deg, #F687B3 0%, #D53F8C 100%);"></div>
                         </div>
                     </div>
 
                     <div class="support-footer">
-                        <span><i class="fa-solid fa-handshake"></i> 支援数: 2社</span>
-                        <span class="ai-score-badge"><i class="fa-solid fa-robot"></i> Quality: S</span>
+                        <span><i class="fa-solid fa-handshake"></i> 支援数: 8社</span>
+                        <span class="ai-score-badge"><i class="fa-solid fa-robot"></i> Quality: A+</span>
                     </div>
                 </div>
             </div>
@@ -157,14 +181,14 @@
             <!-- Project 3 -->
             <div class="project-rich-card">
                 <div class="project-thumb-area">
-                    <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?q=80&w=1000&auto=format&fit=crop"
-                        class="project-thumb-img" alt="Ocean">
+                    <img src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?q=80&w=1000&auto=format&fit=crop"
+                        class="project-thumb-img" alt="Nature">
                     <span class="status-badge-overlay status-active">活動中</span>
                 </div>
                 <div class="project-card-body">
                     <div class="project-cat-tag" style="color:#4FD1C5;">Environment</div>
-                    <a href="#" class="project-title-link">瀬戸内海クリーンアップ作戦</a>
-                    <p class="project-excerpt">海洋プラスチックゴミの回収とリサイクル商品の開発。</p>
+                    <a href="#" class="project-title-link">サステナビリティ推進フォーラム</a>
+                    <p class="project-excerpt">各産業のサステイナビリティ推進事例を共有し、企業間連携を生む国際会議の定期開催。</p>
 
                     <div class="progress-area">
                         <div class="progress-header">
@@ -178,8 +202,69 @@
                     </div>
 
                     <div class="support-footer">
-                        <span><i class="fa-solid fa-handshake"></i> 支援数: 12社</span>
+                        <span><i class="fa-solid fa-handshake"></i> 支援数: 15社</span>
+                        <span class="ai-score-badge"><i class="fa-solid fa-robot"></i> Quality: A</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-rich-card">
+                <div class="project-thumb-area">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1000&auto=format&fit=crop"
+                        class="project-thumb-img" alt="Communication">
+                    <span class="status-badge-overlay status-recruiting"
+                        style="background:rgba(226,135,67,0.9);">準備中</span>
+                </div>
+                <div class="project-card-body">
+                    <div class="project-cat-tag" style="color:#DD6B20;">Tech / Infrastructure</div>
+                    <a href="#" class="project-title-link">次世代通信インフラ整備</a>
+                    <p class="project-excerpt">過疎地域への高速通信網整備と、遠隔医療・教育の基盤となるインフラ提供プロジェクト。</p>
+
+                    <div class="progress-area">
+                        <div class="progress-header">
+                            <span>達成率: 10%</span>
+                            <span>200 / 2,000万円</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill"
+                                style="width:10%; background: linear-gradient(90deg, #FBD38D 0%, #DD6B20 100%);"></div>
+                        </div>
+                    </div>
+
+                    <div class="support-footer">
+                        <span><i class="fa-solid fa-handshake"></i> 支援数: 1社</span>
                         <span class="ai-score-badge"><i class="fa-solid fa-robot"></i> Quality: B+</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-rich-card">
+                <div class="project-thumb-area">
+                    <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=1000&auto=format&fit=crop"
+                        class="project-thumb-img" alt="Logistics">
+                    <span class="status-badge-overlay status-recruiting">募集中</span>
+                </div>
+                <div class="project-card-body">
+                    <div class="project-cat-tag" style="color:#3182CE;">Tech / Logistics</div>
+                    <a href="#" class="project-title-link">グローバル物流最適化システム</a>
+                    <p class="project-excerpt">AIを用いたサプライチェーンの最適化により、CO2排出量削減と輸送効率を両立する。</p>
+
+                    <div class="progress-area">
+                        <div class="progress-header">
+                            <span>達成率: 60%</span>
+                            <span>480 / 800万円</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill"
+                                style="width:60%; background: linear-gradient(90deg, #63B3ED 0%, #3182CE 100%);"></div>
+                        </div>
+                    </div>
+
+                    <div class="support-footer">
+                        <span><i class="fa-solid fa-handshake"></i> 支援数: 4社</span>
+                        <span class="ai-score-badge"><i class="fa-solid fa-robot"></i> Quality: A</span>
                     </div>
                 </div>
             </div>
@@ -246,6 +331,7 @@
         </div>
     </div>
 
+
     <!-- Owner Detail Modal (Nested/Separate) -->
     <div id="modal-owner-detail" class="popup-overlay" style="z-index:1100;">
         <div class="popup-content" style="max-width:500px;">
@@ -276,6 +362,7 @@
             </div>
         </div>
     </div>
+
 
     <script src="../script.js"></script>
     <script>

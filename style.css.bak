@@ -18,29 +18,33 @@
 
     /* === Role: Admin (運営事務局) === */
     --bg-admin: #051024;
-    /* Deepest Navy from Image */
-    --accent-admin: #C5A059;
+    /* Deepest Navy */
+    --accent-admin: #DFBD69;
     /* Elegant Gold */
     --sidebar-bg-admin: #051024;
 
     /* === Role: Sponsor (企業) === */
-    --bg-sponsor: #1A365D;
-    /* Professional Blue */
-    --accent-sponsor: #63B3ED;
-    /* Light Blue */
-    --sidebar-bg-sponsor: #1A365D;
+    --bg-sponsor: #0A192F;
+    /* Professional Dark Blue */
+    --accent-sponsor: #3182CE;
+    /* Corporate Blue */
+    --sidebar-bg-sponsor: #0A192F;
 
     /* === Role: Owner (プロジェクトオーナー) === */
-    --bg-owner: #22543D;
-    /* Forest Green */
-    --accent-owner: #68D391;
+    --bg-owner: #1A3026;
+    /* Dark Forest Green */
+    --accent-owner: #48BB78;
     /* Fresh Green */
-    --sidebar-bg-owner: #22543D;
+    --sidebar-bg-owner: #1A3026;
 
-    /* Default (will be updated by JS classes) */
+    /* Default */
     --sidebar-bg: var(--sidebar-bg-admin);
     --highlight-color: var(--accent-admin);
     --header-color: var(--bg-admin);
+
+    /* TOKUスコア Specific */
+    --nexus-gold: #DFBD69;
+    --nexus-blue: #3182CE;
 }
 
 /* =========================================
@@ -289,14 +293,14 @@ body {
 
 /* Force Admin specific border color to match image exactly if needed */
 body.mode-admin .kpi-card {
-    border-top-color: #051024;
+    border-top-color: var(--sidebar-bg-admin);
 }
 
 .kpi-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--user-role);
+    color: var(--text-secondary);
     /* using secondary text color variable equivalent */
     font-weight: 700;
     font-size: 0.95rem;
@@ -458,7 +462,68 @@ body.mode-admin .kpi-card {
     font-weight: 600;
     display: inline-block;
     border: none;
+    display: inline-block;
+    border: none;
     cursor: pointer;
+}
+
+/* =========================================
+   Sponsor Cloud Specific Styles (v0.3)
+   ========================================= */
+
+/* TOKUスコア Visuals */
+.nexus-score-text {
+    background: linear-gradient(135deg, #DFBD69 0%, #C5A059 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+.score-circle-nexus {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid var(--nexus-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0A192F;
+    font-weight: 800;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(223, 189, 105, 0.2);
+}
+
+/* Category Tags (Sponsor Segmentation) */
+.category-tag {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.tag-corp {
+    background-color: #EBF8FF;
+    color: #3182CE;
+    border: 1px solid #BEE3F8;
+}
+
+.tag-gov {
+    background-color: #F0FFF4;
+    color: #38A169;
+    border: 1px solid #C6F6D5;
+}
+
+.tag-ind {
+    background-color: #FAF5FF;
+    color: #805AD5;
+    border: 1px solid #E9D8FD;
 }
 
 /* =========================================
@@ -679,28 +744,28 @@ body.mode-admin .kpi-card {
 }
 
 .btn-primary {
-    background: #0A192F;
+    background: var(--sidebar-bg);
+    /* Use dynamic variable */
     color: white;
-    box-shadow: 0 10px 20px rgba(10, 25, 47, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    /* Generic shadow */
 }
 
 .btn-secondary {
     background: white;
-    border: 2px solid #0A192F;
-    color: #0A192F;
+    border: 2px solid var(--sidebar-bg);
+    /* Use dynamic variable */
+    color: var(--sidebar-bg);
+    /* Use dynamic variable */
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(10, 25, 47, 0.4);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
 /* Keep existing styles for other views (Owner/Sponsor) simple */
-.search-area,
-.sponsor-item,
-.offer-card,
-/* ... existing ... */
-}
+/* .search-area, .sponsor-item, .offer-card {} */
 
 /* =========================================
    Sponsor List Redesign (Rich Cards)
@@ -1083,6 +1148,7 @@ body.mode-admin .kpi-card {
     font-weight: 700;
     color: #2C5282;
 }
+
 /* =========================================
    Modal Popup Styles
    ========================================= */
@@ -1114,7 +1180,7 @@ body.mode-admin .kpi-card {
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
     animation: slideUp 0.3s ease-out;
 }
 
@@ -1156,13 +1222,25 @@ body.mode-admin .kpi-card {
 
 /* Animations */
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* Modal Specific Components */
@@ -1184,4 +1262,3 @@ body.mode-admin .kpi-card {
     font-weight: 500;
     margin-bottom: 1rem;
 }
-

@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sponsor Nexus - Admin Sponsors</title>
+    <title>Sponsor Cloud - Admin Sponsors</title>
     <!-- External CSS -->
-    <link href="../style.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/layout.css" rel="stylesheet">
+    <link href="../css/components.css" rel="stylesheet">
+    <link href="../css/specific_ui.css" rel="stylesheet">
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
         rel="stylesheet">
@@ -19,7 +22,7 @@
     <nav class="sidebar">
         <div class="logo">
             <i class="fa-solid fa-link"></i>
-            Sponsor Nexus
+            Sponsor Cloud
         </div>
 
         <div id="menu-admin" class="nav-menu">
@@ -35,15 +38,32 @@
             <a href="projects.html" class="nav-link">
                 <i class="fa-solid fa-list-check"></i> プロジェクト一覧
             </a>
-            <a href="reports.html" class="nav-link">
-                <i class="fa-regular fa-chart-bar"></i> レポート管理
+            <a href="reports-project.html" class="nav-link">
+                <i class="fa-solid fa-file-lines"></i> Project Report承認
+            </a>
+            <a href="reports-impact.html" class="nav-link">
+                <i class="fa-solid fa-chart-pie"></i> Impact Report生成
             </a>
             <a href="payments.html" class="nav-link">
-                <i class="fa-solid fa-money-bill-transfer"></i> 入出金管理
+                <i class="fa-solid fa-money-bill-transfer"></i> 資金循環管理
             </a>
             <a href="settings.html" class="nav-link">
                 <i class="fa-solid fa-cog"></i> 運営設定
             </a>
+            <a href="../concept.html" class="nav-link"
+                style="margin-top: 1.5rem; color: #B794F4; font-weight: bold; border-top: 1px solid #2D3748; padding-top: 1rem;">
+                <i class="fa-solid fa-book-open"></i> コンセプト・意義
+            </a>
+        </div>
+
+        <div class="legal-links"
+            style="padding: 1rem 1.5rem; font-size: 0.75rem; text-align: center; margin-top: auto; padding-bottom: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+            <a href="../tokushoho.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">特定商取引法に基づく表記</a>
+            <a href="../privacy.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">プライバシーポリシー</a>
+            <a href="../terms.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block;">利用規約・免責事項</a>
         </div>
 
         <div class="user-bottom">
@@ -53,10 +73,14 @@
                     (Active)
                 </a>
                 <a href="../sponsor/index.html" class="role-option">
-                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>スポンサーモード
                 </a>
                 <a href="../owner/index.html" class="role-option">
                     <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="../partner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    インパクトパートナーモード
                 </a>
                 <a href="../index.html" class="role-option"
                     style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
@@ -220,7 +244,93 @@
                 </div>
             </div>
 
-            <!-- Sponsor 4 (New) -->
+            <!-- Sponsor 4 (NTT) -->
+            <div class="sponsor-rich-card">
+                <div class="card-header-row">
+                    <div class="company-main">
+                        <div class="company-logo-small"><i class="fa-solid fa-satellite-dish"></i></div>
+                        <div class="company-name-area">
+                            <h3>日本電信電話 (NTT)</h3>
+                            <div style="font-size:0.75rem; color:#718096;">ID: SP-004</div>
+                        </div>
+                    </div>
+                    <span class="rank-badge rank-silver"
+                        style="background:linear-gradient(135deg, #E2E8F0 0%, #CBD5E0 100%); color:#4A5568; padding:4px 8px; border-radius:12px; font-size:0.6rem; font-weight:bold; letter-spacing:1px; box-shadow:0 2px 4px rgba(160,174,192,0.2);">SILVER</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric-item">
+                        <span class="metric-label">年間予算消化率</span>
+                        <span class="metric-value">500 <span style="font-size:0.7rem; font-weight:400; color:#718096;">/
+                                1,000万円</span></span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">AI CSRスコア</span>
+                        <span class="metric-value">B <span
+                                style="font-size:0.7rem; font-weight:400; color:#718096;">(72点)</span></span>
+                    </div>
+                </div>
+                <div class="card-brain">
+                    <div class="brain-title"><i class="fa-solid fa-brain"></i> AI Brain (重点領域)</div>
+                    <div class="brain-tags">
+                        <span class="brain-tag v-high">📡 通信インフラ: 90%</span>
+                        <span class="brain-tag">🏘 地方創生: 65%</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="contact-info">
+                        <i class="fa-regular fa-user"></i> CSR推進室: 高橋
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-pen-to-square action-icon" style="margin-right:10px;"></i>
+                        <i class="fa-solid fa-ellipsis action-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sponsor 5 (Mitsubishi) -->
+            <div class="sponsor-rich-card">
+                <div class="card-header-row">
+                    <div class="company-main">
+                        <div class="company-logo-small"><i class="fa-solid fa-ship"></i></div>
+                        <div class="company-name-area">
+                            <h3>三菱商事</h3>
+                            <div style="font-size:0.75rem; color:#718096;">ID: SP-005</div>
+                        </div>
+                    </div>
+                    <span class="rank-badge rank-bronze"
+                        style="background:linear-gradient(135deg, #FBD38D 0%, #F6AD55 100%); color:#744210; padding:4px 8px; border-radius:12px; font-size:0.6rem; font-weight:bold; letter-spacing:1px; box-shadow:0 2px 4px rgba(237,137,54,0.2);">BRONZE</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric-item">
+                        <span class="metric-label">年間予算消化率</span>
+                        <span class="metric-value">200 <span style="font-size:0.7rem; font-weight:400; color:#718096;">/
+                                500万円</span></span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">AI CSRスコア</span>
+                        <span class="metric-value">B- <span
+                                style="font-size:0.7rem; font-weight:400; color:#718096;">(68点)</span></span>
+                    </div>
+                </div>
+                <div class="card-brain">
+                    <div class="brain-title"><i class="fa-solid fa-brain"></i> AI Brain (重点領域)</div>
+                    <div class="brain-tags">
+                        <span class="brain-tag v-high">🌐 グローバル展開: 80%</span>
+                        <span class="brain-tag">🔄 サステナビリティ: 60%</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="contact-info">
+                        <i class="fa-regular fa-user"></i> サステナビリティ部: 伊藤
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-pen-to-square action-icon" style="margin-right:10px;"></i>
+                        <i class="fa-solid fa-ellipsis action-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sponsor 6 (New) -->
             <div class="sponsor-rich-card" style="border-style:dashed; background:#fcfcfc;">
                 <div
                     style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:#A0AEC0; padding:2rem;">
@@ -300,6 +410,7 @@
             </div>
         </div>
     </div>
+
 
     <script src="../script.js"></script>
     <script>

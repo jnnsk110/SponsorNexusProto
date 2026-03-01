@@ -4,70 +4,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sponsor Nexus - Login</title>
-    <link href="style.css" rel="stylesheet">
+    <title>Sponsor Cloud - Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
         rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            font-family: 'Noto Sans JP', sans-serif;
+            background: #fff;
+            overflow: hidden;
+            /* Prevent scrolling */
+        }
+
+        .login-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Left Panel */
+        .login-panel {
+            width: 40%;
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #fff;
+            min-width: 450px;
+            /* Ensure minimum width */
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1A365D;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 3rem;
+        }
+
+        .login-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #2D3748;
+            margin-bottom: 0.5rem;
+            margin-top: 0;
+            line-height: 1.2;
+        }
+
+        .login-header p {
+            color: #718096;
+            margin-bottom: 3rem;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #4A5568;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #E2E8F0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            border-color: #3182CE;
+            outline: none;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 1rem;
+            background: #1A365D;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 1rem;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 54, 93, 0.3);
+        }
+
+        .login-footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
+        .demo-links {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #edf2f7;
+            font-size: 0.85rem;
+        }
+
+        .demo-links a {
+            color: #3182CE;
+            text-decoration: none;
+            margin: 0 5px;
+            font-weight: 600;
+        }
+
+        /* Right Panel (Hero) */
+        .hero-panel {
+            width: 60%;
+            background-image: url('assets/hero_bg.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(5, 16, 36, 0.85) 0%, rgba(123, 52, 30, 0.7) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 4rem;
+            animation: fadeIn 1s ease-out;
+            max-width: 800px;
+        }
+
+        .hero-content h2 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            font-weight: 500;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .hero-panel {
+                display: none;
+            }
+
+            .login-panel {
+                width: 100%;
+                min-width: auto;
+                padding: 2rem;
+            }
+        }
+    </style>
 </head>
 
-<body
-    style="background:#0A192F; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; font-family:'Noto Sans JP', sans-serif;">
-
-    <div
-        style="background:white; padding:3rem; border-radius:12px; width:400px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.3);">
-        <h1 style="color:#0A192F; margin-bottom:0.5rem;">Sponsor Nexus</h1>
-        <p style="color:#718096; margin-bottom:2rem; font-size:0.9rem;">スポンサーシップマッチングプラットフォーム</p>
-
-        <p style="text-align:left; font-size:0.8rem; font-weight:bold; color:#4A5568; margin-bottom:5px;">デモ用アカウントを選択:
-        </p>
-
-        <a href="admin/index.html" style="display:block; text-decoration:none; margin-bottom:1rem;">
-            <div class="user-card"
-                style="border:1px solid #eee; padding:1rem; border-radius:8px; display:flex; align-items:center;">
-                <div
-                    style="width:40px; height:40px; border-radius:50%; background:#C5A059; color:white; display:flex; align-items:center; justify-content:center; margin-right:1rem; font-weight:bold;">
-                    S</div>
-                <div style="text-align:left;">
-                    <div style="font-weight:bold; color:#333;">運営・事務局</div>
-                    <div style="font-size:0.75rem; color:#777;">Platform Admin</div>
+<body>
+    <div class="login-container">
+        <!-- Left: Login Form -->
+        <div class="login-panel">
+            <div class="login-header">
+                <div class="logo">
+                    <i class="fa-solid fa-link"></i> Sponsor Cloud
                 </div>
-                <div style="flex:1; text-align:right; color:#3182CE;">Login &rarr;</div>
+                <h1>Welcome Back</h1>
+                <p>企業の"徳"を可視化し、未来へ投資する。</p>
             </div>
-        </a>
 
-        <a href="sponsor/index.html" style="display:block; text-decoration:none; margin-bottom:1rem;">
-            <div class="user-card"
-                style="border:1px solid #eee; padding:1rem; border-radius:8px; display:flex; align-items:center;">
-                <div
-                    style="width:40px; height:40px; border-radius:50%; background:#0A192F; color:white; display:flex; align-items:center; justify-content:center; margin-right:1rem; font-weight:bold;">
-                    T</div>
-                <div style="text-align:left;">
-                    <div style="font-weight:bold; color:#333;">企業スポンサー</div>
-                    <div style="font-size:0.75rem; color:#777;">Toyota Motor Corp.</div>
+            <div class="login-form">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="name@company.com" value="sato@sponsor-nexus.com">
                 </div>
-                <div style="flex:1; text-align:right; color:#3182CE;">Login &rarr;</div>
-            </div>
-        </a>
-
-        <a href="owner/index.html" style="display:block; text-decoration:none;">
-            <div class="user-card"
-                style="border:1px solid #eee; padding:1rem; border-radius:8px; display:flex; align-items:center;">
-                <div
-                    style="width:40px; height:40px; border-radius:50%; background:#2C7A7B; color:white; display:flex; align-items:center; justify-content:center; margin-right:1rem; font-weight:bold;">
-                    Y</div>
-                <div style="text-align:left;">
-                    <div style="font-weight:bold; color:#333;">プロジェクト</div>
-                    <div style="font-size:0.75rem; color:#777;">Yokohama Art</div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" value="password123">
                 </div>
-                <div style="flex:1; text-align:right; color:#3182CE;">Login &rarr;</div>
+                <button class="btn-login" onclick="handleLogin()">Sign In</button>
             </div>
-        </a>
 
-        <div style="margin-top:2rem; font-size:0.7rem; color:#A0AEC0;">
-            Prototype v0.2 | 佐藤卓也様 1on1 Demo Edition
+            <div class="login-footer">
+                <p>アカウントをお持ちでない方は <a href="#" style="color:#3182CE; text-decoration:none;">新規登録</a></p>
+                <div class="demo-links" style="margin-bottom: 1.5rem;">
+                    <span>Quick Access (Demo):</span>
+                    <a href="#" onclick="mockLogin('admin')">Admin</a> |
+                    <a href="#" onclick="mockLogin('sponsor')">Sponsor</a> |
+                    <a href="#" onclick="mockLogin('owner')">Owner</a> |
+                    <a href="#" onclick="mockLogin('partner')">Partner</a>
+                </div>
+                <div style="border-top: 1px solid #E2E8F0; padding-top: 1rem; margin-top: 1rem;">
+                    <a href="concept.html"
+                        style="color: #4A5568; text-decoration: none; font-weight: 500; font-size: 0.95rem; display: inline-block; padding: 0.5rem; border-radius: 8px; background: #EDF2F7; width: 100%; text-align: center;">
+                        <i class="fa-solid fa-book-open" style="color: #3182CE; margin-right: 5px;"></i> Sponsor Cloud
+                        コンセプト・意義
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Concept Hero -->
+        <div class="hero-panel"
+            style="background-image: url('assets/sponsor_nexus_hero_impact.png'); position: relative;">
+            <div class="hero-content">
+                <h2>Transforming<br>Sponsorship<br>into Impact Assets</h2>
+                <p>寄付から、投資へ。<br>社会的インパクトを可視化・資産化する<br>次世代プラットフォーム</p>
+            </div>
+
+            <div class="legal-links"
+                style="position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; font-size: 0.8rem; z-index: 10;">
+                <a href="tokushoho.html"
+                    style="color: rgba(255,255,255,0.7); text-decoration: none; margin: 0 10px;">特定商取引法に基づく表記</a>
+                <a href="privacy.html"
+                    style="color: rgba(255,255,255,0.7); text-decoration: none; margin: 0 10px;">プライバシーポリシー</a>
+                <a href="terms.html"
+                    style="color: rgba(255,255,255,0.7); text-decoration: none; margin: 0 10px;">利用規約・免責事項</a>
+            </div>
+
+            <div class="hero-overlay"></div>
         </div>
     </div>
 
+    <script>
+        function handleLogin() {
+            // Default to Admin for demo
+            mockLogin('admin');
+        }
+
+        function mockLogin(role) {
+            if (role === 'admin') window.location.href = 'admin/index.html';
+            if (role === 'sponsor') window.location.href = 'sponsor/index.html';
+            if (role === 'owner') window.location.href = 'owner/index.html';
+            if (role === 'partner') window.location.href = 'partner/index.html';
+        }
+    </script>
 </body>
 
 </html>

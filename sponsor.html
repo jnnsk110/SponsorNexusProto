@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sponsor Nexus - Sponsor View</title>
+    <title>Sponsor Cloud - Sponsor View</title>
     <!-- External CSS -->
-    <link href="style.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/layout.css" rel="stylesheet">
+    <link href="css/components.css" rel="stylesheet">
+    <link href="css/specific_ui.css" rel="stylesheet">
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
         rel="stylesheet">
@@ -19,7 +22,7 @@
     <nav class="sidebar">
         <div class="logo">
             <i class="fa-solid fa-link"></i>
-            Sponsor Nexus
+            Sponsor Cloud
         </div>
 
         <!-- SPONSOR MENU -->
@@ -38,6 +41,17 @@
             </div>
         </div>
 
+
+        <div class="legal-links"
+            style="padding: 1rem 1.5rem; font-size: 0.75rem; text-align: center; margin-top: auto; padding-bottom: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+            <a href="tokushoho.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">特定商取引法に基づく表記</a>
+            <a href="privacy.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">プライバシーポリシー</a>
+            <a href="terms.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block;">利用規約・免責事項</a>
+        </div>
+
         <!-- User Switcher -->
         <div class="user-bottom">
             <div class="role-menu" id="role-menu">
@@ -45,11 +59,15 @@
                     <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
                 </a>
                 <a href="sponsor.html" class="role-option">
-                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>スポンサーモード
                     (Active)
                 </a>
                 <a href="owner.html" class="role-option">
                     <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="partner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    インパクトパートナーモード
                 </a>
                 <a href="index.html" class="role-option"
                     style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
@@ -83,10 +101,12 @@
                     <div class="kpi-header">支援総額 <i class="fa-solid fa-coins kpi-icon" style="color:#63B3ED;"></i></div>
                     <div class="kpi-value">5,000<span class="kpi-unit">万</span></div>
                 </div>
-                <div class="kpi-card" style="border-top-color:#1A365D;">
-                    <div class="kpi-header">CSRスコア <i class="fa-solid fa-leaf kpi-icon" style="color:#63B3ED;"></i>
+                <div class="kpi-card" style="border-top-color:var(--nexus-blue);">
+                    <div class="kpi-header">TOKUスコア <i class="fa-solid fa-bolt kpi-icon"
+                            style="color:var(--nexus-gold);"></i>
                     </div>
                     <div class="kpi-value">A+</div>
+                    <div class="kpi-trend trend-up">RANKING: #12</div>
                 </div>
             </div>
             <div class="list-section">

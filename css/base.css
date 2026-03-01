@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+/* =========================================
+   Base Variables & Themes
+   ========================================= */
+:root {
+    /* Base Colors */
+    --main-bg: #F0F4F8;
+    /* Slightly cooler gray for modern feel */
+    --card-bg: #FFFFFF;
+    --text-primary: #1A202C;
+    --text-secondary: #718096;
+
+    /* Status Colors */
+    --status-blue: #3182CE;
+    --status-green: #38A169;
+    --status-red: #E53E3E;
+
+    /* === Role: Admin (運営事務局) === */
+    --bg-admin: #051024;
+    /* Deepest Navy */
+    --accent-admin: #DFBD69;
+    /* Elegant Gold */
+    --sidebar-bg-admin: #051024;
+
+    /* === Role: Sponsor (企業) === */
+    --bg-sponsor: #0A192F;
+    /* Professional Dark Blue */
+    --accent-sponsor: #3182CE;
+    /* Corporate Blue */
+    --sidebar-bg-sponsor: #0A192F;
+
+    /* === Role: Owner (プロジェクトオーナー) === */
+    --bg-owner: #1A3026;
+    /* Dark Forest Green */
+    --accent-owner: #48BB78;
+    /* Fresh Green */
+    --sidebar-bg-owner: #1A3026;
+
+    /* Default */
+    --sidebar-bg: var(--sidebar-bg-admin);
+    --highlight-color: var(--accent-admin);
+    --header-color: var(--bg-admin);
+
+    /* TOKUスコア Specific */
+    --nexus-gold: #DFBD69;
+    --nexus-blue: #3182CE;
+}
+
+/* =========================================
+   Global Reset & Typhography
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+body {
+    background-color: var(--main-bg);
+    color: var(--text-primary);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    transition: background-color 0.3s;
+}
+

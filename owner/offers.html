@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sponsor Nexus - Owner Offers</title>
-    <link href="../style.css" rel="stylesheet">
+    <title>Sponsor Cloud - Owner Offers</title>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/layout.css" rel="stylesheet">
+    <link href="../css/components.css" rel="stylesheet">
+    <link href="../css/specific_ui.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -16,34 +19,56 @@
     <nav class="sidebar">
         <div class="logo">
             <i class="fa-solid fa-link"></i>
-            Sponsor Nexus
+            Sponsor Cloud
         </div>
         <div id="menu-owner" class="nav-menu">
             <a href="index.html" class="nav-link">
                 <i class="fa-solid fa-home"></i> マイプロジェクト
             </a>
             <a href="offers.html" class="nav-link active">
-                <i class="fa-solid fa-envelope-open-text"></i> オファー受信箱 <span class="badge bg-red"
+                <i class="fa-solid fa-envelope-open-text"></i> スポンサー候補 (AI推奨) <span class="badge bg-red"
                     style="margin-left:5px;">2</span>
             </a>
             <a href="report.html" class="nav-link">
-                <i class="fa-solid fa-edit"></i> 活動報告の提出
+                <i class="fa-solid fa-edit"></i> 日々の証跡・活動報告
             </a>
             <a href="settings.html" class="nav-link">
                 <i class="fa-solid fa-cog"></i> 団体設定
             </a>
+            <a href="../concept.html" class="nav-link"
+                style="margin-top: 1.5rem; color: #B794F4; font-weight: bold; border-top: 1px solid #2D3748; padding-top: 1rem;">
+                <i class="fa-solid fa-book-open"></i> コンセプト・意義
+            </a>
+            <a href="#" class="nav-link" onclick="openModal('modal-sdg-explanation')"
+                style="color: #4C9F38; font-weight: bold;">
+                <i class="fa-solid fa-chart-line"></i> SDG貢献分布とは？
+            </a>
         </div>
+        <div class="legal-links"
+            style="padding: 1rem 1.5rem; font-size: 0.75rem; text-align: center; margin-top: auto; padding-bottom: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+            <a href="../tokushoho.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">特定商取引法に基づく表記</a>
+            <a href="../privacy.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">プライバシーポリシー</a>
+            <a href="../terms.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block;">利用規約・免責事項</a>
+        </div>
+
         <div class="user-bottom">
             <div class="role-menu" id="role-menu">
                 <a href="../admin/index.html" class="role-option">
                     <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
                 </a>
                 <a href="../sponsor/index.html" class="role-option">
-                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>企業スポンサーモード
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>スポンサーモード
                 </a>
                 <a href="index.html" class="role-option">
                     <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
                     (Active)
+                </a>
+                <a href="../partner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    インパクトパートナーモード
                 </a>
                 <a href="../index.html" class="role-option"
                     style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
@@ -63,9 +88,9 @@
 
     <main class="main-content">
         <div class="page-header">
-            <h1 class="page-title">オファー受信箱</h1>
+            <h1 class="page-title">スポンサー候補 (AI推奨)</h1>
             <div style="font-size:0.9rem; color:#718096;">
-                あなたのプロジェクトに興味を持った企業からのオファーです。
+                事務局AIが分析した、貴団体のプロジェクトへの支援に関心を持つ可能性が高い企業のリストです。
             </div>
         </div>
 
@@ -160,7 +185,7 @@
     <div id="modal-offer-detail" class="popup-overlay">
         <div class="popup-content">
             <div class="popup-header">
-                <h2 class="popup-title"><i class="fa-solid fa-envelope-open-text"></i> オファー詳細</h2>
+                <h2 class="popup-title"><i class="fa-solid fa-envelope-open-text"></i> マッチング推奨詳細</h2>
                 <button class="close-btn" onclick="closeModal('modal-offer-detail')">&times;</button>
             </div>
             <div class="popup-body">
@@ -187,19 +212,111 @@
 
                 <div class="modal-grid">
                     <div>
-                        <div class="modal-label">提案額</div>
-                        <div class="modal-value">¥3,000,000</div>
+                        <div class="modal-label">想定支援規模フラグ</div>
+                        <div class="modal-value">Tier 1 (大規模)</div>
                     </div>
                     <div>
-                        <div class="modal-label">条件</div>
-                        <div class="modal-value">会場内デジタルサイネージへのロゴ掲出</div>
+                        <div class="modal-label">関心領域</div>
+                        <div class="modal-value">地方創生 / アート / 地域住民との接点</div>
                     </div>
                 </div>
 
                 <div style="margin-top:2rem; text-align:right;">
-                    <button class="btn-secondary" onclick="closeModal('modal-offer-detail')">保留</button>
+                    <button class="btn-secondary" onclick="closeModal('modal-offer-detail')">見送り</button>
                     <button class="btn-primary" style="margin-left:10px;"
-                        onclick="alert('承諾しました！'); closeModal('modal-offer-detail');">承諾して返信する</button>
+                        onclick="alert('事務局に面談希望の旨を伝達しました。'); closeModal('modal-offer-detail');">事務局経由で詳細を聞く</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- SDG Explanation Modal (Synchronized from Sponsor) -->
+    <div id="modal-sdg-explanation" class="popup-overlay">
+        <div class="popup-content" style="max-width: 800px;">
+            <div class="popup-header"
+                style="background: linear-gradient(135deg, #1A365D 0%, #2A4365 100%); color: white; border-bottom: none; padding: 2rem;">
+                <div style="flex: 1;">
+                    <div
+                        style="font-size: 0.9rem; color: #63B3ED; font-weight: bold; letter-spacing: 0.1em; margin-bottom: 0.5rem;">
+                        IMPACT ALLOCATION</div>
+                    <h2 class="popup-title" style="color: white; font-size: 2rem; font-weight: 900;">SDG貢献分布とは？</h2>
+                </div>
+                <button class="close-btn" onclick="closeModal('modal-sdg-explanation')"
+                    style="color: white; opacity: 0.8;">&times;</button>
+            </div>
+
+            <div class="popup-body" style="padding: 2.5rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem;">
+                    <div>
+                        <h3
+                            style="font-size: 1.25rem; margin-bottom: 1rem; color: #2D3748; display: flex; align-items: center; gap: 10px;">
+                            <i class="fa-solid fa-diagram-project" style="color: #3182CE;"></i> インパクトのポートフォリオ
+                        </h3>
+                        <p style="line-height: 1.8; color: #4A5568; font-size: 0.95rem;">
+                            SDG貢献分布は、あなたが運営している複数のプロジェクトが生み出す「社会的価値」を、国連の持続可能な開発目標（SDGs）の17目標にマッピング・集計したものです。<br><br>
+                            プロジェクト全体でどの目標に深く寄与しているか、また自身の強みがどこにあるかを客観的に把握し、スポンサー企業への提案材料として活用できます。
+                        </p>
+                    </div>
+                    <div style="background: #F7FAFC; border-radius: 16px; padding: 1.5rem; border: 1px solid #E2E8F0;">
+                        <h3 style="font-size: 1rem; margin-bottom: 1rem; color: #2D3748; font-weight: 700;">算定の仕組み</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="display: flex; gap: 12px; align-items: start;">
+                                <div style="color: #3182CE; margin-top: 3px;"><i class="fa-solid fa-tag"></i></div>
+                                <div style="font-size: 0.9rem; color: #2D3748;"><b>AI自動マッピング:</b>
+                                    活動報告やプロジェクト詳細をAI가解析し、関連する目標を自動抽出。</div>
+                            </div>
+                            <div style="display: flex; gap: 12px; align-items: start;">
+                                <div style="color: #3182CE; margin-top: 3px;"><i class="fa-solid fa-star"></i>
+                                </div>
+                                <div style="font-size: 0.9rem; color: #2D3748;"><b>インパクト証跡評価:</b>
+                                    日々の証跡（写真・メモ）の質と量に基づき、貢献度を数値化。</div>
+                            </div>
+                            <div style="display: flex; gap: 12px; align-items: start;">
+                                <div style="color: #3182CE; margin-top: 3px;"><i class="fa-solid fa-chart-pie"></i>
+                                </div>
+                                <div style="font-size: 0.9rem; color: #2D3748;"><b>リアルタイム集計:</b>
+                                    管理プロジェクト全ての貢献度をリアルタイムで集約し、グラフ化。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <h3
+                        style="font-size: 1.1rem; color: #2D3748; margin-bottom: 1.5rem; text-align: center; font-weight: 900;">
+                        主要な目標の例
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                        <div
+                            style="display: flex; align-items: center; gap: 10px; background: #FFF5F5; padding: 10px; border-radius: 8px;">
+                            <div
+                                style="width:30px; height:30px; background:#E5243B; color:white; font-size:0.8rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                4</div>
+                            <div style="font-size: 0.85rem; color: #2D3748; font-weight: bold;">質の高い教育を</div>
+                        </div>
+                        <div
+                            style="display: flex; align-items: center; gap: 10px; background: #FFFBEB; padding: 10px; border-radius: 8px;">
+                            <div
+                                style="width:30px; height:30px; background:#DDA63A; color:white; font-size:0.8rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                11</div>
+                            <div style="font-size: 0.85rem; color: #2D3748; font-weight: bold;">住み続けられる街</div>
+                        </div>
+                        <div
+                            style="display: flex; align-items: center; gap: 10px; background: #F0FFF4; padding: 10px; border-radius: 8px;">
+                            <div
+                                style="width:30px; height:30px; background:#4C9F38; color:white; font-size:0.8rem; font-weight:bold; display:flex; align-items:center; justify-content:center; border-radius:4px;">
+                                13</div>
+                            <div style="font-size: 0.85rem; color: #2D3748; font-weight: bold;">気候変動に具体策</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #EDF2F7;">
+                    <button class="btn-primary" onclick="closeModal('modal-sdg-explanation')"
+                        style="min-width: 200px; padding: 0.8rem 2.5rem;">閉じる</button>
+                    <div style="margin-top: 1rem; font-size: 0.8rem; color: #A0AEC0;">SDG Integration Engine v1.2 |
+                        Powered by Sponsor Nexus</div>
                 </div>
             </div>
         </div>

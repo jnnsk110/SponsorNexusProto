@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Cloud - Admin Dashboard</title>
+    <!-- External CSS -->
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/layout.css" rel="stylesheet">
+    <link href="../css/components.css" rel="stylesheet">
+    <link href="../css/specific_ui.css" rel="stylesheet">
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="mode-admin">
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-link"></i>
+            Sponsor Cloud
+        </div>
+
+        <!-- ADMIN MENU -->
+        <div id="menu-admin" class="nav-menu">
+            <a href="index.html" class="nav-link active">
+                <i class="fa-solid fa-table-cells-large"></i> ダッシュボード
+            </a>
+            <a href="sponsors.html" class="nav-link">
+                <i class="fa-solid fa-user-friends"></i> スポンサー一覧
+            </a>
+            <a href="owners.html" class="nav-link">
+                <i class="fa-solid fa-building-user"></i> オーナー一覧 (団体)
+            </a>
+            <a href="projects.html" class="nav-link">
+                <i class="fa-solid fa-list-check"></i> プロジェクト一覧
+            </a>
+            <a href="reports-project.html" class="nav-link">
+                <i class="fa-solid fa-file-lines"></i> Project Report承認
+            </a>
+            <a href="reports-impact.html" class="nav-link">
+                <i class="fa-solid fa-chart-pie"></i> Impact Report生成
+            </a>
+            <a href="payments.html" class="nav-link">
+                <i class="fa-solid fa-money-bill-transfer"></i> 資金循環管理
+            </a>
+            <a href="settings.html" class="nav-link">
+                <i class="fa-solid fa-cog"></i> 運営設定
+            </a>
+            <a href="../concept.html" class="nav-link"
+                style="margin-top: 1.5rem; color: #B794F4; font-weight: bold; border-top: 1px solid #2D3748; padding-top: 1rem;">
+                <i class="fa-solid fa-book-open"></i> コンセプト・意義
+            </a>
+        </div>
+
+
+        <!-- User Switcher -->
+        <div class="legal-links"
+            style="padding: 1rem 1.5rem; font-size: 0.75rem; text-align: center; margin-top: auto; padding-bottom: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+            <a href="../tokushoho.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">特定商取引法に基づく表記</a>
+            <a href="../privacy.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 0.5rem;">プライバシーポリシー</a>
+            <a href="../terms.html"
+                style="color: rgba(255,255,255,0.6); text-decoration: none; display: block;">利用規約・免責事項</a>
+        </div>
+
+        <div class="user-bottom">
+            <div class="role-menu" id="role-menu">
+                <a href="index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-user-tie"></i></div>運営・事務局モード
+                    (Active)
+                </a>
+                <a href="../sponsor/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-building"></i></div>スポンサーモード
+                </a>
+                <a href="../owner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-flag"></i></div>プロジェクトオーナーモード
+                </a>
+                <a href="../partner/index.html" class="role-option">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    インパクトパートナーモード
+                </a>
+                <a href="../index.html" class="role-option"
+                    style="border-top:1px solid #eee; margin-top:5px; padding-top:10px;">
+                    <div style="width:24px; text-align:center;"><i class="fa-solid fa-sign-out-alt"></i></div>ログアウト
+                    (Top)
+                </a>
+            </div>
+
+            <div class="user-card" onclick="toggleRoleMenu()">
+                <div class="user-avatar" id="user-avatar">
+                    <img src="https://ui-avatars.com/api/?name=Takuya+Sato&background=C5A059&color=fff" alt="User">
+                </div>
+                <div style="flex:1;">
+                    <div class="user-info" id="user-name">佐藤 卓也</div>
+                    <div class="user-role" id="user-role-label">Platform Admin</div>
+                </div>
+                <i class="fa-solid fa-chevron-up" style="font-size:0.7rem; color:#A0AEC0;"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header" style="margin-bottom:1.5rem;">
+            <h1 class="page-title">Project Report 承認 (現場報告)</h1>
+        </div>
+
+        <p style="color:#718096; margin-bottom:2rem; line-height:1.6;">
+            AIによって生成された各レポート（現場活動報告）の事実確認・最終承認を行います。<br>
+            実行者（Project Owner）が確認を終え、承認待ちとなっているレポートがキューに表示されます。
+        </p>
+
+        <!-- Project Report Layout -->
+        <div style="background:#fff; border-radius:12px; border:1px solid #E2E8F0; padding:1.5rem;">
+            <h2
+                style="font-size:1.2rem; color:#2D3748; margin-bottom:1.5rem; border-bottom:2px solid #3182CE; padding-bottom:0.5rem; display:flex; justify-content:space-between; align-items:center;">
+                <span><i class="fa-solid fa-file-lines" style="color:#3182CE;"></i> Project Report (現場報告) キュー</span>
+                <span
+                    style="font-size:0.8rem; background:#FED7D7; color:#C53030; padding:2px 8px; border-radius:12px;">5件
+                    承認待ち</span>
+            </h2>
+
+            <div class="dashboard-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+
+                <!-- Item 1 -->
+                <div
+                    style="border:1px solid #E2E8F0; border-radius:8px; padding:1rem; border-left:4px solid #F6AD55; background:#F7FAFC;">
+                    <div
+                        style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.8rem;">
+                        <div>
+                            <span
+                                style="font-size:0.7rem; font-weight:bold; color:#718096; background:#E2E8F0; padding:2px 6px; border-radius:4px; margin-right:5px;">[v0]
+                                基本版</span>
+                            <span style="font-size:0.8rem; color:#DD6B20; font-weight:bold;">Review (確認済)</span>
+                        </div>
+                        <span style="font-size:0.8rem; color:#A0AEC0;">2026-03-01</span>
+                    </div>
+                    <div style="font-weight:bold; color:#2D3748; margin-bottom:0.3rem;">未来都市開発プロジェクト (2025Q4)</div>
+                    <div style="font-size:0.85rem; color:#4A5568; margin-bottom:1rem; line-height:1.5;">
+                        <i class="fa-solid fa-building-user"></i> <b>未来都市開発機構</b><br>
+                        <i class="fa-solid fa-handshake"></i> トヨタ自動車 (他2社)
+                    </div>
+                    <button class="btn-primary" style="width:100%; padding:0.4rem; font-size:0.85rem;"
+                        onclick="openModal('modal-report-preview')"><i class="fa-solid fa-check-double"></i>
+                        最終確認・承認</button>
+                </div>
+
+                <!-- Item 2 -->
+                <div
+                    style="border:1px solid #E2E8F0; border-radius:8px; padding:1rem; border-left:4px solid #F6AD55; background:#F7FAFC;">
+                    <div
+                        style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.8rem;">
+                        <div>
+                            <span
+                                style="font-size:0.7rem; font-weight:bold; color:#718096; background:#E2E8F0; padding:2px 6px; border-radius:4px; margin-right:5px;">[v0]
+                                基本版</span>
+                            <span style="font-size:0.8rem; color:#DD6B20; font-weight:bold;">Review (確認済)</span>
+                        </div>
+                        <span style="font-size:0.8rem; color:#A0AEC0;">2026-02-28</span>
+                    </div>
+                    <div style="font-weight:bold; color:#2D3748; margin-bottom:0.3rem;">AI導入促進プラットフォーム (2025年度)</div>
+                    <div style="font-size:0.85rem; color:#4A5568; margin-bottom:1rem; line-height:1.5;">
+                        <i class="fa-solid fa-building-user"></i> <b>AI・DX推進コンソーシアム</b><br>
+                        <i class="fa-solid fa-handshake"></i> ソニーグループ (他7社)
+                    </div>
+                    <button class="btn-primary" style="width:100%; padding:0.4rem; font-size:0.85rem;"
+                        onclick="openModal('modal-report-preview')"><i class="fa-solid fa-check-double"></i>
+                        最終確認・承認</button>
+                </div>
+
+                <!-- Item 3 -->
+                <div
+                    style="border:1px solid #E2E8F0; border-radius:8px; padding:1rem; border-left:4px solid #F6AD55; background:#F7FAFC;">
+                    <div
+                        style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.8rem;">
+                        <div>
+                            <span
+                                style="font-size:0.7rem; font-weight:bold; color:#718096; background:#E2E8F0; padding:2px 6px; border-radius:4px; margin-right:5px;">[v0]
+                                基本版</span>
+                            <span style="font-size:0.8rem; color:#DD6B20; font-weight:bold;">Review (確認済)</span>
+                        </div>
+                        <span style="font-size:0.8rem; color:#A0AEC0;">2026-02-27</span>
+                    </div>
+                    <div style="font-weight:bold; color:#2D3748; margin-bottom:0.3rem;">サステナビリティ推進フォーラム (2025年度)</div>
+                    <div style="font-size:0.85rem; color:#4A5568; margin-bottom:1rem; line-height:1.5;">
+                        <i class="fa-solid fa-building-user"></i> <b>サステナビリティ・フューチャー</b><br>
+                        <i class="fa-solid fa-handshake"></i> 日立製作所 (他14社)
+                    </div>
+                    <button class="btn-primary" style="width:100%; padding:0.4rem; font-size:0.85rem;"
+                        onclick="openModal('modal-report-preview')"><i class="fa-solid fa-check-double"></i>
+                        最終確認・承認</button>
+                </div>
+
+                <!-- Item 4 -->
+                <div
+                    style="border:1px solid #E2E8F0; border-radius:8px; padding:1rem; border-left:4px solid #F6AD55; background:#F7FAFC;">
+                    <div
+                        style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.8rem;">
+                        <div>
+                            <span
+                                style="font-size:0.7rem; font-weight:bold; color:#718096; background:#E2E8F0; padding:2px 6px; border-radius:4px; margin-right:5px;">[v0]
+                                基本版</span>
+                            <span style="font-size:0.8rem; color:#DD6B20; font-weight:bold;">Review (確認済)</span>
+                        </div>
+                        <span style="font-size:0.8rem; color:#A0AEC0;">2026-02-27</span>
+                    </div>
+                    <div style="font-weight:bold; color:#2D3748; margin-bottom:0.3rem;">次世代通信インフラ整備 (2025Q3)</div>
+                    <div style="font-size:0.85rem; color:#4A5568; margin-bottom:1rem; line-height:1.5;">
+                        <i class="fa-solid fa-building-user"></i> <b>次世代通信インフラ協議会</b><br>
+                        <i class="fa-solid fa-handshake"></i> NTT
+                    </div>
+                    <button class="btn-primary" style="width:100%; padding:0.4rem; font-size:0.85rem;"
+                        onclick="openModal('modal-report-preview')"><i class="fa-solid fa-check-double"></i>
+                        最終確認・承認</button>
+                </div>
+
+                <!-- Item 5 -->
+                <div
+                    style="border:1px solid #E2E8F0; border-radius:8px; padding:1rem; border-left:4px solid #F6AD55; background:#F7FAFC;">
+                    <div
+                        style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.8rem;">
+                        <div>
+                            <span
+                                style="font-size:0.7rem; font-weight:bold; color:#718096; background:#E2E8F0; padding:2px 6px; border-radius:4px; margin-right:5px;">[v0]
+                                基本版</span>
+                            <span style="font-size:0.8rem; color:#DD6B20; font-weight:bold;">Review (確認済)</span>
+                        </div>
+                        <span style="font-size:0.8rem; color:#A0AEC0;">2026-02-26</span>
+                    </div>
+                    <div style="font-weight:bold; color:#2D3748; margin-bottom:0.3rem;">グローバル物流最適化システム (2025年度)</div>
+                    <div style="font-size:0.85rem; color:#4A5568; margin-bottom:1rem; line-height:1.5;">
+                        <i class="fa-solid fa-building-user"></i> <b>グローバル物流革新ネットワーク</b><br>
+                        <i class="fa-solid fa-handshake"></i> 三菱商事 (他3社)
+                    </div>
+                    <button class="btn-primary" style="width:100%; padding:0.4rem; font-size:0.85rem;"
+                        onclick="openModal('modal-report-preview')"><i class="fa-solid fa-check-double"></i>
+                        最終確認・承認</button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Project Report Preview Modal -->
+    <div id="modal-report-preview" class="popup-overlay">
+        <div class="popup-content" style="max-width: 800px;">
+            <div class="popup-header">
+                <h2 class="popup-title">Project Report 承認 (v0: 1ページ要約)</h2>
+                <button class="close-btn" onclick="closeModal('modal-report-preview')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div style="display:flex; gap:20px; align-items:flex-start;">
+
+                    <div style="flex:2;">
+                        <div
+                            style="border:1px solid #CBD5E0; border-radius:8px; padding:2rem; background:#fff; margin-bottom:1.5rem;">
+                            <!-- Mock Report Content -->
+                            <div style="text-align:center; margin-bottom:2rem;">
+                                <h3 style="font-size:1.5rem; color:#2D3748; margin-bottom:0.5rem;">未来都市開発プロジェクト 活動報告書
+                                </h3>
+                                <div style="font-size:0.9rem; color:#718096;">対象期間: 2025Q4 / 主催: 未来都市開発機構</div>
+                            </div>
+
+                            <h4
+                                style="border-bottom:1px solid #E2E8F0; padding-bottom:0.5rem; margin-bottom:1rem; color:#2B6CB0;">
+                                1. 実行サマリ</h4>
+                            <p style="font-size:0.9rem; line-height:1.6; color:#4A5568; margin-bottom:1.5rem;">
+                                本四半期は、スマートモビリティの実証実験エリアの選定と、地域住民向けの説明会を計3回実施しました。
+                                トヨタ自動車様からご提供いただいた次世代モビリティ車両の初期テストを完了し、良好なデータを得ることができました。
+                            </p>
+
+                            <h4
+                                style="border-bottom:1px solid #E2E8F0; padding-bottom:0.5rem; margin-bottom:1rem; color:#2B6CB0;">
+                                2. 主要な成果（証跡）</h4>
+                            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:1.5rem;">
+                                <div>
+                                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=500&auto=format&fit=crop"
+                                        style="width:100%; height:120px; object-fit:cover; border-radius:4px;">
+                                    <div style="font-size:0.75rem; color:#718096; margin-top:5px;">住民説明会の様子 (11/15)
+                                    </div>
+                                </div>
+                                <div>
+                                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=500&auto=format&fit=crop"
+                                        style="width:100%; height:120px; object-fit:cover; border-radius:4px;">
+                                    <div style="font-size:0.75rem; color:#718096; margin-top:5px;">モビリティ初期テスト (12/05)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h4
+                                style="border-bottom:1px solid #E2E8F0; padding-bottom:0.5rem; margin-bottom:1rem; color:#2B6CB0;">
+                                3. 学び・今後の課題</h4>
+                            <p style="font-size:0.9rem; line-height:1.6; color:#4A5568;">
+                                高齢者の利用において、インターフェースの簡易化が必要であることが判明しました。次期フェーズでは、UIデザインの改修を優先課題とします。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Metadata & Actions -->
+                    <div
+                        style="flex:1; background:#F7FAFC; padding:1.5rem; border-radius:8px; border:1px solid #E2E8F0;">
+                        <h4 style="font-size:0.9rem; color:#4A5568; margin-bottom:1rem; text-transform:uppercase;">監査情報
+                        </h4>
+                        <div style="font-size:0.8rem; margin-bottom:0.5rem;">
+                            <span style="color:#718096;">AI ドラフト生成:</span><br>
+                            <span style="font-weight:bold;">2026-02-28 10:00 (v0 Template)</span>
+                        </div>
+                        <div style="font-size:0.8rem; margin-bottom:1.5rem;">
+                            <span style="color:#718096;">Project Owner 確認:</span><br>
+                            <span style="font-weight:bold; color:#38A169;">完了 (事実誤り修正なし)</span>
+                        </div>
+
+                        <hr style="border:none; border-top:1px solid #E2E8F0; margin-bottom:1.5rem;">
+
+                        <button
+                            style="width:100%; padding:0.8rem; background:#3182CE; color:white; border:none; border-radius:4px; font-weight:bold; cursor:pointer; margin-bottom:10px;"
+                            onclick="closeModal('modal-report-preview'); alert('レポートが承認されました。Sponsorダッシュボードに公開されます。');">
+                            <i class="fa-solid fa-stamp"></i> 承認する
+                        </button>
+                        <button
+                            style="width:100%; padding:0.8rem; background:white; color:#E53E3E; border:1px solid #FC8181; border-radius:4px; font-weight:bold; cursor:pointer;">
+                            差し戻し
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Impact Report Preview Modal -->
+    <div id="modal-impact-preview" class="popup-overlay">
+        <div class="popup-content" style="max-width: 800px;">
+            <div class="popup-header">
+                <h2 class="popup-title">Impact Report 最終承認 (CSR v0)</h2>
+                <button class="close-btn" onclick="closeModal('modal-impact-preview')">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div style="text-align:center; padding:2rem;">
+                    <i class="fa-solid fa-file-pdf" style="font-size:3rem; color:#E53E3E; margin-bottom:1rem;"></i>
+                    <h3 style="margin-bottom:1rem;">ソニーグループ株式会社 2025年度 インパクトレポート.pdf</h3>
+                    <p style="color:#718096; font-size:0.9rem; margin-bottom:2rem;">
+                        スポンサーのチェックが完了しました。最終承認（監査ログ・承認番号の付与）を行うことで、<br>正式な書類として確定し、改ざん不能な状態として出力可能になります。
+                    </p>
+
+                    <div
+                        style="background:#F7FAFC; padding:1.5rem; text-align:left; border-radius:8px; border:1px solid #E2E8F0; margin-bottom:2rem; width:80%; margin-left:auto; margin-right:auto;">
+                        <h4 style="font-size:0.9rem; color:#4A5568; margin-bottom:0.5rem;">付与される監査証跡 (Audit Trail)</h4>
+                        <ul style="font-size:0.85rem; color:#718096; margin-left:1.5rem;">
+                            <li>Approved by: Sponsor Cloud Admin (Sato Takuya)</li>
+                            <li>Approval Date: <span style="font-family:monospace;">2026-03-01T08:31:00Z</span></li>
+                            <li>Template Version: <span style="font-family:monospace;">CSR-v0.4.1</span></li>
+                            <li>Source Reports: 5 Verified Project Reports</li>
+                        </ul>
+                    </div>
+
+                    <button class="btn-primary" style="background:#805AD5; padding:0.8rem 2rem; font-size:1rem;"
+                        onclick="closeModal('modal-impact-preview'); alert('最終承認が完了し、承認番号が発行されました。');">
+                        <i class="fa-solid fa-lock"></i> 承認してロック（確定）する
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Script -->
+    <script src="../script.js"></script>
+    <script>
+        // Simple role menu toggle for this page
+        function toggleRoleMenu() {
+            const menu = document.getElementById('role-menu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>
