@@ -54,6 +54,14 @@
                 style="margin-top: 1.5rem; color: #B794F4; font-weight: bold; border-top: 1px solid #2D3748; padding-top: 1rem;">
                 <i class="fa-solid fa-book-open"></i> コンセプト・意義
             </a>
+            <a href="#" class="nav-link" onclick="openModal('modal-sdg-explanation')"
+                style="color: #4C9F38; font-weight: bold;">
+                <i class="fa-solid fa-chart-line"></i> SDG貢献分布とは？
+            </a>
+            <a href="#" class="nav-link" onclick="openModal('modal-toku-explanation')"
+                style="color: #C5A059; font-weight: bold;">
+                <i class="fa-solid fa-flask"></i> TOKUスコアとは？
+            </a>
         </div>
 
         <div class="legal-links"
@@ -131,7 +139,8 @@
                 </thead>
                 <tbody>
                     <!-- Pending Owner -->
-                    <tr class="match-row" style="background:#FFF5F5;">
+                    <tr class="match-row" style="background:#FFF5F5; cursor:pointer;"
+                        onclick="openOwnerModal('NPO法人 森と育ちの会','山田 森太郎','NPO法人','2024年（1年）','1','pending','user-clock','E53E3E')">
                         <td align="center"><i class="fa-solid fa-user-clock" style="color:#E53E3E;"></i></td>
                         <td>
                             <div style="font-weight:bold; color:#2D3748;">NPO法人 森と育ちの会</div>
@@ -144,11 +153,13 @@
                         <td>1件</td>
                         <td align="center"><span class="badge bg-red">審査待ち</span></td>
                         <td><button class="btn-details" style="background:#E53E3E; color:white;"
-                                onclick="alert('団体の定款・決算書を確認します。')">審査する</button></td>
+                                onclick="event.stopPropagation(); openOwnerModal('NPO法人 森と育ちの会','山田 森太郎','NPO法人','2024年（1年）','1','pending','user-clock','E53E3E')">審査する</button>
+                        </td>
                     </tr>
 
                     <!-- Approved Owner 1 -->
-                    <tr class="match-row">
+                    <tr class="match-row" style="cursor:pointer;"
+                        onclick="openOwnerModal('未来都市開発機構','未来 創','NPO法人','2018年（8年）','3 (募集中:1)','approved','flag','38B2AC')">
                         <td align="center"><img
                                 src="https://ui-avatars.com/api/?name=Mirai+Lab&background=38B2AC&color=fff"
                                 style="width:32px; height:32px; border-radius:50%;"></td>
@@ -164,11 +175,14 @@
                         </td>
                         <td>3件 (募集中:1)</td>
                         <td align="center"><span class="badge bg-green">承認済み</span></td>
-                        <td><button class="btn-secondary" style="padding:0.4rem 1rem;">詳細</button></td>
+                        <td><button class="btn-secondary" style="padding:0.4rem 1rem;"
+                                onclick="event.stopPropagation(); openOwnerModal('未来都市開発機構','未来 創','NPO法人','2018年（8年）','3 (募集中:1)','approved','flag','38B2AC')">詳細</button>
+                        </td>
                     </tr>
 
                     <!-- Approved Owner 2 -->
-                    <tr class="match-row">
+                    <tr class="match-row" style="cursor:pointer;"
+                        onclick="openOwnerModal('AI・DX推進コンソーシアム','デジタル 太郎','一般社団法人','2020年（6年）','5 (募集中:1)','approved','microchip','2C7A7B')">
                         <td align="center"><img
                                 src="https://ui-avatars.com/api/?name=Tech+AI&background=2C7A7B&color=fff"
                                 style="width:32px; height:32px; border-radius:50%;"></td>
@@ -184,11 +198,14 @@
                         </td>
                         <td>5件 (募集中:1)</td>
                         <td align="center"><span class="badge bg-green">承認済み</span></td>
-                        <td><button class="btn-secondary" style="padding:0.4rem 1rem;">詳細</button></td>
+                        <td><button class="btn-secondary" style="padding:0.4rem 1rem;"
+                                onclick="event.stopPropagation(); openOwnerModal('AI・DX推進コンソーシアム','デジタル 太郎','一般社団法人','2020年（6年）','5 (募集中:1)','approved','microchip','2C7A7B')">詳細</button>
+                        </td>
                     </tr>
 
                     <!-- Approved Owner 3 -->
-                    <tr class="match-row">
+                    <tr class="match-row" style="cursor:pointer;"
+                        onclick="openOwnerModal('サステナビリティ・フューチャー','エコ 葉子','NPO法人','2015年（10年）','2 (募集中:1)','approved','leaf','2B6CB0')">
                         <td align="center"><img
                                 src="https://ui-avatars.com/api/?name=Sus+Future&background=2B6CB0&color=fff"
                                 style="width:32px; height:32px; border-radius:50%;"></td>
@@ -204,11 +221,14 @@
                         </td>
                         <td>2件 (募集中:1)</td>
                         <td align="center"><span class="badge bg-green">承認済み</span></td>
-                        <td><button class="btn-secondary" style="padding:0.4rem 1rem;">詳細</button></td>
+                        <td><button class="btn-secondary" style="padding:0.4rem 1rem;"
+                                onclick="event.stopPropagation(); openOwnerModal('サステナビリティ・フューチャー','エコ 葉子','NPO法人','2015年（10年）','2 (募集中:1)','approved','leaf','2B6CB0')">詳細</button>
+                        </td>
                     </tr>
 
                     <!-- Approved Owner 4 -->
-                    <tr class="match-row">
+                    <tr class="match-row" style="cursor:pointer;"
+                        onclick="openOwnerModal('次世代通信インフラ協議会','電波 次郎','一般社団法人','2021年（4年）','1 (募集中:1)','approved','tower-broadcast','6B46C1')">
                         <td align="center"><img
                                 src="https://ui-avatars.com/api/?name=Next+Gen&background=6B46C1&color=fff"
                                 style="width:32px; height:32px; border-radius:50%;"></td>
@@ -224,11 +244,14 @@
                         </td>
                         <td>1件 (募集中:1)</td>
                         <td align="center"><span class="badge bg-green">承認済み</span></td>
-                        <td><button class="btn-secondary" style="padding:0.4rem 1rem;">詳細</button></td>
+                        <td><button class="btn-secondary" style="padding:0.4rem 1rem;"
+                                onclick="event.stopPropagation(); openOwnerModal('次世代通信インフラ協議会','電波 次郎','一般社団法人','2021年（4年）','1 (募集中:1)','approved','tower-broadcast','6B46C1')">詳細</button>
+                        </td>
                     </tr>
 
                     <!-- Approved Owner 5 -->
-                    <tr class="match-row">
+                    <tr class="match-row" style="cursor:pointer;"
+                        onclick="openOwnerModal('グローバル物流革新ネットワーク','運送 剛','NPO法人','2019年（7年）','4 (募集中:2)','approved','truck','DD6B20')">
                         <td align="center"><img
                                 src="https://ui-avatars.com/api/?name=Global+Logi&background=DD6B20&color=fff"
                                 style="width:32px; height:32px; border-radius:50%;"></td>
@@ -244,18 +267,168 @@
                         </td>
                         <td>4件 (募集中:2)</td>
                         <td align="center"><span class="badge bg-green">承認済み</span></td>
-                        <td><button class="btn-secondary" style="padding:0.4rem 1rem;">詳細</button></td>
+                        <td><button class="btn-secondary" style="padding:0.4rem 1rem;"
+                                onclick="event.stopPropagation(); openOwnerModal('グローバル物流革新ネットワーク','運送 剛','NPO法人','2019年（7年）','4 (募集中:2)','approved','truck','DD6B20')">詳細</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </main>
 
+    <!-- ======================== -->
+    <!-- Project Owner Detail Modal -->
+    <!-- ======================== -->
+    <div id="modal-owner-detail" class="popup-overlay">
+        <div class="popup-content" style="max-width: 800px;">
+            <div class="popup-header" id="owner-modal-header"
+                style="background: linear-gradient(135deg, #1A365D 0%, #2A4365 100%); color: white; border-bottom: none; padding: 1.5rem 2rem;">
+                <div style="display:flex; align-items:center; gap:1rem; flex:1;">
+                    <div id="owner-modal-avatar"
+                        style="width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0; border:2px solid rgba(255,255,255,0.4);">
+                        <i class="fa-solid fa-building-user"></i>
+                    </div>
+                    <div>
+                        <div
+                            style="font-size:0.8rem; color:#63B3ED; font-weight:bold; letter-spacing:0.05em; margin-bottom:2px;">
+                            PROJECT OWNER PROFILE</div>
+                        <h2 class="popup-title" id="owner-modal-name"
+                            style="color:white; font-size:1.4rem; font-weight:900; margin:0;"></h2>
+                        <div id="owner-modal-rep"
+                            style="font-size:0.85rem; color:rgba(255,255,255,0.75); margin-top:2px;"></div>
+                    </div>
+                </div>
+                <button class="close-btn" onclick="closeModal('modal-owner-detail')"
+                    style="color: white; opacity: 0.8;">&times;</button>
+            </div>
+
+            <div class="popup-body" style="padding:2rem;">
+
+                <!-- Status Banner -->
+                <div id="owner-modal-status-banner"
+                    style="margin-bottom:1.5rem; padding:0.8rem 1.2rem; border-radius:10px; display:flex; align-items:center; gap:10px; font-size:0.9rem; font-weight:bold;">
+                </div>
+
+                <!-- KPI Strip -->
+                <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1rem; margin-bottom:1.5rem;">
+                    <div style="text-align:center; padding:1rem; background:#EBF8FF; border-radius:10px;">
+                        <div style="font-size:0.75rem; color:#3182CE; font-weight:bold; margin-bottom:4px;">TOKUスコア
+                        </div>
+                        <div style="font-size:1.6rem; font-weight:900; color:#1A365D;">82<span
+                                style="font-size:0.8rem; font-weight:400;">pt</span></div>
+                        <div style="font-size:0.7rem; color:#718096;">Rank A</div>
+                    </div>
+                    <div style="text-align:center; padding:1rem; background:#F0FFF4; border-radius:10px;">
+                        <div style="font-size:0.75rem; color:#38A169; font-weight:bold; margin-bottom:4px;">プロジェクト数
+                        </div>
+                        <div id="owner-modal-projects" style="font-size:1.6rem; font-weight:900; color:#22543D;"></div>
+                        <div style="font-size:0.7rem; color:#718096;">登録済み</div>
+                    </div>
+                    <div style="text-align:center; padding:1rem; background:#FAF5FF; border-radius:10px;">
+                        <div style="font-size:0.75rem; color:#805AD5; font-weight:bold; margin-bottom:4px;">活動歴</div>
+                        <div id="owner-modal-history" style="font-size:1.4rem; font-weight:900; color:#44337A;"></div>
+                        <div style="font-size:0.7rem; color:#718096;">設立年・経過</div>
+                    </div>
+                </div>
+
+                <!-- Governance -->
+                <div
+                    style="background:#F7FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:1.2rem; margin-bottom:1.5rem;">
+                    <h4
+                        style="font-size:0.95rem; color:#4A5568; margin:0 0 0.8rem; display:flex; align-items:center; gap:8px;">
+                        <i class="fa-solid fa-scale-balanced" style="color:#3182CE;"></i> Governance（信頼性情報）
+                    </h4>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; font-size:0.9rem;">
+                        <div><span style="color:#718096; font-size:0.8rem; display:block;">法人格</span> <b
+                                id="owner-modal-type"></b></div>
+                        <div><span style="color:#718096; font-size:0.8rem; display:block;">情報公開</span>
+                            <span class="badge bg-green" style="font-size:0.75rem; padding:2px 8px;"><i
+                                    class="fa-solid fa-check"></i> 定款</span>
+                            <span class="badge bg-green" style="font-size:0.75rem; padding:2px 8px;"><i
+                                    class="fa-solid fa-check"></i> 決算書</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Projects (sample) -->
+                <div style="margin-bottom:1.5rem;">
+                    <h4
+                        style="font-size:0.95rem; color:#4A5568; margin:0 0 0.8rem; display:flex; align-items:center; gap:8px;">
+                        <i class="fa-solid fa-list-check" style="color:#3182CE;"></i> アクティブなプロジェクト（サンプル）
+                    </h4>
+                    <div style="border:1px solid #E2E8F0; border-radius:10px; overflow:hidden;">
+                        <div
+                            style="padding:0.8rem 1rem; border-bottom:1px solid #EDF2F7; display:flex; justify-content:space-between; align-items:center;">
+                            <div>
+                                <div style="font-weight:bold; font-size:0.9rem; color:#2D3748;">地域文化活性化プロジェクト</div>
+                                <div style="font-size:0.75rem; color:#718096; margin-top:2px;">支援目標: ¥5,000,000 | 達成率:
+                                    62%</div>
+                            </div>
+                            <span class="badge bg-blue" style="font-size:0.75rem;">支援募集中</span>
+                        </div>
+                        <div
+                            style="padding:0.8rem 1rem; display:flex; justify-content:space-between; align-items:center;">
+                            <div>
+                                <div style="font-weight:bold; font-size:0.9rem; color:#2D3748;">次世代教育支援ネットワーク</div>
+                                <div style="font-size:0.75rem; color:#718096; margin-top:2px;">支援目標: ¥3,000,000 | 達成率:
+                                    100%</div>
+                            </div>
+                            <span class="badge bg-green" style="font-size:0.75rem;">達成済み</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div style="display:flex; gap:1rem; margin-top:2rem; padding-top:1.5rem; border-top:1px solid #EDF2F7;">
+                    <a href="../owner/index.html" target="_blank"
+                        style="flex:1; display:flex; align-items:center; justify-content:center; gap:8px; padding:0.8rem 1rem; background:linear-gradient(135deg, #2C7A7B 0%, #285E61 100%); color:white; border-radius:10px; text-decoration:none; font-weight:bold; font-size:0.9rem; box-shadow:0 4px 12px rgba(44,122,123,0.25);">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> オーナーモードのサンプル画面を見る
+                    </a>
+                    <button onclick="closeModal('modal-owner-detail')"
+                        style="flex:0.4; padding:0.8rem 1rem; background:#EDF2F7; color:#4A5568; border:none; border-radius:10px; font-weight:bold; font-size:0.9rem; cursor:pointer;">
+                        閉じる
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <script src="../script.js"></script>
     <script>
         function toggleRoleMenu() {
             const menu = document.getElementById('role-menu');
             if (menu.style.display === 'block') { menu.style.display = 'none'; } else { menu.style.display = 'block'; }
+        }
+
+        function openOwnerModal(name, rep, type, history, projects, status, icon, color) {
+            // Set header
+            document.getElementById('owner-modal-name').textContent = name;
+            document.getElementById('owner-modal-rep').textContent = '代表: ' + rep;
+            document.getElementById('owner-modal-type').textContent = type;
+            document.getElementById('owner-modal-history').textContent = history;
+            document.getElementById('owner-modal-projects').textContent = projects;
+
+            // Avatar color
+            const avatar = document.getElementById('owner-modal-avatar');
+            avatar.style.background = '#' + color + '55';
+            avatar.innerHTML = '<i class="fa-solid fa-' + icon + '" style="color:#' + color + ';"></i>';
+
+            // Status banner
+            const banner = document.getElementById('owner-modal-status-banner');
+            if (status === 'pending') {
+                banner.style.background = '#FFF5F5';
+                banner.style.border = '1px solid #FEB2B2';
+                banner.style.color = '#C53030';
+                banner.innerHTML = '<i class="fa-solid fa-clock"></i> 審査待ち — 定款・決算書の確認が必要です。';
+            } else {
+                banner.style.background = '#F0FFF4';
+                banner.style.border = '1px solid #9AE6B4';
+                banner.style.color = '#22543D';
+                banner.innerHTML = '<i class="fa-solid fa-circle-check"></i> 承認済み — プラットフォームの正式パートナー団体です。';
+            }
+
+            openModal('modal-owner-detail');
         }
     </script>
 </body>
