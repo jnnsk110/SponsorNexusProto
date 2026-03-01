@@ -3,14 +3,17 @@
    ========================================= */
 .sidebar {
     width: 260px;
+    height: 100vh;
     background-color: var(--sidebar-bg);
     color: #fff;
     display: flex;
     flex-direction: column;
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
     z-index: 10;
     transition: background-color 0.4s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /* Logo */
@@ -20,9 +23,10 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 3.5rem;
+    margin-bottom: 2rem;
     padding-left: 0.8rem;
     letter-spacing: 0.05em;
+    flex-shrink: 0;
 }
 
 .logo i {
@@ -35,21 +39,22 @@
 /* Navigation */
 .nav-menu {
     flex: 1;
+    min-height: 0;
 }
 
 .nav-link {
     display: flex;
     align-items: center;
-    padding: 1rem 1.2rem;
-    /* More padding */
+    padding: 0.75rem 1.2rem;
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     border-radius: 8px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     transition: all 0.2s;
     font-weight: 500;
     cursor: pointer;
     border-left: 4px solid transparent;
+    font-size: 0.92rem;
 }
 
 .nav-link:hover {
@@ -77,8 +82,9 @@
 .user-bottom {
     margin-top: auto;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 1.5rem;
+    padding-top: 1rem;
     position: relative;
+    flex-shrink: 0;
 }
 
 .user-card {
